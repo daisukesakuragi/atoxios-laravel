@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\PlanController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +23,24 @@ Route::get('/', function () {
     return view('welcome', compact('articles'));
 })->name('welcome');
 
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
-Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articles.show');
+Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
+    Route::get('/', [ArticleController::class, 'index'])->name('index');
+    Route::get('/{slug}', [ArticleController::class, 'show'])->name('show');
+});
 
-Route::get('/my-page', [MyPageController::class, 'index'])->middleware(['auth'])->name('my-page');
+Route::group(['prefix' => 'members', 'as' => 'members.'], function () {
+    Route::get('/', [MemberController::class, 'index'])->name('index');
+    Route::get('/{slug}', [MemberController::class, 'show'])->name('show');
+});
+
+Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
+    Route::get('/', [PlanController::class, 'index'])->name('index');
+    Route::get('/{slug}', [PlanController::class, 'show'])->name('show');
+});
+
+Route::middleware('auth:web')->group(function () {
+    Route::get('/my-page', [MyPageController::class, 'index'])->name('my-page');
+});
 
 Route::prefix('admin')->name('admin.')->group(function () {
     require __DIR__ . '/admin.php';

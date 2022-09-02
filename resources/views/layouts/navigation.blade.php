@@ -1,5 +1,5 @@
 @if (Route::is('admin.*'))
-<!-- MEMO: 管理者用のルートにアクセスがあった場合 -->
+<!-- MEMO: 管理者用のルートで未認証ユーザーに表示するナビゲーション -->
 <nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-50 tw-shadow">
     <div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8">
         <div class="tw-flex tw-justify-between tw-h-16">
@@ -15,7 +15,7 @@
     </div>
 </nav>
 @elseif(!Route::is('admin.*') && Auth::guard('web')->check())
-<!-- MEMO: 一般ユーザーがログインしている場合 -->
+<!-- MEMO: 入札者がログインしている場合に表示するナビゲーション -->
 <nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-50 tw-shadow">
     <!-- Primary Navigation Menu -->
     <div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8">
@@ -116,7 +116,7 @@
     </div>
 </nav>
 @elseif(!Route::is('admin.*') && !Auth::guard('web')->check())
-<!-- MEMO: 一般ユーザーがログインしてない場合 -->
+<!-- MEMO: 入札者がログインしてない場合に表示するナビゲーション -->
 <nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-shadow tw-sticky tw-top-0 tw-z-50">
     <!-- Primary Navigation Menu -->
     <div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8">
@@ -131,6 +131,12 @@
 
                 <!-- Navigation Links -->
                 <div class="tw-hidden tw-items-center tw-space-x-8 sm:tw--my-px sm:tw-ml-10 sm:tw-flex">
+                    <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
+                        {{ __('出品者一覧') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('plans.index')" :active="request()->routeIs('plans.index')">
+                        {{ __('企画一覧') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.index')">
                         {{ __('記事一覧') }}
                     </x-nav-link>
