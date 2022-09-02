@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UpdateArticleRequest extends FormRequest
 {
@@ -26,11 +27,11 @@ class UpdateArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'slug' => 'required|string|min:1|max:255|unique:articles,slug,' . $this->id . ',id,admin_id,' . $this->admin_id,
-            'title' => 'required|string|min:1|max:255',
-            'description' => 'required|string|min:1|max:150',
-            'thumbnail' => 'nullable|image',
-            'body' => 'required',
+            'slug' => ['required', 'string', 'min:1', 'max:255', Rule::unique('articles')->ignore($this->id)],
+            'title' => ['required', 'string', 'min:1', 'max:255'],
+            'description' => ['required', 'string', 'min:1', 'max:150'],
+            'thumbnail' => ['nullable', 'image'],
+            'body' => ['required'],
         ];
     }
 

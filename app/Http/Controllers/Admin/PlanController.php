@@ -41,12 +41,13 @@ class PlanController extends Controller
 
             Plan::create([
                 'member_id' => $request->member_id,
+                'slug' => $request->slug,
                 'title' => $request->title,
                 'eyecatch_img_id' => $eyecatch_img->getPublicId(),
                 'eyecatch_img_url' => $eyecatch_img->getSecurePath(),
                 'description' => $request->description,
-                'opened_at' => $request->opened_at,
-                'closed_at' => $request->closed_at,
+                'started_at' => $request->started_at,
+                'finished_at' => $request->finished_at,
                 'fundraising_ratio' => $request->fundraising_ratio
             ]);
 
@@ -65,8 +66,9 @@ class PlanController extends Controller
     public function edit($id)
     {
         $plan = Plan::findOrFail($id);
+        $members = Member::all();
 
-        return view('admin.plans.edit', compact('plan'));
+        return view('admin.plans.edit', compact('plan', 'members'));
     }
 
     public function update(UpdatePlanRequest $request, $id)
@@ -75,6 +77,7 @@ class PlanController extends Controller
             $plan = Plan::findOrFail($id);
 
             $plan->member_id = $request->member_id;
+            $plan->slug = $request->slug;
             $plan->title = $request->title;
 
             if ($request->hasFile('eyecatch_img')) {
@@ -85,8 +88,8 @@ class PlanController extends Controller
             }
 
             $plan->description = $request->description;
-            $plan->opened_at = $request->opened_at;
-            $plan->closed_at = $request->closed_at;
+            $plan->started_at = $request->started_at;
+            $plan->finished_at = $request->finished_at;
             $plan->fundraising_ratio = $request->fundraising_ratio;
 
             $plan->save();
@@ -107,10 +110,6 @@ class PlanController extends Controller
     {
         try {
             $plan = Plan::findOrFail($id);
-
-            Cloudinary::destroy($plan->eyecatch_img_id);
-
-            // TODO: ここで関連する入札歴（Bid）を論理削除する
             $plan->delete();
 
             session()->flash('success', '企画を削除しました。');

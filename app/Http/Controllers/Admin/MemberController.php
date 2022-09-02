@@ -114,10 +114,6 @@ class MemberController extends Controller
     {
         try {
             $member = Member::findOrFail($id);
-
-            Cloudinary::destroy($member->profile_img_id);
-
-            // TODO: ここで関連する企画（Plan）を論理削除する
             $member->delete();
 
             session()->flash('success', '出品者を削除しました。');

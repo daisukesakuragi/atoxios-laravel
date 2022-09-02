@@ -26,8 +26,8 @@
         <footer id="contact" class="tw-py-24 tw-bg-gray-100">
             <div class="tw-container tw-max-w-screen-xl">
                 <h2 class="tw-text-center tw-text-xl tw-mb-8">
-                    <x-application-logo class="tw-w-20 tw-h-20 tw-fill-current tw-text-indigo-700 tw-mx-auto" />
-                    <span class="tw-text-indigo-700">CONTACT</span>
+                    <x-application-logo class="tw-w-20 tw-h-20 tw-fill-current tw-text-gray-800 tw-mx-auto" />
+                    <span class="tw-text-gray-800">CONTACT</span>
                 </h2>
             </div>
         </footer>

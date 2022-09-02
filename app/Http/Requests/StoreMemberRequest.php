@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class StoreMemberRequest extends FormRequest
 {
@@ -25,15 +26,17 @@ class StoreMemberRequest extends FormRequest
     public function rules()
     {
         return [
-            'slug' => 'required|string|min:1|max:255|unique:members,slug',
-            'name' => 'required|string|min:1|max:255',
-            'career' => 'required|min:1|max:150|string',
-            'introduction' => 'required|min:1|max:150|string',
-            'profile_img' => 'required|image',
-            'instagram_url' => 'nullable|url|active_url',
-            'tiktok_url' => 'nullable|url|active_url',
-            'twitter_url' => 'nullable|url|active_url',
-            'youtube_url' => 'nullable|url|active_url',
+            'slug' => [
+                'required', 'string', 'min:1', 'max:255', Rule::unique('members')->whereNull('deleted_at')
+            ],
+            'name' => ['required', 'string', 'min:1', 'max:255'],
+            'career' => ['required', 'min:1', 'max:150', 'string'],
+            'introduction' => ['required', 'min:1', 'max:150', 'string'],
+            'profile_img' => ['required', 'image'],
+            'instagram_url' => ['nullable', 'url', 'active_url'],
+            'tiktok_url' => ['nullable', 'url', 'active_url'],
+            'twitter_url' => ['nullable', 'url', 'active_url'],
+            'youtube_url' => ['nullable', 'url', 'active_url'],
         ];
     }
 }

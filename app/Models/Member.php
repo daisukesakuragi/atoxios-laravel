@@ -27,4 +27,13 @@ class Member extends Model
     {
         return $this->hasMany(Plan::class);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($member) {
+            $member->plans()->delete();
+        });
+    }
 }
