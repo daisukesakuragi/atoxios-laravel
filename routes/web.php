@@ -23,6 +23,22 @@ Route::get('/', function () {
     return view('welcome', compact('articles'));
 })->name('welcome');
 
+Route::get('/about-us', function () {
+    return view('about-us');
+})->name('about-us');
+
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
+
+Route::get('/privacy', function () {
+    return view('privacy');
+})->name('privacy');
+
+Route::get('/tokushoho', function () {
+    return view('tokushoho');
+})->name('tokushoho');
+
 Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
     Route::get('/', [ArticleController::class, 'index'])->name('index');
     Route::get('/{slug}', [ArticleController::class, 'show'])->name('show');

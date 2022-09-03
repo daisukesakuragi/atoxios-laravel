@@ -36,9 +36,6 @@
                     <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.index')">
                         {{ __('記事一覧') }}
                     </x-nav-link>
-                    <x-nav-link href="#contact">
-                        {{ __('お問い合わせ') }}
-                    </x-nav-link>
                 </div>
             </div>
 
@@ -139,9 +136,6 @@
                     </x-nav-link>
                     <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.index')">
                         {{ __('記事一覧') }}
-                    </x-nav-link>
-                    <x-nav-link href="#contact">
-                        {{ __('お問い合わせ') }}
                     </x-nav-link>
                 </div>
             </div>
