@@ -2,14 +2,12 @@
 
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
-// MEMO: 管理者のメールアドレス認証は不要なのでコメントアウトする
-// use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-// use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
-// MEMO: 管理者のメールアドレス認証は不要なのでコメントアウトする
-// use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MemberController;
@@ -27,17 +25,15 @@ Route::middleware('guest:admin')->group(function () {
     Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 });
 
-// MEMO: 管理者のメールアドレス認証は不要なのでコメントアウトする
-// Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-//     ->middleware(['auth', 'signed', 'throttle:6,1'])
-//     ->name('verification.verify');
-// Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-//     ->middleware(['auth', 'throttle:6,1'])
-//     ->name('verification.send');
+Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+    ->middleware(['auth', 'signed', 'throttle:6,1'])
+    ->name('verification.verify');
+Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+    ->middleware(['auth', 'throttle:6,1'])
+    ->name('verification.send');
 
 Route::middleware('auth:admin')->group(function () {
-    // MEMO: 管理者のメールアドレス認証は不要なのでコメントアウトする
-    // Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');
+    Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');
     Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
     Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']);
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
