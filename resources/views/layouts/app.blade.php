@@ -7,9 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {!! SEO::generate() !!}
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- Fonts -->
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <livewire:styles />
     <livewire:scripts />
@@ -18,6 +17,31 @@
 <body class="tw-font-sans tw-antialiased">
     <div class="tw-min-h-screen tw-bg-gray-100 tw-relative">
         @include('layouts.navigation')
+        @if (session()->has('success'))
+        <div class="tw-bg-green-500 tw-text-white tw-w-screen">
+            <div class="tw-p-4 tw-container tw-max-w-screen-xl tw-flex tw-items-center tw-gap-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg><span class="tw-font-semibold tw-text-sm">{{ session()->get('success') }}</span>
+            </div>
+        </div>
+        @elseif (session()->has('error'))
+        <div class="tw-bg-red-600 tw-text-white tw-w-screen">
+            <div class="tw-p-4 tw-container tw-max-w-screen-xl tw-flex tw-items-center tw-gap-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg><span class="tw-font-semibold tw-text-sm">{{ session()->get('error') }}</span>
+            </div>
+        </div>
+        @elseif (auth()->check() && !auth()->user()->email_verified_at)
+        <div class="tw-bg-red-600 tw-text-white tw-w-screen">
+            <div class="tw-p-4 tw-container tw-max-w-screen-xl tw-flex tw-items-center tw-gap-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg><span class="tw-font-semibold tw-text-sm">{{ __('メールアドレスの確認が済んでおりません。') }}</span>
+            </div>
+        </div>
+        @endif
         <main>
             {{ $slot }}
         </main>

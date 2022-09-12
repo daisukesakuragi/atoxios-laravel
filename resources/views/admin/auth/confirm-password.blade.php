@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-admin-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -20,8 +20,7 @@
             <div>
                 <x-label for="password" :value="__('Password')" />
 
-                <x-input id="password" class="tw-block tw-mt-1 tw-w-full" type="password" name="password" required
-                    autocomplete="current-password" />
+                <x-input id="password" class="tw-block tw-mt-1 tw-w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
 
             <div class="tw-flex tw-justify-end tw-mt-4">
@@ -31,4 +30,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-admin-layout>

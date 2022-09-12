@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-admin-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -23,8 +23,7 @@
             <div>
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="tw-block tw-mt-1 tw-w-full" type="email" name="email" :value="old('email')"
-                    required autofocus />
+                <x-input id="email" class="tw-block tw-mt-1 tw-w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <div class="tw-flex tw-items-center tw-justify-end tw-mt-4">
@@ -34,4 +33,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-admin-layout>

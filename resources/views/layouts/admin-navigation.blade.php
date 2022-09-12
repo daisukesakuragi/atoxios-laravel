@@ -2,6 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8">
         <div class="tw-flex tw-justify-between tw-h-16">
+            @auth
             <div class="tw-flex">
                 <!-- Logo -->
                 <div class="shrink-0 tw-flex tw-items-center">
@@ -87,7 +88,6 @@
 
                 </div>
             </div>
-
             <!-- Settings Dropdown -->
             <div class="tw-hidden sm:tw-flex sm:tw-items-center sm:tw-ml-6">
                 <x-dropdown align="right" width="48">
@@ -116,7 +116,6 @@
                     </x-slot>
                 </x-dropdown>
             </div>
-
             <!-- Hamburger -->
             <div class="tw--mr-2 tw-flex tw-items-center sm:tw-hidden">
                 <button @click="open = ! open" class="tw-inline-flex tw-items-center tw-justify-center tw-p-2 tw-rounded-md tw-text-gray-400 hover:tw-text-gray-500 hover:tw-bg-gray-100 focus:tw-outline-none focus:tw-bg-gray-100 focus:tw-text-gray-500 tw-transition tw-duration-150 tw-ease-in-out">
@@ -126,11 +125,13 @@
                     </svg>
                 </button>
             </div>
+            @endauth
         </div>
     </div>
 
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'tw-block': open, 'tw-hidden': !open }" class="tw-hidden sm:tw-hidden">
+        @auth
         <div class="tw-pt-2 tw-pb-3 tw-space-y-1">
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('ダッシュボード') }}
@@ -142,7 +143,6 @@
                 {{ __('記事作成') }}
             </x-responsive-nav-link>
         </div>
-
         <!-- Responsive Settings Options -->
         <div class="tw-pt-4 tw-pb-1 tw-border-t tw-border-gray-200">
             <div class="tw-px-4">
@@ -150,7 +150,6 @@
                 </div>
                 <div class="tw-font-medium tw-text-sm tw-text-gray-500">{{ Auth::guard('admin')->user()->email }}</div>
             </div>
-
             <div class="tw-mt-3 tw-space-y-1">
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('admin.logout') }}">
@@ -163,5 +162,7 @@
                 </form>
             </div>
         </div>
+        @else
+        @endauth
     </div>
 </nav>

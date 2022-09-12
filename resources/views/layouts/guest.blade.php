@@ -7,9 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {!! SEO::generate() !!}
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- Fonts -->
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <livewire:styles />
     <livewire:scripts />

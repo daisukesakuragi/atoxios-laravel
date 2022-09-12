@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-admin-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -11,9 +11,9 @@
         </div>
 
         @if (session('status') == 'verification-link-sent')
-            <div class="tw-mb-4 tw-font-medium tw-text-sm tw-text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-            </div>
+        <div class="tw-mb-4 tw-font-medium tw-text-sm tw-text-green-600">
+            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+        </div>
         @endif
 
         <div class="tw-mt-4 tw-flex tw-items-center tw-justify-between">
@@ -36,4 +36,4 @@
             </form>
         </div>
     </x-auth-card>
-</x-guest-layout>
+</x-admin-layout>

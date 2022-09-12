@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-admin-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -19,8 +19,7 @@
             <div>
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="tw-block tw-mt-1 tw-w-full" type="email" name="email"
-                    :value="old('email', $request->email)" required autofocus />
+                <x-input id="email" class="tw-block tw-mt-1 tw-w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
             </div>
 
             <!-- Password -->
@@ -34,8 +33,7 @@
             <div class="tw-mt-4">
                 <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                <x-input id="password_confirmation" class="tw-block tw-mt-1 tw-w-full" type="password"
-                    name="password_confirmation" required />
+                <x-input id="password_confirmation" class="tw-block tw-mt-1 tw-w-full" type="password" name="password_confirmation" required />
             </div>
 
             <div class="tw-flex tw-items-center tw-justify-end tw-mt-4">
@@ -45,4 +43,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-admin-layout>
