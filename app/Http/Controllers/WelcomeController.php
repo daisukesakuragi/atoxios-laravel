@@ -9,9 +9,9 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        SEOTools::opengraph()->addProperty('image', public_path('images/ogp.jpg'));
+        SEOTools::opengraph()->addProperty('image', url('/images/ogp.jpg'));
         SEOTools::opengraph()->addProperty('type', 'website');
-        SEOTools::jsonLd()->addImage(public_path('images/ogp.jpg'));
+        SEOTools::jsonLd()->addImage(url('/images/ogp.jpg'));
 
         $articles = Article::limit(6)->get();
 
