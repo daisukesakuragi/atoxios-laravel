@@ -14,7 +14,7 @@ class AboutUsController extends Controller
         SEOTools::setCanonical('https://codecasts.com.br/lesson');
         SEOTools::opengraph()->addProperty('type', 'company');
         SEOTools::twitter()->setSite('@atoxios');
-        SEOTools::jsonLd()->addImage(public_path('ogp.jpg'));
+        SEOTools::jsonLd()->addImage(asset('images/ogp.jpg'));
 
         return view('about-us');
     }
