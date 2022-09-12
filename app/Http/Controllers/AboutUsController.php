@@ -9,12 +9,13 @@ class AboutUsController extends Controller
     public function index()
     {
         SEOTools::setTitle('会社概要');
-        SEOTools::setDescription('これは会社概要ページのメタディスクリプションとなります。');
+        SEOTools::setDescription('これは会社概要ページのメタディスクリプションテキストとなります。');
         SEOTools::opengraph()->setUrl(url()->current());
-        SEOTools::setCanonical('https://codecasts.com.br/lesson');
+        SEOTools::opengraph()->setImage(public_path('images/ogp.jpg'));
+        SEOTools::setCanonical(url()->current());
         SEOTools::opengraph()->addProperty('type', 'company');
         SEOTools::twitter()->setSite('@atoxios');
-        SEOTools::jsonLd()->addImage(asset('images/ogp.jpg'));
+        SEOTools::jsonLd()->addImage(public_path('images/ogp.jpg'));
 
         return view('about-us');
     }

@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $articles = Article::limit(6)->get();
-    return view('welcome', compact('articles'));
-})->name('welcome');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 

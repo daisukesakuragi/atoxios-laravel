@@ -15,7 +15,7 @@ return [
             'description'  => 'ATOXIOSは、人の存在意義に価値を付ける。 その価値を競り落とす次世代型オークションサービス。 果たして、私たちには一体どれくらいの価値が存在しているのだろうか。', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => ['ATOXIOS'],
-            'canonical'    => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
+            'canonical'    => null, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
@@ -39,10 +39,10 @@ return [
         'defaults' => [
             'title'       => 'ATOXIOS', // set false to total remove
             'description' => 'ATOXIOSは、人の存在意義に価値を付ける。 その価値を競り落とす次世代型オークションサービス。 果たして、私たちには一体どれくらいの価値が存在しているのだろうか。', // set false to total remove
-            'url'         => false, // Set null for using Url::current(), set false to total remove
-            'type'        => false,
-            'site_name'   => false,
-            'images'      => ['/images/ogp.jpg'],
+            'url'         => null, // Set null for using Url::current(), set false to total remove
+            'type'        => 'website',
+            'site_name'   => 'ATOXIOS',
+            'images'      => [],
         ],
     ],
     'twitter' => [
@@ -61,9 +61,9 @@ return [
         'defaults' => [
             'title'       => 'ATOXIOS', // set false to total remove
             'description' => 'ATOXIOSは、人の存在意義に価値を付ける。 その価値を競り落とす次世代型オークションサービス。 果たして、私たちには一体どれくらいの価値が存在しているのだろうか。', // set false to total remove
-            'url'         => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
+            'url'         => null, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'type'        => 'WebPage',
-            'images'      => ['/images/ogp.jpg'],
+            'images'      => [],
         ],
     ],
 ];
