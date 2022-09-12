@@ -84,16 +84,6 @@
                     @endif
                 </div>
 
-                <div class="tw-mb-6">
-                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="fundraising_ratio">
-                        {{ __('*募金率（%）') }}
-                    </label>
-                    <input class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline" id="fundraising_ratio" name="fundraising_ratio" type="number" placeholder="20" value="{{ old('fundraising_ratio', $plan->fundraising_ratio) }}">
-                    @if ($errors->has('fundraising_ratio'))
-                    <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('fundraising_ratio') }}</p>
-                    @endif
-                </div>
-
                 <button class="tw-bg-indigo-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-w-full" type="submit">
                     {{ __('編集する') }}
                 </button>

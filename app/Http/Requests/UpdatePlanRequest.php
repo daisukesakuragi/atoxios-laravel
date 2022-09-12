@@ -41,7 +41,6 @@ class UpdatePlanRequest extends FormRequest
             'description' => ['required', 'min:1', 'max:150', 'string'],
             'started_at' => ['required', 'date', 'after:today'],
             'finished_at' => ['required', 'date', 'after:started_at'],
-            'fundraising_ratio' => ['required', 'integer', 'numeric', 'digits_between:1,3', 'max:100'],
         ];
     }
 }

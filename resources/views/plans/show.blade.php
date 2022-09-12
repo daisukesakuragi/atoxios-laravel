@@ -19,9 +19,6 @@
                     <p class="tw-text-sm tw-text-gray-600 tw-mb-3">
                         開催期間: {{ $plan->started_at }} ~ {{ $plan->finished_at }}
                     </p>
-                    <p class="tw-text-sm tw-text-gray-600 tw-mb-3">
-                        募金率: {{ $plan->fundraising_ratio }}%
-                    </p>
                 </div>
             </div>
         </div>

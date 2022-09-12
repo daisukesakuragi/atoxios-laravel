@@ -24,9 +24,6 @@
                     <p class="tw-text-sm tw-text-gray-600 tw-mb-3">
                         開催期間: {{ $plan->started_at }} ~ {{ $plan->finished_at }}
                     </p>
-                    <p class="tw-text-sm tw-text-gray-600 tw-mb-3">
-                        募金率: {{ $plan->fundraising_ratio }}%
-                    </p>
                     <hr class="tw-my-6">
                     <a href="{{ route('admin.plans.edit', $plan->id) }}" class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full tw-mb-3">編集する</a>
                     <form method="POST" action="{{ route('admin.plans.destroy', $plan->id) }}">

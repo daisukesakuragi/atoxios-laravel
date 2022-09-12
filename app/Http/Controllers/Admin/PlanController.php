@@ -48,7 +48,6 @@ class PlanController extends Controller
                 'description' => $request->description,
                 'started_at' => $request->started_at,
                 'finished_at' => $request->finished_at,
-                'fundraising_ratio' => $request->fundraising_ratio
             ]);
 
             session()->flash('success', '企画を作成しました。');
@@ -90,7 +89,6 @@ class PlanController extends Controller
             $plan->description = $request->description;
             $plan->started_at = $request->started_at;
             $plan->finished_at = $request->finished_at;
-            $plan->fundraising_ratio = $request->fundraising_ratio;
 
             $plan->save();
 

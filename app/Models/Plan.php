@@ -19,7 +19,6 @@ class Plan extends Model
         'description',
         'started_at',
         'finished_at',
-        'fundraising_ratio',
     ];
 
     public function member()

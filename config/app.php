@@ -185,7 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -208,6 +208,8 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([])->toArray(),
+    'aliases' => Facade::defaultAliases()->merge([
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+    ])->toArray(),
 
 ];

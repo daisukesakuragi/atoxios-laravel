@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MyPageController;
@@ -23,9 +24,7 @@ Route::get('/', function () {
     return view('welcome', compact('articles'));
 })->name('welcome');
 
-Route::get('/about-us', function () {
-    return view('about-us');
-})->name('about-us');
+Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 
 Route::get('/terms', function () {
     return view('terms');
