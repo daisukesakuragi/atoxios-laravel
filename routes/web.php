@@ -5,6 +5,9 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\PrivacyController;
+use App\Http\Controllers\TermsController;
+use App\Http\Controllers\TokushohoController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
@@ -24,17 +27,11 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 
-Route::get('/terms', function () {
-    return view('terms');
-})->name('terms');
+Route::get('/terms', [TermsController::class, 'index'])->name('terms');
 
-Route::get('/privacy', function () {
-    return view('privacy');
-})->name('privacy');
+Route::get('/privacy', [PrivacyController::class, 'index'])->name('privacy');
 
-Route::get('/tokushoho', function () {
-    return view('tokushoho');
-})->name('tokushoho');
+Route::get('/tokushoho', [TokushohoController::class, 'index'])->name('tokushoho');
 
 Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
     Route::get('/', [ArticleController::class, 'index'])->name('index');
