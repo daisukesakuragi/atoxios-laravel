@@ -25,4 +25,9 @@ class Plan extends Model
     {
         return $this->belongsTo(Member::class);
     }
+
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
 }

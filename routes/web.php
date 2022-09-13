@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BidController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\PlanController;
@@ -9,9 +10,8 @@ use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\TermsController;
 use App\Http\Controllers\TokushohoController;
 use App\Http\Controllers\WelcomeController;
-use App\Models\Article;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +50,10 @@ Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
 
 Route::middleware('auth:web')->group(function () {
     Route::get('/my-page', [MyPageController::class, 'index'])->name('my-page');
+});
+
+Route::middleware(['auth:web', 'verified'])->group(function () {
+    Route::post('/bid', [BidController::class, 'bid'])->name('bid');
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {

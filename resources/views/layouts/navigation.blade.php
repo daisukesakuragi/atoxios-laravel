@@ -1,7 +1,6 @@
 @if (Route::is('admin.*'))
-<!-- MEMO: 管理者用のルートで未認証ユーザーに表示するナビゲーション -->
 <nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-50 tw-shadow">
-    <div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8">
+    <div class="tw-mx-auto tw-px-4 tw-container tw-max-w-screen-xl">
         <div class="tw-flex tw-justify-between tw-h-16">
             <div class="tw-flex">
                 <!-- Logo -->
@@ -15,10 +14,9 @@
     </div>
 </nav>
 @elseif(!Route::is('admin.*') && Auth::guard('web')->check())
-<!-- MEMO: 入札者がログインしている場合に表示するナビゲーション -->
 <nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-50 tw-shadow">
     <!-- Primary Navigation Menu -->
-    <div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8">
+    <div class="tw-mx-auto tw-px-4 tw-container tw-max-w-screen-xl">
         <div class="tw-flex tw-justify-between tw-h-16">
             <div class="tw-flex">
                 <!-- Logo -->
@@ -30,8 +28,11 @@
 
                 <!-- Navigation Links -->
                 <div class="tw-hidden tw-space-x-8 sm:tw--my-px sm:tw-ml-10 sm:tw-flex">
-                    <x-nav-link :href="route('my-page')" :active="request()->routeIs('dashboard')">
-                        {{ __('マイページ') }}
+                    <x-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
+                        {{ __('出品者一覧') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('plans.index')" :active="request()->routeIs('plans.index')">
+                        {{ __('企画一覧') }}
                     </x-nav-link>
                     <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.index')">
                         {{ __('記事一覧') }}
@@ -55,6 +56,9 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('my-page')">
+                            マイページ
+                        </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -83,8 +87,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'tw-block': open, 'tw-hidden': !open }" class="tw-hidden sm:tw-hidden">
         <div class="tw-pt-2 tw-pb-3 tw-space-y-1">
-            <x-responsive-nav-link :href="route('my-page')" :active="request()->routeIs('my-page')">
-                {{ __('マイページ') }}
+            <x-responsive-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
+                {{ __('出品者一覧') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('plans.index')" :active="request()->routeIs('plans.index')">
+                {{ __('企画一覧') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.index')">
                 {{ __('記事一覧') }}
@@ -99,6 +106,9 @@
             </div>
 
             <div class="tw-mt-3 tw-space-y-1">
+                <x-responsive-nav-link :href="route('my-page')">
+                    マイページ
+                </x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -116,7 +126,7 @@
 <!-- MEMO: 入札者がログインしてない場合に表示するナビゲーション -->
 <nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-shadow tw-sticky tw-top-0 tw-z-50">
     <!-- Primary Navigation Menu -->
-    <div class="tw-max-w-7xl tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8">
+    <div class="tw-mx-auto tw-px-4 tw-container tw-max-w-screen-xl">
         <div class="tw-flex tw-justify-between tw-h-16">
             <div class="tw-flex">
                 <!-- Logo -->
@@ -164,6 +174,12 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'tw-block': open, 'tw-hidden': !open }" class="tw-hidden sm:tw-hidden">
         <div class="tw-pt-2 tw-pb-3 tw-space-y-1">
+            <x-responsive-nav-link :href="route('members.index')" :active="request()->routeIs('members.index')">
+                {{ __('出品者一覧') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('plans.index')" :active="request()->routeIs('plans.index')">
+                {{ __('企画一覧') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.index')">
                 {{ __('記事一覧') }}
             </x-responsive-nav-link>

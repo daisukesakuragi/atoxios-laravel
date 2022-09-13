@@ -13,8 +13,8 @@
                     <h3 class="tw-text-lg tw-font-semibold">
                         {{ $plan->title }}
                     </h3>
-                    <p class="tw-text-sm tw-text-gray-700 tw-mb-4">by <a href="{{ route('members.show', $plan->member->id) }}" class="tw-underline">{{ $plan->member->name }}</a></p>
-                    <a href="{{ route('plans.show', $plan->id) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
+                    <p class="tw-text-sm tw-text-gray-700 tw-mb-4">by <a href="{{ route('members.show', $plan->member->slug) }}" class="tw-underline">{{ $plan->member->name }}</a></p>
+                    <a href="{{ route('plans.show', $plan->slug) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
                 </div>
             </div>
             @endforeach

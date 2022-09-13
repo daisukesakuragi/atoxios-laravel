@@ -13,7 +13,7 @@
                     <h3 class="tw-text-lg tw-font-semibold">
                         {{ $member->name }}
                     </h3>
-                    <a href="{{ route('members.show', $member->id) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
+                    <a href="{{ route('members.show', $member->slug) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
                 </div>
             </div>
             @endforeach

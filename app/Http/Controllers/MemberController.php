@@ -13,9 +13,9 @@ class MemberController extends Controller
         return view('members.index', compact('members'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $member = Member::with('plans')->findOrFail($id);
+        $member = Member::with('plans')->where('slug', $slug)->firstOrFail();
 
         return view('members.show', compact('member'));
     }

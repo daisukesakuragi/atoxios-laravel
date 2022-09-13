@@ -1,13 +1,16 @@
 <footer class="tw-border-t tw-border-gray-200">
     <div class="
           tw-container
-          tw-flex tw-flex-col tw-flex-wrap
-          tw-px-4
+          tw-flex
+          tw-flex-col
+          tw-flex-wrap
           tw-py-16
           tw-mx-auto
+          tw-gap-8
           md:tw-items-center
           lg:tw-items-start
-          md:tw-flex-row md:tw-flex-nowrap
+          md:tw-flex-row
+          md:tw-flex-nowrap
         ">
         <div class="tw-flex-shrink-0 tw-w-64 tw-mx-auto tw-text-center md:tw-mx-0 md:tw-text-left">
             <a href="{{ route('welcome') }}">
@@ -39,16 +42,13 @@
                 </h2>
                 <ul class="tw-mb-8 tw-space-y-4 tw-text-sm tw-list-none">
                     <li>
-                        <a class="tw-text-gray-600 hover:tw-text-gray-800">Home</a>
+                        <a class="tw-text-gray-600 hover:tw-text-gray-800" href="{{ route('members.index') }}">出品者一覧</a>
                     </li>
                     <li>
-                        <a class="tw-text-gray-600 hover:tw-text-gray-800">About Us</a>
+                        <a class="tw-text-gray-600 hover:tw-text-gray-800" href="{{ route('plans.index') }}">企画一覧</a>
                     </li>
                     <li>
-                        <a class="tw-text-gray-600 hover:tw-text-gray-800">Blogs</a>
-                    </li>
-                    <li>
-                        <a class="tw-text-gray-600 hover:tw-text-gray-800">Contact Us</a>
+                        <a class="tw-text-gray-600 hover:tw-text-gray-800" href="{{ route('articles.index') }}">記事一覧</a>
                     </li>
                 </ul>
             </div>
