@@ -56,8 +56,8 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('my-page')">
-                            マイページ
+                        <x-dropdown-link :href="route('bid-history.index')">
+                            入札履歴
                         </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -106,8 +106,8 @@
             </div>
 
             <div class="tw-mt-3 tw-space-y-1">
-                <x-responsive-nav-link :href="route('my-page')">
-                    マイページ
+                <x-responsive-nav-link :href="route('bid-history.index')">
+                    入札履歴
                 </x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

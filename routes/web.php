@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BidController;
+use App\Http\Controllers\BidHistoryController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\PlanController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\TermsController;
 use App\Http\Controllers\TokushohoController;
 use App\Http\Controllers\WelcomeController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +53,7 @@ Route::middleware('auth:web')->group(function () {
 });
 
 Route::middleware(['auth:web', 'verified'])->group(function () {
+    Route::get('/bid-history', [BidHistoryController::class, 'index'])->name('bid-history.index');
     Route::post('/bid', [BidController::class, 'bid'])->name('bid');
 });
 

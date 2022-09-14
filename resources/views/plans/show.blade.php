@@ -16,6 +16,7 @@
                     </p>
                     @auth
                     @if(auth()->user()->email_verified_at)
+                    @if($plan->checkIfPlanIsBiddableByDateTime())
                     <form method="POST" action="{{ route('bid') }}">
                         @csrf
                         <input type="hidden" name="price" id="price" value="{{ $price }}" />
@@ -26,6 +27,9 @@
                             {{ __('入札する') }}
                         </a>
                     </form>
+                    @else
+                    <p class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full tw-opacity-50 tw-cursor-not-allowed">入札できません</p>
+                    @endif
                     @elseif(!auth()->user()->email_verified_at)
                     <hr class="tw-my-6">
                     <div class="tw-p-4 tw-text-red-900 tw-bg-red-100 tw-border tw-border-red-200 tw-rounded">
@@ -55,6 +59,8 @@
                         </div>
                     </div>
                     @endif
+                    @else
+                    <a href="{{ route('login') }}" class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full">ログインして入札する</a>
                     @endauth
                 </div>
             </div>
@@ -68,7 +74,7 @@
                 <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
                     <div class="tw-p-6">
                         <h3 class="tw-text-lg tw-font-semibold">
-                            {{ $bid->price . '円' }}
+                            {{ $bid->price }}円
                         </h3>
                         <p class="tw-text-sm tw-text-gray-700">{{ $bid->created_at }}</p>
                     </div>
