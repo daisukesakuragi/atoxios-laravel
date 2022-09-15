@@ -35,10 +35,10 @@ class PlanController extends Controller
         SEOTools::setCanonical(url()->current());
         SEOTools::jsonLd()->addImage(url($plan->eyecatch_img_url));
 
-        $bids = $plan->bids()->orderBy('price', 'desc')->limit(10)->get();
+        $bids = $plan->bids()->withTrashed()->orderBy('price', 'desc')->limit(10)->get();
 
         if ($bids && count($bids) > 0) {
-            $price = $bids[0]->price + 100000;
+            $price = intval($bids[0]->price) + 100000;
         } else {
             $price = 100000;
         }
