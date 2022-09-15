@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,13 @@ class LoginRequest extends FormRequest
 
         if (!Auth::guard($guard)->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
+
+            $user = User::withTrashed()->where('email', '=', $this->email)->first();
+
+            if (isset($user) && $user->deleted_at != null) {
+                $user->restore();
+                $user->bids()->restore();
+            }
 
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),

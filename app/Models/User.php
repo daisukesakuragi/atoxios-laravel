@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,32 +14,17 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -46,5 +32,38 @@ class User extends Authenticatable implements MustVerifyEmail
     public function bids()
     {
         return $this->hasMany(Bid::class);
+    }
+
+    public function withdrawals()
+    {
+        return $this->hasMany(Withdrawal::class);
+    }
+
+    public function checkIfUserCanWithdrawal(): bool
+    {
+        // MEMO: ユーザーが開催期間中の企画に入札している場合は退会できない
+        $result = true;
+        $bids = $this->bids()->get();
+        $now = new Carbon();
+
+        foreach ($bids as $bid) {
+            $started_at = new Carbon($bid->plan->started_at);
+            $finished_at = new Carbon($bid->plan->finished_at);
+
+            if ($now->between($started_at, $finished_at)) {
+                $result = false;
+            }
+        }
+
+        return $result;
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($user) {
+            $user->bids()->delete();
+        });
     }
 }

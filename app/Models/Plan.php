@@ -38,37 +38,15 @@ class Plan extends Model
         $finished_at = new Carbon($this->finished_at);
         $now = new Carbon();
 
-        if (!$now->between($started_at, $finished_at)) {
-            session()->flash('error', 'こちらの企画は入札可能期間外です。');
-
-            return false;
-        }
-
-        return true;
+        return $now->between($started_at, $finished_at);
     }
 
     public function checkIfPlanIsBiddableByPrice(int $price): bool
     {
-        $latest_bid = Bid::where('plan_id', '=', $this->id)
+        $latest = Bid::where('plan_id', '=', $this->id)
             ->orderBy('price', 'desc')
             ->first();
 
-        if ($latest_bid) {
-            if ($latest_bid->price >= $price) {
-                session()->flash('error', $price . '円での入札に失敗しました。最新の入札可能価格は、' . $latest_bid->price . '円です。');
-
-                return false;
-            }
-
-            $next = $latest_bid->price + 100000;
-
-            if ($next < $price) {
-                session()->flash('error', '入札に失敗しました。現在の入札金額の上限は、' . $next . '円です。');
-
-                return false;
-            }
-        }
-
-        return true;
+        return $latest->price + 100000 === $price;
     }
 }

@@ -3,9 +3,8 @@
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BidController;
-use App\Http\Controllers\BidHistoryController;
 use App\Http\Controllers\MemberController;
-use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\TermsController;
@@ -49,11 +48,15 @@ Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
 });
 
 Route::middleware('auth:web')->group(function () {
-    Route::get('/my-page', [MyPageController::class, 'index'])->name('my-page');
+    Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
+        Route::get('/', [AccountController::class, 'index'])->name('index');
+        Route::get('/history', [AccountController::class, 'showBidHistory'])->name('showBidHistory');
+        Route::get('/withdrawal', [AccountController::class, 'showWithdrawalForm'])->name('showWithdrawalForm');
+        Route::post('/withdrawal', [AccountController::class, 'withdrawal'])->name('withdrawal');
+    });
 });
 
 Route::middleware(['auth:web', 'verified'])->group(function () {
-    Route::get('/bid-history', [BidHistoryController::class, 'index'])->name('bid-history.index');
     Route::post('/bid', [BidController::class, 'bid'])->name('bid');
 });
 

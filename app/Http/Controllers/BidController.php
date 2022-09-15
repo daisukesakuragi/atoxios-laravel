@@ -27,10 +27,16 @@ class BidController extends Controller
 
                 session()->flash('success', $bid->price . '円での入札に成功しました。');
 
-                return redirect(route('plans.show', $plan->slug));
-            } else {
-                return back();
+                return redirect()->route('plans.show', $plan->slug);
             }
+
+            if (!$is_biddable_by_price) {
+                session()->flash('error', $request->price . '円で入札することができませんでした。');
+            } elseif (!$is_biddable_by_date_time) {
+                session()->flash('error', '現在は入札可能期間外です。');
+            }
+
+            return back();
         } catch (Exception $e) {
             Log::error($e);
 

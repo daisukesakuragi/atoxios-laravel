@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="tw-py-12 tw-container tw-max-w-screen-md">
         <h1 class="tw-text-2xl tw-font-bold tw-mb-12 tw-text-center">
-            あなたの入札履歴
+            入札履歴
         </h1>
         <div class="tw-flex tw-flex-col tw-gap-y-6 tw-mb-12">
             @forelse ($bids as $bid)
