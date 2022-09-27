@@ -47,6 +47,10 @@ class Plan extends Model
             ->orderBy('price', 'desc')
             ->first();
 
-        return intval($latest->price) + 100000 === $price;
+        if ($latest) {
+            return intval($latest->price) + 100000 === $price;
+        }
+
+        return true;
     }
 }
