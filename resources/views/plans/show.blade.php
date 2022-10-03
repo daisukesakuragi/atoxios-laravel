@@ -78,5 +78,7 @@
             @endforelse
         </div>
     </div>
+    @auth
     <livewire:bid-confirm-modal :user="auth()->user()" :plan="$plan" :price="$price" />
+    @endauth
 </x-app-layout>
