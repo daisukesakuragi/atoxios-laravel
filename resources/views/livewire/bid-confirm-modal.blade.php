@@ -16,16 +16,6 @@
                 </div>
             </div>
             <div class="tw-bg-gray-50 tw-px-4 tw-py-3 sm:tw-flex sm:tw-flex-row-reverse sm:tw-px-6">
-                <!-- <form method="POST" action="route('bid')">
-                    @csrf
-                    <input type="hidden" name="price" id="price" value="{{ $price }}" />
-                    <input type="hidden" name="plan_id" id="plan_id" value="{{ $plan->id }}" />
-                    <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}" />
-                    <a :href="route('bid')" onclick="event.preventDefault();
-                                                        this.closest('form').submit();" class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full">
-                        {{ __('入札を実行する') }}
-                    </a>
-                </form> -->
                 <button type="button" class="tw-mt-3 tw-inline-flex tw-w-full tw-justify-center tw-rounded-md tw-border tw-border-gray-300 tw-bg-indigo-700 tw-px-4 tw-py-2 tw-text-base tw-font-medium tw-text-white tw-shadow-sm hover:tw-bg-indigo-700 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-indigo-500 focus:tw-ring-offset-2 sm:tw-mt-0 sm:tw-ml-3 sm:tw-w-auto sm:tw-text-sm" wire:click="bid">{{ __('入札を実行する') }}</button>
                 <button type="button" class="tw-mt-3 tw-inline-flex tw-w-full tw-justify-center tw-rounded-md tw-border tw-border-gray-300 tw-bg-white tw-px-4 tw-py-2 tw-text-base tw-font-medium tw-text-gray-700 tw-shadow-sm hover:tw-bg-gray-50 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-indigo-500 focus:tw-ring-offset-2 sm:tw-mt-0 sm:tw-ml-3 sm:tw-w-auto sm:tw-text-sm" x-on:click="show = false">{{ __('キャンセルする') }}</button>
             </div>
