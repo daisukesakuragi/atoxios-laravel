@@ -39,7 +39,7 @@ class UpdatePlanRequest extends FormRequest
             'title' => ['required', 'string', 'min:1', 'max:255'],
             'eyecatch_img' => ['nullable', 'image'],
             'description' => ['required', 'min:1', 'max:150', 'string'],
-            'started_at' => ['required', 'date', 'after:today'],
+            'started_at' => ['required', 'date'],
             'finished_at' => ['required', 'date', 'after:started_at'],
         ];
     }
