@@ -143,6 +143,11 @@ return [
         // 'store'  => 'redis',
     ],
 
+    'slack_webhook_url' => env('SLACK_WEBHOOK_URL'),
+    'slack_channel' => env('SLACK_CHANNEL'),
+    'slack_sender_name' => env('SLACK_SENDER_NAME'),
+    'slack_icon' => env('SLACK_ICON'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -194,6 +199,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\SlackServiceProvider::class,
 
     ],
 
@@ -210,6 +216,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'Slack' => App\Services\SlackFacade::class
     ])->toArray(),
-
 ];

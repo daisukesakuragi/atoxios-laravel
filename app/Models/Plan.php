@@ -18,8 +18,13 @@ class Plan extends Model
         'eyecatch_img_id',
         'eyecatch_img_url',
         'description',
+        'is_sent_result_mail',
         'started_at',
         'finished_at',
+    ];
+
+    protected $casts = [
+        'is_sent_result_mail' => 'boolean',
     ];
 
     public function member()
@@ -29,7 +34,7 @@ class Plan extends Model
 
     public function bids()
     {
-        return $this->hasMany(Bid::class);
+        return $this->hasMany(Bid::class)->orderBy('price', 'desc');
     }
 
     public function checkIfPlanIsBiddableByDateTime(): bool
