@@ -1,5 +1,5 @@
 @if (Route::is('admin.*'))
-<nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-50 tw-shadow">
+<nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-40 tw-shadow">
     <div class="tw-mx-auto tw-px-4 tw-container tw-max-w-screen-xl">
         <div class="tw-flex tw-justify-between tw-h-16">
             <div class="tw-flex">
@@ -14,7 +14,7 @@
     </div>
 </nav>
 @elseif(!Route::is('admin.*') && Auth::guard('web')->check())
-<nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-50 tw-shadow">
+<nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-40 tw-shadow">
     <!-- Primary Navigation Menu -->
     <div class="tw-mx-auto tw-px-4 tw-container tw-max-w-screen-xl">
         <div class="tw-flex tw-justify-between tw-h-16">
@@ -124,7 +124,7 @@
 </nav>
 @elseif(!Route::is('admin.*') && !Auth::guard('web')->check())
 <!-- MEMO: 入札者がログインしてない場合に表示するナビゲーション -->
-<nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-shadow tw-sticky tw-top-0 tw-z-50">
+<nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-shadow tw-sticky tw-top-0 tw-z-40">
     <!-- Primary Navigation Menu -->
     <div class="tw-mx-auto tw-px-4 tw-container tw-max-w-screen-xl">
         <div class="tw-flex tw-justify-between tw-h-16">

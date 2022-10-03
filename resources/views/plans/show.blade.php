@@ -17,16 +17,7 @@
                     @auth
                     @if(auth()->user()->email_verified_at)
                     @if($plan->checkIfPlanIsBiddableByDateTime())
-                    <form method="POST" action="{{ route('bid') }}">
-                        @csrf
-                        <input type="hidden" name="price" id="price" value="{{ $price }}" />
-                        <input type="hidden" name="plan_id" id="plan_id" value="{{ $plan->id }}" />
-                        <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}" />
-                        <a :href="route('bid')" onclick="event.preventDefault();
-                                                        this.closest('form').submit();" class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full">
-                            {{ __('入札する') }}
-                        </a>
-                    </form>
+                    <button x-data="{}" x-on:click="window.livewire.emitTo('bid-confirm-modal', 'show')" class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full">{{ __('入札する') }}</button>
                     @else
                     <p class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full tw-opacity-50 tw-cursor-not-allowed">入札できません</p>
                     @endif
@@ -42,7 +33,7 @@
                                         </svg><span class="tw-font-semibold tw-text-md">{{ __('メールアドレスが未確認です') }}</span>
                                     </p>
                                     <p class="tw-text-sm tw-mb-2">
-                                        {{__('ご登録いただいたメールアドレスの確認が完了していないため、')}}<b>{{ __('入札していただくことができません。')}}</b>
+                                        {{__('ご登録いただいたメールアドレスの確認が完了していないため、')}}<b>{{ __('こちらの企画に入札していただくことができません。')}}</b>
                                     </p>
                                     <p class="tw-text-sm tw-mb-4">
                                         {{ __('お手数ですが、下記の「確認用メールを送信する」ボタンをクリックしていただき、メールアドレスの確認作業を完了していただきますようお願いいたします。') }}
@@ -87,4 +78,5 @@
             @endforelse
         </div>
     </div>
+    <livewire:bid-confirm-modal :user="auth()->user()" :plan="$plan" :price="$price" />
 </x-app-layout>

@@ -39,8 +39,8 @@ class SlackNotification extends Notification
     {
         return (new SlackMessage)
             ->from(config('app.slack_sender_name'))
-            ->image(config('app.slack_icon'))
             ->to($this->channel)
+            ->image(config('app.slack_icon'))
             ->content($this->message);
     }
 

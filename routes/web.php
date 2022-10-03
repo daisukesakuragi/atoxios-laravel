@@ -56,10 +56,6 @@ Route::middleware('auth:web')->group(function () {
     });
 });
 
-Route::middleware(['auth:web', 'verified'])->group(function () {
-    Route::post('/bid', [BidController::class, 'bid'])->name('bid');
-});
-
 Route::prefix('admin')->name('admin.')->group(function () {
     require __DIR__ . '/admin.php';
 });

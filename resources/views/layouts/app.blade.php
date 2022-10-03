@@ -10,17 +10,17 @@
     <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <livewire:styles />
-    <livewire:scripts />
+    @livewireStyles
 </head>
 
 <body class="tw-font-sans tw-antialiased tw-bg-gray-100 tw-relative">
     @include('layouts.navigation')
     @include('layouts.notification')
-    <main class="tw-min-h-screen">
+    <main>
         {{ $slot }}
     </main>
     @include('layouts.footer')
+    @livewireScripts
 </body>
 
 </html>
