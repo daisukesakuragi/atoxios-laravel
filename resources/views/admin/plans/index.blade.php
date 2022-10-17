@@ -4,7 +4,13 @@
             {{ __('企画一覧') }}
         </h1>
     </x-slot>
-    <div class="tw-py-12 tw-container tw-max-w-screen-xl">
+    <div class="tw-py-24 tw-container tw-max-w-screen-xl">
+        <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-16">{{ __('企画一覧') }}</h2>
+        @if(count($plans) === 0)
+        <p class="tw-text-center">
+            {{ __('企画のデータがありません。') }}
+        </p>
+        @else
         <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
             @foreach ($plans as $plan)
             <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
@@ -20,5 +26,6 @@
             @endforeach
         </div>
         {{ $plans->links() }}
+        @endif
     </div>
 </x-admin-layout>

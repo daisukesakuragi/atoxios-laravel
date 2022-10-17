@@ -9,9 +9,11 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\BidController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\PlanController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest:admin')->group(function () {
@@ -67,5 +69,13 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/{id}/edit', [ArticleController::class, 'edit'])->name('edit');
         Route::put('/{id}', [ArticleController::class, 'update'])->name('update');
         Route::delete('/{id}/destroy', [ArticleController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+    });
+
+    Route::group(['prefix' => 'bids', 'as' => 'bids.'], function () {
+        Route::get('/', [BidController::class, 'index'])->name('index');
     });
 });

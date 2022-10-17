@@ -17,6 +17,30 @@
                         {{ __('ダッシュボード') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('admin.bids.index')" :active="request()->routeIs('admin.bids.index')">
+                        {{ __('入札履歴') }}
+                    </x-nav-link>
+
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button class="tw-flex tw-items-center tw-text-sm tw-font-medium tw-text-gray-500 hover:tw-text-gray-700 hover:tw-border-gray-300 focus:tw-outline-none focus:tw-text-gray-700 focus:tw-border-gray-300 tw-transition tw-duration-150 tw-ease-in-out">
+                                <div>入札者</div>
+
+                                <div class="tw-ml-1">
+                                    <svg class="tw-fill-current tw-h-4 tw-w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                                {{ __('入札者一覧') }}
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
+
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="tw-flex tw-items-center tw-text-sm tw-font-medium tw-text-gray-500 hover:tw-text-gray-700 hover:tw-border-gray-300 focus:tw-outline-none focus:tw-text-gray-700 focus:tw-border-gray-300 tw-transition tw-duration-150 tw-ease-in-out">
