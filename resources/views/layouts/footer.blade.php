@@ -68,7 +68,8 @@
                         <a class="tw-text-gray-600 hover:tw-text-gray-800">お問合せ</a>
                     </li>
                     <li>
-                        <a class="tw-text-gray-600 hover:tw-text-gray-800">出品を希望される方へ</a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhTmpE9c6uc7pk-hXjauA6GRQ6RtJCNCLudwyqznds4Wzysg/viewform" target="_blank
+                        " rel="noopener" class="tw-text-gray-600 hover:tw-text-gray-800">出品を希望される方へ</a>
                     </li>
                 </ul>
             </div>
