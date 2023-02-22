@@ -9,7 +9,7 @@ class PrivacyController extends Controller
     public function index()
     {
         SEOTools::setTitle('プライバシーポリシー');
-        SEOTools::setDescription('これはプライバシーポリシーページのメタディスクリプションテキストとなります。');
+        SEOTools::setDescription('こちらは当サービスのプライバシーポリシーに関するページです。');
         SEOTools::opengraph()->setUrl(url()->current());
         SEOTools::opengraph()->addProperty('image', url('/images/ogp.jpg'));
         SEOTools::setCanonical(url()->current());
