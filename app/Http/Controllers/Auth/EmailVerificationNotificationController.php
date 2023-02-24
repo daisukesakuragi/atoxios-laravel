@@ -22,6 +22,6 @@ class EmailVerificationNotificationController extends Controller
 
         $request->user()->sendEmailVerificationNotification();
 
-        return back()->with('success', 'メールアドレス確認用メールが送信されました。');
+        return back()->with('success', 'メールアドレス認証用のメールが送信されました。');
     }
 }

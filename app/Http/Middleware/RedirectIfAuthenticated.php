@@ -28,6 +28,8 @@ class RedirectIfAuthenticated
             }
         }
 
+        session()->flash('success', 'ログインしました。');
+
         return $next($request);
     }
 }

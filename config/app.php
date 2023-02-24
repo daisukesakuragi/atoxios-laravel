@@ -11,7 +11,7 @@ return [
     'timezone' => 'Asia/Tokyo',
     'locale' => 'ja',
     'fallback_locale' => 'en',
-    'faker_locale' => 'ja',
+    'faker_locale' => 'ja_JP',
     'key' => env('APP_KEY'),
     'cipher' => 'AES-256-CBC',
     'maintenance' => [

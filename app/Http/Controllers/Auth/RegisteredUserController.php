@@ -49,6 +49,12 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        if ($user->email_verified_at) {
+            session()->flash('success', '新規登録が完了しました。');
+        } else {
+            session()->flash('success', '新規登録が完了しました。メールアドレスの認証を完了してください。');
+        }
+
         return redirect(RouteServiceProvider::HOME);
     }
 }

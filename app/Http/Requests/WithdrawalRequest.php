@@ -9,7 +9,7 @@ class WithdrawalRequest extends FormRequest
 {
     public function authorize()
     {
-        return Auth::guard('web')->check();
+        return Auth::check();
     }
 
     public function rules()

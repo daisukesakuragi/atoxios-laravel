@@ -1,11 +1,7 @@
 <x-guest-layout>
-    <div class="tw-container tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-py-16 lg:tw-py-32"> <x-page-title title="ログイン" subtitle="LOGIN"></x-page-title>
+    <div class="tw-container tw-max-w-screen-sm tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-py-16 lg:tw-py-32">
+        <x-page-title title="ログイン" subtitle="LOGIN"></x-page-title>
         <x-auth-card>
-            <x-slot name="logo">
-                <a href="{{ route('welcome' )}}">
-                    <x-application-logo class="tw-w-20 tw-h-20 tw-fill-current tw-text-gray-500" />
-                </a>
-            </x-slot>
             <x-auth-session-status class="tw-mb-4" :status="session('status')" />
             <x-auth-validation-errors class="tw-mb-4" :errors="$errors" />
             <form method="POST" action="{{ route('login') }}">

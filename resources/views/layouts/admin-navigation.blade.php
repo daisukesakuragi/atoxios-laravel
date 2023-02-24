@@ -5,7 +5,7 @@
             <div class="tw-flex">
                 <div class="shrink-0 tw-flex tw-items-center">
                     <a href="{{ route('admin.dashboard') }}">
-                        <x-application-logo class="tw-block tw-h-10 tw-w-auto tw-fill-current tw-text-gray-600" />
+                        <strong class="tw-text-xl">ATOXIOS ADMIN</strong>
                     </a>
                 </div>
                 <div class="tw-hidden tw-items-center tw-space-x-8 sm:tw--my-px sm:tw-ml-10 sm:tw-flex">

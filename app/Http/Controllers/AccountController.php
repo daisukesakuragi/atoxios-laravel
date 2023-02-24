@@ -6,7 +6,6 @@ use App\Models\Bid;
 use App\Models\User;
 use App\Models\Withdrawal;
 use App\Http\Requests\WithdrawalRequest;
-use Artesaos\SEOTools\Facades\SEOTools;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
@@ -14,17 +13,11 @@ class AccountController extends Controller
 {
     public function index()
     {
-        SEOTools::setTitle('アカウント');
-        SEOTools::setDescription('こちらは' . auth()->user()->name . '様のアカウントページです。');
-
         return view('account');
     }
 
     public function showBidHistory()
     {
-        SEOTools::setTitle('入札履歴');
-        SEOTools::setDescription('こちらは' . auth()->user()->name . '様の入札履歴に関するページです。');
-
         $bids = Bid::with(['user', 'plan'])->where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(10);
 
         return view('history', compact('bids'));
@@ -32,9 +25,6 @@ class AccountController extends Controller
 
     public function showWithdrawalForm()
     {
-        SEOTools::setTitle('退会');
-        SEOTools::setDescription('こちらは退会ページです。');
-
         $user = User::with('bids')->find(auth()->id());
 
         $is_withdrawalable = $user->checkIfUserCanWithdrawal();
@@ -53,7 +43,7 @@ class AccountController extends Controller
                 'content' => $request->content
             ]);
 
-            session()->flash('success', '退会しました。');
+            session()->flash('success', '退会しました。ご利用いただきありがとうございました。');
 
             return redirect(route('welcome'));
         } catch (Exception $e) {

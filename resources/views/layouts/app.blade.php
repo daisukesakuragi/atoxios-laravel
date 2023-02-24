@@ -16,7 +16,7 @@
 <body class="tw-font-sans tw-antialiased tw-bg-gray-100 tw-relative">
     @include('layouts.navigation')
     @include('layouts.notification')
-    <main>
+    <main class="tw-relative">
         {{ $slot }}
     </main>
     @include('layouts.footer')

@@ -46,7 +46,7 @@ class BidConfirmModal extends Modal
                     'price' => $this->price
                 ]);
 
-                Slack::send('ユーザーID: ' . $this->user->id . ' が「' . $this->plan->title . '」に' . $bid->price . '円で入札しました。');
+                // Slack::send('ユーザーID: ' . $this->user->id . ' が「' . $this->plan->title . '」に' . $bid->price . '円で入札しました。');
 
                 session()->flash('success', $bid->price . '円での入札に成功しました。');
             } else if (!$is_biddable_by_price) {

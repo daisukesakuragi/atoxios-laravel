@@ -1,11 +1,11 @@
-@if(Auth::guard('web')->check())
+@if(Auth::check())
 <nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-40 tw-shadow">
     <div class="tw-mx-auto tw-px-4 tw-container tw-max-w-screen-xl">
         <div class="tw-flex tw-justify-between tw-h-16">
             <div class="tw-flex">
                 <div class="shrink-0 tw-flex tw-items-center">
                     <a href="{{ route('welcome') }}">
-                        <x-application-logo class="tw-block tw-h-10 tw-w-auto tw-fill-current tw-text-gray-600" />
+                        <strong class="tw-text-xl">ATOXIOS</strong>
                     </a>
                 </div>
                 <div class="tw-hidden tw-space-x-8 sm:tw--my-px sm:tw-ml-10 sm:tw-flex">
@@ -36,6 +36,9 @@
                     <x-slot name="content">
                         <x-dropdown-link :href="route('account.index')">
                             アカウント
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('account.showBidHistory')">
+                            入札履歴
                         </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -70,17 +73,19 @@
             </x-responsive-nav-link>
         </div>
         <div class="tw-pt-2 tw-pb-1 tw-border-t tw-border-gray-200">
-            <div class="tw-px-4">
+            <div class="tw-px-4 tw-py-4 tw-border-b tw-border-gray-200 tw-mb-4">
                 <div class="tw-font-medium tw-text-base tw-text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="tw-font-medium tw-text-sm tw-text-gray-500">{{ Auth::user()->email }}</div>
             </div>
-            <div class="tw-space-y-1">
-                <x-responsive-nav-link :href="route('account.index')">
+            <div class="tw-space-y-1 tw-pb-4">
+                <x-responsive-nav-link :href="route('account.index')" :active="request()->routeIs('account.index')">
                     アカウント
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('account.showBidHistory')" :active="request()->routeIs('account.showBidHistory')">
+                    入札履歴
                 </x-responsive-nav-link>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('ログアウト') }}
