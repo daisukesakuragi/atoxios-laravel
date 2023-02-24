@@ -1,8 +1,8 @@
 <x-app-layout>
-    <section class="tw-py-16 lg:tw-py-32">
-        <div class="tw-container tw-max-w-screen-sm">
+    <section>
+        <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-sm">
+            <x-page-title title="プライバシーポリシー" subtitle="Privacy Policy"></x-page-title>
             <div class="tw-prose-sm lg:tw-prose">
-                <h1>プライバシーポリシー</h1>
                 <h2>第一章 総則</h2>
                 <h3>第1条（目的）</h3>
                 <p>1. この利用規約（以下「本規約」といいます。）は、ATOXIOS株式会社（以下「当社」といいます。）が運営するインターネットオークションサービスATOXIOS（以下「本サービス」といいます。）を利用するユーザー（以下「ユーザー」といいます。）に適用されます。ユーザーは、本規約に同意の上、本サービスを利用します。</p>

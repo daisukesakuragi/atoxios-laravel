@@ -1,10 +1,6 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h1 class="tw-text-xl tw-text-gray-800 tw-leading-tight">
-            {{ __('出品者一覧') }}
-        </h1>
-    </x-slot>
-    <div class="tw-py-12 tw-container tw-max-w-screen-xl">
+    <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-xl">
+        <x-page-title title="出品者一覧" subtitle="Members"></x-page-title>
         <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
             @foreach ($members as $member)
             <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">

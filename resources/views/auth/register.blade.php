@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <div class="tw-container tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-py-32">
-        <x-page-title title="新規登録" subtitle="Register"></x-page-title>
+    <div class="tw-container tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-py-16 lg:tw-py-32">
+        <x-page-title title="新規登録" subtitle="REGISTER"></x-page-title>
         <x-auth-card>
             <x-slot name="logo">
                 <a href="/">

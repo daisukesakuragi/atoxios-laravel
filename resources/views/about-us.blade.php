@@ -1,9 +1,7 @@
 <x-app-layout>
-    @guest
-    <section class="tw-w-screen tw-h-screen">
-        <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-w-full tw-container tw-max-w-screen-xl">
-            <h1 class="tw-text-gray-800 tw-text-7xl tw-font-bold tw-mb-8 md:tw-mb-12">会社概要</h1>
+    <section>
+        <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-sm">
+            <x-page-title title="会社概要" subtitle="About Us"></x-page-title>
         </div>
     </section>
-    @endguest
 </x-app-layout>

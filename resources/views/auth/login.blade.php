@@ -1,6 +1,5 @@
 <x-guest-layout>
-    <div class="tw-container tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-py-32">
-        <x-page-title title="ログイン" subtitle="Login"></x-page-title>
+    <div class="tw-container tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-py-16 lg:tw-py-32"> <x-page-title title="ログイン" subtitle="LOGIN"></x-page-title>
         <x-auth-card>
             <x-slot name="logo">
                 <a href="{{ route('welcome' )}}">
