@@ -19,7 +19,7 @@
                         </tr>
                         <tr>
                             <td>連絡先</td>
-                            <td>電話番号: 03-6823-2457<br>メールアドレス: <a href="mailto:info@atoxios.com">info@atoxios.com</a></td>
+                            <td>電話番号: <a href="tel:03-6823-2457">03-6823-2457</a><br>メールアドレス: <a href="mailto:info@atoxios.com">info@atoxios.com</a></td>
                         </tr>
                         <tr>
                             <td>販売価格帯</td>
