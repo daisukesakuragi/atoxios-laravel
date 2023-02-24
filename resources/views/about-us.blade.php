@@ -1,7 +1,7 @@
 <x-app-layout>
     <section>
         <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-sm">
-            <x-page-title title="会社概要" subtitle="About Us"></x-page-title>
+            <x-page-title title="会社概要" subtitle="ABOUT US"></x-page-title>
             <div class="tw-prose-sm lg:tw-prose">
                 <table class="tw-table-auto">
                     <tbody>

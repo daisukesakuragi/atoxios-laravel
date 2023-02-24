@@ -6,7 +6,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PrivacyController;
-use App\Http\Controllers\TermsController;
+use App\Http\Controllers\TermsOfUseController;
 use App\Http\Controllers\TokushohoController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +15,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 
-Route::get('/terms', [TermsController::class, 'index'])->name('terms');
+Route::get('/terms-of-use', [TermsOfUseController::class, 'index'])->name('terms-of-use');
 
 Route::get('/privacy', [PrivacyController::class, 'index'])->name('privacy');
 

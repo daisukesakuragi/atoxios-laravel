@@ -50,7 +50,7 @@
                         <a href="{{ route('about-us') }}" class="tw-text-gray-600 hover:tw-text-gray-800">会社概要</a>
                     </li>
                     <li>
-                        <a href="{{ route('terms') }}" class="tw-text-gray-600 hover:tw-text-gray-800">利用規約</a>
+                        <a href="{{ route('terms-of-use') }}" class="tw-text-gray-600 hover:tw-text-gray-800">利用規約</a>
                     </li>
                     <li>
                         <a href="{{ route('privacy') }}" class="tw-text-gray-600 hover:tw-text-gray-800">プライバシーポリシー</a>

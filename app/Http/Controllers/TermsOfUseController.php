@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Artesaos\SEOTools\Facades\SEOTools;
 
-class TermsController extends Controller
+class TermsOfUseController extends Controller
 {
     public function index()
     {
@@ -16,6 +16,6 @@ class TermsController extends Controller
         SEOTools::opengraph()->addProperty('type', 'website');
         SEOTools::jsonLd()->addImage(url('/images/ogp.jpg'));
 
-        return view('terms');
+        return view('terms-of-use');
     }
 }
