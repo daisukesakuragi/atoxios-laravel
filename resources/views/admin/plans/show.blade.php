@@ -25,7 +25,7 @@
                         開催期間: {{ $plan->started_at }} ~ {{ $plan->finished_at }}
                     </p>
                     <hr class="tw-my-6">
-                    <a href="{{ route('admin.plans.edit', $plan->id) }}" class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full tw-mb-3">編集する</a>
+                    <a href="{{ route('admin.plans.edit', $plan->id) }}" class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full tw-mb-3">{{ __('編集する') }}</a>
                     <form method="POST" action="{{ route('admin.plans.destroy', $plan->id) }}">
                         @csrf
                         @method('DELETE')

@@ -1,18 +1,4 @@
-@if (Route::is('admin.*'))
-<nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-40 tw-shadow">
-    <div class="tw-mx-auto tw-px-4 tw-container tw-max-w-screen-xl">
-        <div class="tw-flex tw-justify-between tw-h-16">
-            <div class="tw-flex">
-                <div class="shrink-0 tw-flex tw-items-center">
-                    <a href="{{ route('welcome') }}">
-                        <x-application-logo class="tw-block tw-h-10 tw-w-auto tw-fill-current tw-text-gray-600" />
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-@elseif(!Route::is('admin.*') && Auth::guard('web')->check())
+@if(Auth::guard('web')->check())
 <nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-sticky tw-top-0 tw-z-40 tw-shadow">
     <div class="tw-mx-auto tw-px-4 tw-container tw-max-w-screen-xl">
         <div class="tw-flex tw-justify-between tw-h-16">
@@ -83,12 +69,12 @@
                 {{ __('記事一覧') }}
             </x-responsive-nav-link>
         </div>
-        <div class="tw-pt-4 tw-pb-1 tw-border-t tw-border-gray-200">
+        <div class="tw-pt-2 tw-pb-1 tw-border-t tw-border-gray-200">
             <div class="tw-px-4">
                 <div class="tw-font-medium tw-text-base tw-text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="tw-font-medium tw-text-sm tw-text-gray-500">{{ Auth::user()->email }}</div>
             </div>
-            <div class="tw-mt-3 tw-space-y-1">
+            <div class="tw-space-y-1">
                 <x-responsive-nav-link :href="route('account.index')">
                     アカウント
                 </x-responsive-nav-link>
@@ -104,14 +90,14 @@
         </div>
     </div>
 </nav>
-@elseif(!Route::is('admin.*') && !Auth::guard('web')->check())
+@else
 <nav x-data="{ open: false }" class="tw-bg-white tw-border-b tw-border-gray-100 tw-shadow tw-sticky tw-top-0 tw-z-40">
     <div class="tw-mx-auto tw-px-4 tw-container tw-max-w-screen-xl">
         <div class="tw-flex tw-justify-between tw-h-16">
             <div class="tw-flex">
                 <div class="shrink-0 tw-flex tw-items-center">
                     <a href="{{ route('welcome') }}">
-                        <x-application-logo class="tw-block tw-h-10 tw-w-auto tw-fill-current tw-text-gray-600" />
+                        <strong class="tw-text-xl">ATOXIOS</strong>
                     </a>
                 </div>
                 <div class="tw-hidden tw-items-center tw-space-x-8 sm:tw--my-px sm:tw-ml-10 sm:tw-flex">
@@ -156,13 +142,13 @@
                 {{ __('記事一覧') }}
             </x-responsive-nav-link>
         </div>
-        <div class="tw-pt-4 tw-pb-1 tw-border-t tw-border-gray-200">
+        <div class="tw-pt-2 tw-pb-1 tw-border-t tw-border-gray-200">
             <div class="tw-px-4">
                 {{-- <div class="tw-font-medium tw-text-base tw-text-gray-800">{{ Auth::user()->name }}
             </div>
             <div class="tw-font-medium tw-text-sm tw-text-gray-500">{{ Auth::user()->email }}</div> --}}
         </div>
-        <div class="tw-mt-3 tw-space-y-1">
+        <div class="tw-space-y-1">
             <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
                 {{ __('会員登録') }}
             </x-responsive-nav-link>

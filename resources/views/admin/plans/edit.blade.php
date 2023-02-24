@@ -85,7 +85,7 @@
                 </div>
 
                 <button class="tw-bg-indigo-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-w-full" type="submit">
-                    {{ __('編集する') }}
+                    {{ __('更新する') }}
                 </button>
             </form>
         </div>

@@ -53,7 +53,7 @@ class Plan extends Model
             ->first();
 
         if ($latest) {
-            return intval($latest->price) + 100000 === $price;
+            return intval($latest->price) + config('app.price_diff') === $price;
         }
 
         return true;

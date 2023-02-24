@@ -38,9 +38,9 @@ class PlanController extends Controller
         $bids = $plan->bids()->withTrashed()->limit(10)->get();
 
         if ($bids && count($bids) > 0) {
-            $price = intval($bids[0]->price) + 100000;
+            $price = intval($bids[0]->price) + config('app.price_diff');
         } else {
-            $price = 100000;
+            $price = config('app.price_diff');
         }
 
         return view('plans.show', compact('plan', 'bids', 'price'));

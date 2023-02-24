@@ -21,7 +21,8 @@ return [
     'slack_webhook_url' => env('SLACK_WEBHOOK_URL'),
     'slack_channel' => env('SLACK_CHANNEL'),
     'slack_sender_name' => env('SLACK_SENDER_NAME'),
-    'slack_icon' => env('SLACK_ICON'),
+    'slack_icon' => env('SLACK_ICON', ':boom:'),
+    'price_diff' => env('PRICE_DIFF', 5000),
     'providers' => [
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,

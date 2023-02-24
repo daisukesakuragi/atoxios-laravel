@@ -24,7 +24,7 @@
                         {{ $member->introduction }}
                     </p>
                     <hr class="tw-my-6">
-                    <a href="{{ route('admin.members.edit', $member->id) }}" class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full tw-mb-3">編集する</a>
+                    <a href="{{ route('admin.members.edit', $member->id) }}" class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full tw-mb-3">{{ __('編集する') }}</a>
                     <form method="POST" action="{{ route('admin.members.destroy', $member->id) }}">
                         @csrf
                         @method('DELETE')
