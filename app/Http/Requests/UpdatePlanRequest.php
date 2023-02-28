@@ -41,6 +41,10 @@ class UpdatePlanRequest extends FormRequest
             'description' => ['required', 'min:1', 'max:150', 'string'],
             'started_at' => ['required', 'date'],
             'finished_at' => ['required', 'date', 'after:started_at'],
+            'event_held_at' => ['required', 'date', 'after:finished_at'],
+            'event_location' => ['required', 'string', 'min:1', 'max:255'],
+            'event_meeting_location' => ['required', 'string', 'min:1', 'max:255'],
+            'event_meeting_time' => ['required', 'date_format:H:i']
         ];
     }
 }

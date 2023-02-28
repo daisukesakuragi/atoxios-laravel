@@ -28,9 +28,9 @@
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="slug">
                         {{ __('*URLスラッグ') }}
                     </label>
-                    <input class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline" id="slug" name="slug" type="text" placeholder="sample-plan-1" value="{{ old('slug', $plan->slug) }}">
+                    <input class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('slug') tw-mb-2 tw-border-red-500 @enderror" id="slug" name="slug" type="text" placeholder="sample-plan-1" value="{{ old('slug', $plan->slug) }}">
                     @if ($errors->has('slug'))
-                    <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('slug') }}</p>
+                    <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('slug') }}</p>
                     @endif
                 </div>
 
@@ -38,29 +38,29 @@
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="title">
                         {{ __('*タイトル') }}
                     </label>
-                    <input class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline" id="title" name="title" type="text" placeholder="サンプルプラン1" value="{{ old('title', $plan->title) }}">
+                    <input class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('title') tw-mb-2 tw-border-red-500 @enderror" id="title" name="title" type="text" placeholder="サンプルプラン1" value="{{ old('title', $plan->title) }}">
                     @if ($errors->has('title'))
-                    <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('title') }}</p>
+                    <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('title') }}</p>
                     @endif
                 </div>
 
                 <div class="tw-mb-6">
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="eyecatch_img">
                         {{ __('*アイキャッチ画像') }}</label>
-                    <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover">
-                    <input class="tw-shadow tw-appearance-none tw-border tw-border-gray-700 tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline" type="file" name="eyecatch_img" id="eyecatch_img">
+                    <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover tw-mb-2">
+                    <input class="tw-shadow tw-appearance-none tw-border tw-border-gray-700 tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('eyecatch_img') tw-mb-2 tw-border-red-500 @enderror" type="file" name="eyecatch_img" id="eyecatch_img">
                     @if ($errors->has('eyecatch_img'))
-                    <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('eyecatch_img') }}</p>
+                    <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('eyecatch_img') }}</p>
                     @endif
                 </div>
 
                 <div class="tw-mb-4">
-                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="description">
+                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold" for="description">
                         {{ __('*説明文') }}
                     </label>
-                    <textarea rows="4" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline" id="description" name="description" placeholder="これはサンプルプラン1の説明文です。">{{ old('description' , $plan->description) }}</textarea>
+                    <textarea rows="4" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('description') tw-mb-2 tw-border-red-500 @enderror" id="description" name="description" placeholder="これはサンプルプラン1の説明文です。">{{ old('description' , $plan->description) }}</textarea>
                     @if ($errors->has('description'))
-                    <p class="tw-text-red-500">*{{ $errors->first('description') }}</p>
+                    <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('description') }}</p>
                     @endif
                 </div>
 
@@ -68,9 +68,9 @@
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="started_at">
                         {{ __('*オークション開始日時') }}
                     </label>
-                    <input type="datetime-local" id="started_at" name="started_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline" value="{{ old('started_at', $plan->started_at) }}">
+                    <input type="datetime-local" id="started_at" name="started_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('started_at') tw-mb-2 tw-border-red-500 @enderror" value="{{ old('started_at', $plan->started_at) }}">
                     @if ($errors->has('started_at'))
-                    <p class="tw-text-red-500">*{{ $errors->first('started_at') }}</p>
+                    <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('started_at') }}</p>
                     @endif
                 </div>
 
@@ -78,9 +78,49 @@
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="finished_at">
                         {{ __('*オークション終了日時') }}
                     </label>
-                    <input type="datetime-local" id="finished_at" name="finished_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline" value="{{ old('finished_at', $plan->finished_at) }}">
+                    <input type="datetime-local" id="finished_at" name="finished_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('finished_at') tw-mb-2 tw-border-red-500 @enderror" value="{{ old('finished_at', $plan->finished_at) }}">
                     @if ($errors->has('finished_at'))
-                    <p class="tw-text-red-500">*{{ $errors->first('finished_at') }}</p>
+                    <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('finished_at') }}</p>
+                    @endif
+                </div>
+
+                <div class="tw-mb-6">
+                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="event_held_at">
+                        {{ __('*イベント開催日時') }}
+                    </label>
+                    <input type="datetime-local" id="event_held_at" name="event_held_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('event_held_at') tw-mb-2 tw-border-red-500 @enderror" value="{{ old('event_held_at', $plan->event_held_at) }}">
+                    @if ($errors->has('event_held_at'))
+                    <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('event_held_at') }}</p>
+                    @endif
+                </div>
+
+                <div class="tw-mb-6">
+                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="event_location">
+                        {{ __('*イベント開催場所') }}
+                    </label>
+                    <input class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('event_location') tw-mb-2 tw-border-red-500 @enderror" id="event_location" name="event_location" type="text" placeholder="東京都千代田区千代田1" value="{{ old('event_location', $plan->event_location) }}">
+                    @if ($errors->has('event_location'))
+                    <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('event_location') }}</p>
+                    @endif
+                </div>
+
+                <div class="tw-mb-6">
+                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="event_meeting_location">
+                        {{ __('*イベント集合場所') }}
+                    </label>
+                    <input class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('event_meeting_location') tw-mb-2 tw-border-red-500 @enderror" id="event_meeting_location" name="event_meeting_location" type="text" placeholder="東京都千代田区丸の内1丁目" value="{{ old('event_meeting_location', $plan->event_meeting_location) }}">
+                    @if ($errors->has('event_meeting_location'))
+                    <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('event_meeting_location') }}</p>
+                    @endif
+                </div>
+
+                <div class="tw-mb-6">
+                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="event_meeting_time">
+                        {{ __('*イベント集合時間') }}
+                    </label>
+                    <input class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('event_meeting_time') tw-mb-2 tw-border-red-500 @enderror" id="event_meeting_time" name="event_meeting_time" type="text" placeholder="19:00" value="{{ old('event_meeting_time', $plan->event_meeting_time) }}">
+                    @if ($errors->has('event_meeting_time'))
+                    <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('event_meeting_time') }}</p>
                     @endif
                 </div>
 

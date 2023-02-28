@@ -21,6 +21,10 @@ class Plan extends Model
         'is_sent_result_mail',
         'started_at',
         'finished_at',
+        'event_held_at',
+        'event_location',
+        'event_meeting_location',
+        'event_meeting_time',
     ];
 
     protected $casts = [

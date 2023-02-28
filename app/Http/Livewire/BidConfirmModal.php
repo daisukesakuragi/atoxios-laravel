@@ -52,7 +52,7 @@ class BidConfirmModal extends Modal
             } else if (!$is_biddable_by_price) {
                 session()->flash('error', $this->price . '円で入札することができませんでした。最低入札金額が更新された可能性があります。');
             } else if (!$is_biddable_by_date_time) {
-                session()->flash('error', '入札可能期間外です。');
+                session()->flash('error', '現在は入札可能期間外です。');
             } else {
                 session()->flash('error', '入札に失敗しました。申し訳ございませんが、少し時間を置いてから再度入札してください。');
             }

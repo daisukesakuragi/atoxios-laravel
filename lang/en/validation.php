@@ -169,6 +169,17 @@ return [
         'name' => 'ユーザー名',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'member_id' => '出品者',
+        'slug' => 'URLスラッグ',
+        'title' => 'タイトル',
+        'eyecatch_img' => 'アイキャッチ画像',
+        'description' => '説明文',
+        'started_at' => 'オークション開催日時',
+        'finished_at' => 'オークション終了日時',
+        'event_held_at' => 'イベント開催日時',
+        'event_location' => 'イベント開催場所',
+        'event_meeting_location' => 'イベント集合場所',
+        'event_meeting_time' => 'イベント集合時間',
     ],
 
 ];

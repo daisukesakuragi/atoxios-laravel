@@ -36,7 +36,7 @@
                         <a class="tw-text-gray-600 hover:tw-text-gray-800" href="{{ route('articles.index') }}">記事一覧</a>
                     </li>
                     <li>
-                        <a class="tw-text-gray-600 hover:tw-text-gray-800">お問合せ</a>
+                        <a href="mailto:info@atoxios.com" class="tw-text-gray-600 hover:tw-text-gray-800">お問い合わせ</a>
                     </li>
                     <li>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2VdyNhecExPmiLRxpU0ESJaq05lD7upcdyvW199CN65IR3A/viewform" target="_blank

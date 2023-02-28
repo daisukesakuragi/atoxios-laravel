@@ -48,12 +48,17 @@ class PlanController extends Controller
                 'description' => $request->description,
                 'started_at' => $request->started_at,
                 'finished_at' => $request->finished_at,
+                'event_held_at' => $request->event_held_at,
+                'event_location' => $request->event_location,
+                'event_meeting_location' => $request->event_meeting_location,
+                'event_meeting_time' => $request->event_meeting_time,
             ]);
 
             session()->flash('success', '企画を作成しました。');
 
             return redirect(route('admin.plans.index'));
         } catch (Exception $e) {
+            dd($e);
             Log::error($e);
 
             session()->flash('error', '企画を作成できませんでした。');
@@ -89,6 +94,10 @@ class PlanController extends Controller
             $plan->description = $request->description;
             $plan->started_at = $request->started_at;
             $plan->finished_at = $request->finished_at;
+            $plan->event_held_at = $request->event_held_at;
+            $plan->event_location = $request->event_location;
+            $plan->event_meeting_location = $request->event_meeting_location;
+            $plan->event_meeting_time = $request->event_meeting_time;
 
             $plan->save();
 
