@@ -26,7 +26,7 @@
                     <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->id }}</td>
                     <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->name }}</td>
                     <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->email }}</td>
-                    <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->hasVerifiedEmail() ? '確認済み' : '未確認' }}</td>
+                    <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->hasVerifiedEmail() ? '認証済み' : '未認証' }}</td>
                 </tr>
                 @endforeach
             </tbody>

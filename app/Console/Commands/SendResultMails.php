@@ -49,8 +49,10 @@ class SendResultMails extends Command
         foreach ($plans as $plan) {
             $bids = $plan->bids;
             $bid = $bids[0];
+
             Slack::send($plan->finished_at . '時点で、「' . $plan->title .  '」の入札期間が終了しました。ID: ' . $bid->user->id . 'のユーザーが、' . $bid->price . '円で落札しましたので、落札結果メールを送信します。');
-            Mail::to('takuya-watahiki@yinmn.jp')->send(new BidResult());
+
+            Mail::to($bid->user->email)->send(new BidResult($bid, $plan));
             // TODO: メール送信処理を書いたら、下記のコメントアウトを外す
             // $plan->is_sent_result_mail = true;
             // $plan->save();

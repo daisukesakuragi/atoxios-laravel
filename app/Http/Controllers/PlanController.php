@@ -25,6 +25,7 @@ class PlanController extends Controller
 
     public function show($slug)
     {
+        // TODO: ここで落札者のみに表示するカラムのデータを取得対象から外すようにする
         $plan = Plan::with('bids')->where('slug', $slug)->firstOrFail();
 
         SEOTools::setTitle($plan->title);

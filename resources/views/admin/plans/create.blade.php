@@ -67,7 +67,7 @@
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="started_at">
                         {{ __('*オークション開始日時') }}
                     </label>
-                    <input type="datetime-local" id="started_at" name="started_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('started_at') tw-mb-2 tw-border-red-500 @enderror" value="{{ old('started_at') }}">
+                    <input type="datetime-local" step="60" id="started_at" name="started_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('started_at') tw-mb-2 tw-border-red-500 @enderror" value="{{ old('started_at') }}">
                     @if ($errors->has('started_at'))
                     <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('started_at') }}</p>
                     @endif
@@ -77,7 +77,7 @@
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="finished_at">
                         {{ __('*オークション終了日時') }}
                     </label>
-                    <input type="datetime-local" id="finished_at" name="finished_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('finished_at') tw-mb-2 tw-border-red-500 @enderror" value="{{ old('finished_at') }}">
+                    <input type="datetime-local" step="60" id="finished_at" name="finished_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('finished_at') tw-mb-2 tw-border-red-500 @enderror" value="{{ old('finished_at') }}">
                     @if ($errors->has('finished_at'))
                     <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('finished_at') }}</p>
                     @endif
@@ -87,7 +87,7 @@
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="event_held_at">
                         {{ __('*イベント開催日時') }}
                     </label>
-                    <input type="datetime-local" id="event_held_at" name="event_held_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('event_held_at') tw-mb-2 tw-border-red-500 @enderror" value="{{ old('event_held_at') }}">
+                    <input type="datetime-local" step="60" id="event_held_at" name="event_held_at" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('event_held_at') tw-mb-2 tw-border-red-500 @enderror" value="{{ old('event_held_at') }}">
                     @if ($errors->has('event_held_at'))
                     <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('event_held_at') }}</p>
                     @endif
@@ -117,7 +117,7 @@
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="event_meeting_time">
                         {{ __('*イベント集合時間') }}
                     </label>
-                    <input type="time" id="event_meeting_time" name="event_meeting_time" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('event_meeting_time') tw-mb-2 tw-border-red-500 @enderror" placeholder="19:00" value="{{ old('event_meeting_time') }}">
+                    <input type="time" step="60" id="event_meeting_time" name="event_meeting_time" class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline @error('event_meeting_time') tw-mb-2 tw-border-red-500 @enderror" placeholder="19:00" value="{{ old('event_meeting_time') }}">
                     @if ($errors->has('event_meeting_time'))
                     <p class="tw-text-red-500 tw-text-sm">*{{ $errors->first('event_meeting_time') }}</p>
                     @endif

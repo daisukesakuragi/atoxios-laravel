@@ -52,7 +52,7 @@
                         <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('ID') }}</th>
                         <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('名前') }}</th>
                         <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('メールアドレス') }}</th>
-                        <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('メールアドレス確認状況') }}</th>
+                        <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('メールアドレス認証状況') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,7 +61,7 @@
                         <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->id }}</td>
                         <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->name }}</td>
                         <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->email }}</td>
-                        <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->hasVerifiedEmail() ? '確認済み' : '未確認' }}</td>
+                        <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->hasVerifiedEmail() ? '認証済み' : '未認証' }}</td>
                     </tr>
                     @endforeach
                 </tbody>
