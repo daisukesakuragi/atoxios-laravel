@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('plans', function (Blueprint $table) {
-            $table->dateTime('event_held_at')->after('finished_at')->default(date('Y-m-d H:i:s'));
+            $table->dateTime('event_held_at')->after('finished_at');
             $table->string('event_location')->after('event_held_at');
             $table->string('event_meeting_location')->after('event_location');
-            $table->time('event_meeting_time')->after('event_meeting_location')->default(date('H:i:s'));
+            $table->time('event_meeting_time')->after('event_meeting_location');
         });
     }
 
