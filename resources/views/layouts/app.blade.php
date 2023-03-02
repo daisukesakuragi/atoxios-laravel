@@ -21,6 +21,13 @@
     </main>
     @include('layouts.footer')
     @livewireScripts
+    <script>
+        function onClickBidButton() {
+            audioElem = new Audio()
+            audioElem.src = "/sounds/bid.wav"
+            audioElem.play()
+        }
+    </script>
 </body>
 
 </html>
