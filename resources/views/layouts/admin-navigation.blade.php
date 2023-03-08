@@ -36,7 +36,6 @@
                         <x-slot name="trigger">
                             <button class="tw-flex tw-items-center tw-text-sm tw-font-medium tw-text-gray-500 hover:tw-text-gray-700 hover:tw-border-gray-300 focus:tw-outline-none focus:tw-text-gray-700 focus:tw-border-gray-300 tw-transition tw-duration-150 tw-ease-in-out">
                                 <div>出品者</div>
-
                                 <div class="tw-ml-1">
                                     <svg class="tw-fill-current tw-h-4 tw-w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -57,7 +56,6 @@
                         <x-slot name="trigger">
                             <button class="tw-flex tw-items-center tw-text-sm tw-font-medium tw-text-gray-500 hover:tw-text-gray-700 hover:tw-border-gray-300 focus:tw-outline-none focus:tw-text-gray-700 focus:tw-border-gray-300 tw-transition tw-duration-150 tw-ease-in-out">
                                 <div>企画</div>
-
                                 <div class="tw-ml-1">
                                     <svg class="tw-fill-current tw-h-4 tw-w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -78,7 +76,6 @@
                         <x-slot name="trigger">
                             <button class="tw-flex tw-items-center tw-text-sm tw-font-medium tw-text-gray-500 hover:tw-text-gray-700 hover:tw-border-gray-300 focus:tw-outline-none focus:tw-text-gray-700 focus:tw-border-gray-300 tw-transition tw-duration-150 tw-ease-in-out">
                                 <div>記事</div>
-
                                 <div class="tw-ml-1">
                                     <svg class="tw-fill-current tw-h-4 tw-w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -102,7 +99,6 @@
                     <x-slot name="trigger">
                         <button class="tw-flex tw-items-center tw-text-sm tw-font-medium tw-text-gray-500 hover:tw-text-gray-700 hover:tw-border-gray-300 focus:tw-outline-none focus:tw-text-gray-700 focus:tw-border-gray-300 tw-transition tw-duration-150 tw-ease-in-out">
                             <div>{{ Auth::guard('admin')->user()->name }}</div>
-
                             <div class="tw-ml-1">
                                 <svg class="tw-fill-current tw-h-4 tw-w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -111,9 +107,14 @@
                         </button>
                     </x-slot>
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('admin.change-email')">
+                            メールアドレス変更
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('admin.change-password')">
+                            パスワード変更
+                        </x-dropdown-link>
                         <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('admin.logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('ログアウト') }}
@@ -150,7 +151,13 @@
                 </div>
                 <div class="tw-font-medium tw-text-sm tw-text-gray-500">{{ Auth::guard('admin')->user()->email }}</div>
             </div>
-            <div class="tw-space-y-1">
+            <div class="tw-space-y-1 tw-pt-4">
+                <x-responsive-nav-link :href="route('admin.change-email')" :active="request()->routeIs('admin.changeEmail.index')">
+                    メールアドレス変更
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.change-password')" :active="request()->routeIs('admin.changePassword.index')">
+                    パスワード変更
+                </x-responsive-nav-link>
                 <form method="POST" action="{{ route('admin.logout') }}">
                     @csrf
 

@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Admin\Auth\ChangeEmailController;
+use App\Http\Controllers\Admin\Auth\ChangePasswordController;
+// use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
+// use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Admin\Auth\RegisteredUserController;
+// use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\BidController;
@@ -35,11 +37,15 @@ Route::post('/email/verification-notification', [EmailVerificationNotificationCo
     ->name('verification.send');
 
 Route::middleware('auth:admin')->group(function () {
-    Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');
-    Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
-    Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']);
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');
+    // Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
+    Route::get('/change-email', [ChangeEmailController::class, 'index'])->name('change-email');
+    Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change-password');
+    // Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']);
+    Route::post('/change-email', [ChangeEmailController::class, 'update'])->name('update-email');
+    Route::post('/change-password', [ChangePasswordController::class, 'update'])->name('update-password');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     Route::group(['prefix' => 'members', 'as' => 'members.'], function () {
         Route::get('/', [MemberController::class, 'index'])->name('index');
