@@ -1,3 +1,4 @@
+
 <x-app-layout>
     <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-xl">
         <x-page-title title="出品者一覧" subtitle="Members"></x-page-title>

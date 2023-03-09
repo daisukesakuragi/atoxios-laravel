@@ -5,7 +5,6 @@
         </h1>
     </x-slot>
     <div class="tw-py-24 tw-container tw-max-w-screen-xl">
-        <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-16">{{ __('記事一覧') }}</h2>
         @if(count($articles) === 0)
         <p class="tw-text-center">
             {{ __('記事のデータがありません。') }}
