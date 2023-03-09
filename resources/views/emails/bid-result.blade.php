@@ -7,7 +7,7 @@
 
 ATOXIOS株式会社です。
 
-この度は、{{ $member_name }}との食事及び対談イベントにて無事落札されたことをご報告致します。
+この度は、{{ $member_name }}とのイベントにて無事落札されたことをご報告致します。
 
 ご入札頂き誠にありがとうございます。
 
@@ -15,7 +15,7 @@ ATOXIOS株式会社です。
 
 ## 【STEP 1 本人確認】
 
-下記のリンク(Googleフォーム)より、本人確認のご提出を<b>本日中に</b>お願い致します。
+本人確認のご提出を下記のリンク(Google フォーム)より本日中迄に何卒宜しくお願い致します。
 
 <x-mail::button :url="'https://docs.google.com/forms/d/e/1FAIpQLSdhTmpE9c6uc7pk-hXjauA6GRQ6RtJCNCLudwyqznds4Wzysg/formrestricted'">本人確認申請フォーム</x-mail::button>
 
@@ -70,7 +70,7 @@ ATOXIOS株式会社です。
 
 ATOXIOS株式会社
 
-メールアドレス info@atoxios.com
-電話番号 03-6823-2457
+メールアドレス <a href="mailto:info@atoxios.com">info@atoxios.com</a>
+電話番号 <a href="tel:03-6823-2457">03-6823-2457</a>
 
 </x-mail::message>
