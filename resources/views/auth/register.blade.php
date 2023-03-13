@@ -29,7 +29,7 @@
                     <input type="password" placeholder="パスワード（確認用）を入力してください" class="tw-input tw-input-bordered tw-w-full" name="password_confirmation" required />
                 </div>
                 <div class="tw-text-center">
-                    <button class="tw-btn tw-btn-block tw-btn-primary tw-mb-4">{{ __('登録する') }}</button>
+                    <button type="submit" class="tw-btn tw-btn-block tw-btn-primary tw-mb-4">{{ __('登録する') }}</button>
                     <a class="tw-underline tw-text-sm" href="{{ route('login') }}">
                         {{ __('アカウントをお持ちですか？') }}
                     </a>

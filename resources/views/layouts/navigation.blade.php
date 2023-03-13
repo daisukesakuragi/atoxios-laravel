@@ -182,14 +182,26 @@
       <a href="{{ route('welcome') }}" class="tw-btn tw-btn-ghost tw-normal-case tw-font-bold tw-text-xl">ATOXIOS</a>
     </div>
     <div class="tw-navbar-end">
-      <button class="tw-btn tw-btn-ghost tw-btn-circle">
-        <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-      </button>
-      <button class="tw-btn tw-btn-ghost tw-btn-circle">
-        <div class="tw-indicator">
-          <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-5 tw-w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-          <span class="badge badge-xs badge-primary indicator-item"></span>
+        <div class="tw-dropdown tw-dropdown-end">
+            <label tabindex="0" class="tw-btn tw-btn-ghost tw-btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="tw-h-5 tw-w-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>          
+            </label>
+            <ul tabindex="0" class="tw-menu tw-menu-compact tw-dropdown-content tw-mt-3 tw-p-2 tw-shadow tw-bg-base-100 tw-rounded-box tw-w-52">                
+                @if(Auth::check())
+                <li><a href="{{ route('account.index') }}">{{ __('アカウント') }}</a></li>
+                <li><a href="{{ route('account.showBidHistory') }}">{{ __('入札履歴') }}</a></li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf    
+                        <a :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">{{ __('ログアウト') }}</a></li>
+                    </form>
+                @else
+                <li><a href="{{ route('register') }}">{{ __('会員登録') }}</a></li>
+                <li><a href="{{ route('login') }}">{{ __('ログイン') }}</a></li>
+                @endif
+            </ul>
         </div>
-      </button>
     </div>
   </div>
