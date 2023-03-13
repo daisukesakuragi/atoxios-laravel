@@ -43,7 +43,7 @@ class AccountController extends Controller
                 'content' => $request->content
             ]);
 
-            session()->flash('success', '退会しました。ご利用いただきありがとうございました。');
+            session()->flash('success', '退会しました。ATOXIOSをご利用いただきありがとうございました。');
 
             return redirect(route('welcome'));
         } catch (Exception $e) {

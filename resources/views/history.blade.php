@@ -1,6 +1,6 @@
 <x-app-layout>
-    <section>
-        <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-sm">
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-sm">
             <x-page-title title="入札履歴" subtitle="BID HISTORY"></x-page-title>
             <div class="tw-flex tw-flex-col tw-gap-y-6 tw-mb-12">
                 @forelse ($bids as $bid)
@@ -15,18 +15,12 @@
                     </div>
                 </div>
                 @empty
-                <div class="tw-p-4 tw-text-blue-900 tw-bg-blue-100 tw-border tw-border-blue-200 tw-rounded">
-                    <div class="tw-flex tw-justify-between tw-flex-wrap">
-                        <div class="tw-w-0 tw-flex-1 tw-flex">
-                            <div class="tw-w-full">
-                                <p class="tw-font-bold tw-text-md">
-                                    {{ __('入札履歴のデータが見つかりませんでした。') }}
-                                </p>
-                            </div>
-                        </div>
+                <div class="tw-alert tw-shadow-lg">
+                    <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="tw-stroke-info tw-flex-shrink-0 tw-w-6 tw-h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                      <span class="tw-font-bold tw-text-sm">{{ __('入札履歴のデータが見つかりませんでした。') }}</span>
                     </div>
                 </div>
-
                 @endforelse
             </div>
             {{ $bids->links() }}

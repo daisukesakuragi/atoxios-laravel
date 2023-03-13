@@ -1,31 +1,28 @@
 <x-guest-layout>
-    <div class="tw-container tw-max-w-screen-sm tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-py-16 lg:tw-py-32">
-        <x-page-title title="パスワードの再設定" subtitle="RESET PASSWORD"></x-page-title>
-        <x-auth-card>
-            <x-slot name="logo">
-                <a href="/">
-                    <x-application-logo class="tw-w-20 tw-h-20 tw-fill-current tw-text-gray-500" />
-                </a>
-            </x-slot>
-            <div class="tw-mb-4 tw-text-sm tw-text-gray-600">
-                <p class="tw-mb-2">{{ __('パスワードをお忘れですか？') }}</p>
-                <p>{{ __('下記のフォームより、ご登録いただいたメールアドレスを入力して送信していただけましたら、同メールアドレス宛にパスワードの再設定用リンクを送信させていただきます。') }}</p>
-            </div>
-            <x-auth-session-status class="tw-mb-4" :status="session('status')" />
-            <x-auth-validation-errors class="tw-mb-4" :errors="$errors" />
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-sm">
+            <x-page-title title="パスワードをお忘れですか？" subtitle="FORGOT PASSWORD?"></x-page-title>
+            <p class="tw-mb-4">{{ __('パスワードをお忘れの場合は、下記のフォームよりご登録いただいたメールアドレスを入力して送信してください。') }}</p>
+            <p class="tw-mb-8">{{ __('同メールアドレス宛にパスワードの再設定用リンクを送信させていただきます。') }}</p>
             <form method="POST" action="{{ route('password.email') }}">
                 @csrf
-                <div>
-                    <x-label for="email" :value="__('メールアドレス')" />
-                    <x-input id="email" class="tw-block tw-mt-1 tw-w-full" type="email" name="email" :value="old('email')" placeholder="test@atoxios.com" required autofocus />
+                <div class="tw-form-control tw-mb-8">
+                    <label class="tw-label">
+                        <span class="tw-label-text">{{ __('メールアドレス') }}</span>
+                    </label>
+                    <input type="email" placeholder="メールアドレスを入力してください" class="tw-input tw-input-bordered tw-w-full" name="email" :value="old('email')" required autofocus />
                 </div>
-
-                <div class="tw-flex tw-items-center tw-justify-end tw-mt-4">
-                    <x-button>
-                        {{ __('Email Password Reset Link') }}
-                    </x-button>
+                <div class="tw-text-center">
+                    <button type="submit" class="tw-btn tw-btn-block tw-btn-primary">{{ __('送信する') }}</button>
                 </div>
+                @if(count($errors) > 0)
+                <ul class="tw-mt-4">
+                    @foreach ($errors->all() as $error)
+                    <li class="tw-text-error tw-text-sm">{{ $error }}</li>
+                    @endforeach
+                </ul>
+                @endif
             </form>
-        </x-auth-card>
-    </div>
+        </div>
+    </section>
 </x-guest-layout>

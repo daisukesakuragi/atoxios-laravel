@@ -1,33 +1,31 @@
 <x-app-layout>
-    <section>
-        <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-sm">
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-sm">
             <x-page-title title="退会" subtitle="WITHDRAWAL"></x-page-title>
             @if($is_withdrawalable)
-            <x-auth-card>
-                <!-- <x-auth-session-status class="tw-mb-4" :status="session('status')" /> -->
-                <x-auth-validation-errors class="tw-mb-4" :errors="$errors" />
-                <form method="POST" action="{{ route('account.withdrawal') }}">
-                    @csrf
-                    <div class="tw-mb-4">
-                        <x-label for="reason" :value="__('退会理由')" />
-                        <x-select class="tw-w-full tw-mt-1" name="reason" id="reason">
-                            <option value="">選択してください</option>
-                            <option value="0">理由1</option>
-                            <option value="1">理由2</option>
-                            <option value="2">理由3</option>
-                        </x-select>
-                    </div>
-                    <div>
-                        <x-label for="email" :value="__('ご意見・ご要望')" />
-                        <x-textarea class="tw-w-full tw-mt-1" rows="7" :placeholder="__('ATOXIOSに対するご意見・ご要望等がございましたら、こちらに記入してください。')" name="content" id="content"></x-textarea>
-                    </div>
-                    <div class="tw-flex tw-items-center tw-justify-end tw-mt-4">
-                        <x-button class="tw-ml-3">
-                            {{ __('退会する') }}
-                        </x-button>
-                    </div>
-                </form>
-            </x-auth-card>
+            <form method="POST" action="{{ route('account.withdrawal') }}">
+                @csrf
+                <div class="tw-form-control tw-w-full tw-mb-4">
+                    <label class="tw-label">
+                        <span class="tw-label-text">{{ __('退会理由') }}</span>
+                    </label>
+                    <select class="tw-select tw-select-bordered" name="reason">
+                        <option value="">選択してください</option>
+                        <option value="0">理由1</option>
+                        <option value="1">理由2</option>
+                        <option value="2">理由3</option>
+                    </select>
+                </div>
+                <div class="tw-form-control tw-mb-8">
+                    <label class="tw-label">
+                      <span class="tw-label-text">ご意見・ご要望</span>
+                    </label>
+                    <textarea class="tw-textarea tw-textarea-bordered" rows="7" placeholder="ATOXIOSに対するご意見・ご要望等がございましたら、こちらに記入してください。" name="content"></textarea>
+                </div>       
+                <div class="tw-text-center">
+                    <button type="submit" class="tw-btn tw-btn-block tw-btn-primary tw-mb-4">{{ __('退会する') }}</button>
+                </div>         
+            </form>
             @else
             <p>
                 退会できません
