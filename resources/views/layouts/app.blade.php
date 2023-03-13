@@ -13,7 +13,7 @@
     @livewireStyles
 </head>
 
-<body class="tw-font-sans tw-antialiased tw-bg-gray-100 tw-relative">
+<body class="tw-font-sans tw-antialiased tw-bg-base-100 tw-relative">
     @include('layouts.navigation')
     @include('layouts.notification')
     <main class="tw-relative">

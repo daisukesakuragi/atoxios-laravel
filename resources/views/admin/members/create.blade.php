@@ -17,7 +17,6 @@
                     <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('slug') }}</p>
                     @endif
                 </div>
-
                 <div class="tw-mb-6">
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="name">
                         {{ __('*名前') }}
@@ -27,7 +26,6 @@
                     <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('name') }}</p>
                     @endif
                 </div>
-
                 <div class="tw-mb-4">
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="career">
                         {{ __('*経歴') }}
@@ -37,7 +35,6 @@
                     <p class="tw-text-red-500">*{{ $errors->first('career') }}</p>
                     @endif
                 </div>
-
                 <div class="tw-mb-4">
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="introduction">
                         {{ __('*自己PR') }}
@@ -47,7 +44,6 @@
                     <p class="tw-text-red-500">*{{ $errors->first('introduction') }}</p>
                     @endif
                 </div>
-
                 <div class="tw-mb-6">
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="profile_img">
                         {{ __('*プロフィール画像') }}</label>
@@ -56,7 +52,6 @@
                     <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('profile_img') }}</p>
                     @endif
                 </div>
-
                 <div class="tw-mb-6">
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="instagram_url">
                         {{ __('Instagram') }}
@@ -66,7 +61,6 @@
                     <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('instagram_url') }}</p>
                     @endif
                 </div>
-
                 <div class="tw-mb-6">
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="tiktok_url">
                         {{ __('TikTok') }}
@@ -76,7 +70,6 @@
                     <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('tiktok_url') }}</p>
                     @endif
                 </div>
-
                 <div class="tw-mb-6">
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="twitter_url">
                         {{ __('Twitter') }}
@@ -86,7 +79,6 @@
                     <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('twitter_url') }}</p>
                     @endif
                 </div>
-
                 <div class="tw-mb-6">
                     <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="youtube_url">
                         {{ __('YouTube') }}
@@ -96,7 +88,6 @@
                     <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('youtube_url') }}</p>
                     @endif
                 </div>
-
                 <button class="tw-bg-indigo-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-w-full" type="submit">
                     {{ __('作成する') }}
                 </button>

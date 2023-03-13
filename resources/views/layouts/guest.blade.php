@@ -15,7 +15,7 @@
 </head>
 
 <body class="tw-font-sans tw-antialiased">
-    <div class="tw-bg-gray-100">
+    <div class="tw-bg-base-100">
         @include('layouts.navigation')
         {{ $slot }}
         @include('layouts.footer')
