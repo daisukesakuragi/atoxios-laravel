@@ -25,7 +25,7 @@
             {{ $members->links() }}
         </div>
     </section>
-    <section class="tw-py-24 tw-bg-base-200 tw-text-base-content">
+    <section class="tw-py-24 tw-bg-base-100 tw-text-base-content">
         <div class="tw-container tw-max-w-screen-xl">
             <x-section-title title="PLANS" subtitle="企画"></x-section-title>
             <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
@@ -36,7 +36,7 @@
             {{ $plans->links() }}
         </div>
     </section>
-    <section class="tw-py-24 tw-bg-base-300 tw-text-base-content">
+    <section class="tw-py-24 tw-bg-base-100 tw-text-base-content">
         <div class="tw-container tw-max-w-screen-xl">
             <x-section-title title="ARTICLES" subtitle="記事"></x-section-title>
             <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">

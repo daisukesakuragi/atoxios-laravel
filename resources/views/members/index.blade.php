@@ -1,20 +1,14 @@
 
 <x-app-layout>
-    <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-xl">
-        <x-page-title title="出品者一覧" subtitle="Members"></x-page-title>
-        <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
-            @foreach ($members as $member)
-            <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-                <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover tw-rounded-t-lg">
-                <div class="tw-p-6">
-                    <h3 class="tw-text-lg tw-font-semibold">
-                        {{ $member->name }}
-                    </h3>
-                    <a href="{{ route('members.show', $member->slug) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
-                </div>
+    <section class="tw-py-16 lg:tw-py-32 tw-bg-base-100">
+        <div class="tw-container tw-max-w-screen-xl">
+            <x-page-title title="出品者一覧" subtitle="Members"></x-page-title>
+            <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-4 tw-gap-8 lg:tw-gap-16 tw-mb-12">
+                @foreach ($members as $member)
+                <x-member-card :member="$member"></x-member-card>
+                @endforeach
             </div>
-            @endforeach
+            {{ $members->links() }}
         </div>
-        {{ $members->links() }}
-    </div>
+    </section>
 </x-app-layout>

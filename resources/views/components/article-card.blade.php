@@ -1,5 +1,5 @@
 <div class="tw-card tw-bg-base-100 tw-shadow-xl tw-image-full">
-    <figure><img src="{{ $article->thumbnail_url }}" alt="{{ $article->title }}" /></figure>
+    <figure><img src="{{ $article->thumbnail_url }}" alt="{{ $article->title }}" class="tw-h-80 tw-w-full tw-object-cover" /></figure>
     <div class="tw-card-body">
         <h2 class="tw-card-title">{{ $article->title }}</h2>
         <div class="tw-mb-3 tw-flex tw-items-center tw-gap-3">
