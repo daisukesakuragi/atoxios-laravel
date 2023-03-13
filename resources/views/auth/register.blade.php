@@ -1,6 +1,17 @@
 <x-guest-layout>
     <div class="tw-container tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full tw-py-16 lg:tw-py-32">
         <x-page-title title="新規登録" subtitle="REGISTER"></x-page-title>
+        <form>
+            <div class="tw-form-control">
+                <label class="tw-label">
+                    <span class="label-text">Your Email</span>
+                </label>
+                <label class="input-group input-group-vertical">
+                    <span>Email</span>
+                    <input type="text" placeholder="info@site.com" class="input input-bordered" />
+                </label>
+              </div>
+        </form>
         <x-auth-card>
             <x-auth-validation-errors class="tw-mb-4" :errors="$errors" />
             <form method="POST" action="{{ route('register') }}">

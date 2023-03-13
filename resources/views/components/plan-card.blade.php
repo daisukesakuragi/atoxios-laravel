@@ -1,4 +1,4 @@
-<div class="tw-card tw-bg-base-100 tw-text-base-content tw-glass tw-shadow-xl">
+<div class="tw-card tw-text-base-content tw-glass tw-shadow-xl hover:tw-opacity-100">
     <figure><img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" class="tw-h-60 tw-w-full tw-object-cover"></figure>
     <div class="tw-card-body">
         <h2 class="tw-card-title">{{ $plan->title }}</h2>
