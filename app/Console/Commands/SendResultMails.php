@@ -53,9 +53,9 @@ class SendResultMails extends Command
             Slack::send($plan->finished_at . '時点で、「' . $plan->title .  '」の入札期間が終了しました。ID: ' . $bid->user->id . 'のユーザーが、' . $bid->price . '円で落札しましたので、落札結果メールを送信します。');
 
             Mail::to($bid->user->email)->send(new BidResult($bid, $plan));
-            // TODO: メール送信処理を書いたら、下記のコメントアウトを外す
-            // $plan->is_sent_result_mail = true;
-            // $plan->save();
+
+            $plan->is_sent_result_mail = true;
+            $plan->save();
         }
 
         return 0;
