@@ -23,12 +23,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                session()->flash('success', 'ログインしました。');
                 if ($guard == 'admin') return redirect(RouteServiceProvider::ADMIN_HOME);
                 return redirect(RouteServiceProvider::HOME);
             }
         }
-
-        session()->flash('success', 'ログインしました。');
 
         return $next($request);
     }

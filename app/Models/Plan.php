@@ -52,12 +52,14 @@ class Plan extends Model
 
     public function checkIfPlanIsBiddableByPrice(int $price): bool
     {
+        $price_diff = config('app.price_diff') ? intval(config('app.price_diff')) : 5000;
+
         $latest = Bid::where('plan_id', '=', $this->id)
             ->orderBy('price', 'desc')
             ->first();
 
         if ($latest) {
-            return intval($latest->price) + config('app.price_diff') === $price;
+            return intval($latest->price) + $price_diff === $price;
         }
 
         return true;
