@@ -1,65 +1,48 @@
 <x-app-layout>
     @guest
-    <section class="tw-w-screen tw-h-screen">
-        <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-w-full tw-container tw-max-w-screen-xl">
-            <h1 class="tw-text-gray-800 tw-text-7xl tw-font-bold tw-mb-8 md:tw-mb-12">
-                ATOXIOS</h1>
-            <div class="tw-w-full tw-flex tw-flex-col sm:tw-flex-row sm:tw-justify-center tw-gap-2.5">
-                <a href="{{ route('register') }}" class="tw-inline-block tw-bg-gray-800 tw-font-semibold tw-text-center tw-rounded-lg tw-border tw-border-white tw-text-white tw-px-8 tw-py-3">新規登録</a>
-                <a href="{{ route('login') }}" class="tw-inline-block tw-bg-white tw-font-semibold tw-text-center tw-rounded-lg tw-border tw-border-gray-800 tw-text-gray-800 tw-px-8 tw-py-3">ログイン</a>
+    <section class="tw-hero" style="background-image: url('https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+        <div class="tw-hero-overlay tw-bg-opacity-60 tw-pt-32 tw-pb-24"></div>
+        <div class="tw-hero-content tw-text-center tw-text-neutral-content tw-pt-32 tw-pb-24">
+            <div class="tw-max-w-2xl">
+                <h1 class="tw-mb-6 tw-text-5xl lg:tw-text-7xl tw-font-bold tw-italic">"人に価値を"</h1>
+                <p class="tw-mb-8">ATOXIOSは人の存在意義に価値を付ける<br>次世代型オークションサービスです。</p>
+                <div class="tw-flex tw-items-center tw-flex-col lg:tw-flex-row tw-justify-center tw-gap-4">
+                    <a href="{{ route('register') }}" class="tw-btn tw-btn-primary tw-btn-block lg:tw-btn-wide">新規登録</a>
+                    <a href="{{ route('login') }}" class="tw-btn tw-btn-primary tw-btn-outline tw-btn-block lg:tw-btn-wide">ログイン</a>    
+                </div>
             </div>
         </div>
     </section>
     @endguest
-    <section class="tw-py-24">
+    <section class="tw-py-24 tw-bg-base-100 tw-text-base-content">
         <div class="tw-container tw-max-w-screen-xl">
-            <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-16">MEMBERS</h2>
-            <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
+            <x-section-title title="MEMBERS" subtitle="出品者"></x-section-title>
+            <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-4 tw-gap-8 lg:tw-gap-16 tw-mb-12">
                 @foreach ($members as $member)
-                <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-                    <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover tw-rounded-t-lg">
-                    <div class="tw-p-6">
-                        <h3 class="tw-text-lg tw-font-semibold">
-                            {{ $member->name }}
-                        </h3>
-                        <p class="tw-mb-4">
-                            {{ $member->introduction }}
-                        </p>
-                        <a href="{{ route('members.show', $member->slug) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
-                    </div>
-                </div>
+                <x-member-card :member="$member"></x-member-card>
                 @endforeach
             </div>
             {{ $members->links() }}
         </div>
     </section>
-    <section class="tw-py-24">
+    <section class="tw-py-24 tw-bg-base-200 tw-text-base-content">
         <div class="tw-container tw-max-w-screen-xl">
-            <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-16">PLANS</h2>
+            <x-section-title title="PLANS" subtitle="企画"></x-section-title>
             <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
                 @foreach ($plans as $plan)
-                <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-                    <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover tw-rounded-t-lg">
-                    <div class="tw-p-6">
-                        <h3 class="tw-text-lg tw-font-semibold">
-                            {{ $plan->title }}
-                        </h3>
-                        <p class="tw-text-sm tw-text-gray-700 tw-mb-4">by <a href="{{ route('members.show', $plan->member->slug) }}" class="tw-underline">{{ $plan->member->name }}</a></p>
-                        <a href="{{ route('plans.show', $plan->slug) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
-                    </div>
-                </div>
+                <x-plan-card :plan="$plan"></x-plan-card>
                 @endforeach
             </div>
             {{ $plans->links() }}
         </div>
     </section>
-    <section class="tw-py-24">
+    <section class="tw-py-24 tw-bg-base-300 tw-text-base-content">
         <div class="tw-container tw-max-w-screen-xl">
-            <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-16">ARTICLES</h2>
+            <x-section-title title="ARTICLES" subtitle="記事"></x-section-title>
             <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
                 @foreach ($articles as $article)
-                <livewire:article-card :article="$article">
-                    @endforeach
+                <x-article-card :article="$article"></x-article-card>
+                @endforeach
             </div>
             {{ $articles->links() }}
         </div>

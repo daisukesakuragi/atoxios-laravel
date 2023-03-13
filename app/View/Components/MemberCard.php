@@ -2,22 +2,21 @@
 
 namespace App\View\Components;
 
+use App\Models\Member;
 use Illuminate\View\Component;
 
-class PageTitle extends Component
+class MemberCard extends Component
 {
-    public string $title;
-    public string $subtitle;
+    public Member $member;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $title, string $subtitle)
+    public function __construct(Member $member)
     {
-        $this->title = $title;
-        $this->subtitle = $subtitle;
+        $this->member = $member;
     }
 
     /**
@@ -27,6 +26,6 @@ class PageTitle extends Component
      */
     public function render()
     {
-        return view('components.page-title');
+        return view('components.member-card');
     }
 }

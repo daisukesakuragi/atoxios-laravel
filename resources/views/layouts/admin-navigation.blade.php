@@ -138,6 +138,24 @@
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('ダッシュボード') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('入札履歴') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.articles.index')" :active="request()->routeIs('admin.articles.index')">
+                {{ __('入札者一覧') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.articles.create')" :active="request()->routeIs('admin.articles.create')">
+                {{ __('出品者一覧') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.articles.create')" :active="request()->routeIs('admin.articles.create')">
+                {{ __('出品者作成') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.articles.create')" :active="request()->routeIs('admin.articles.create')">
+                {{ __('企画一覧') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.articles.create')" :active="request()->routeIs('admin.articles.create')">
+                {{ __('企画作成') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.articles.index')" :active="request()->routeIs('admin.articles.index')">
                 {{ __('記事一覧') }}
             </x-responsive-nav-link>

@@ -2,22 +2,20 @@
 
 namespace App\View\Components;
 
+use App\Models\Plan;
 use Illuminate\View\Component;
 
-class PageTitle extends Component
+class PlanCard extends Component
 {
-    public string $title;
-    public string $subtitle;
-
+    public Plan $plan;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $title, string $subtitle)
+    public function __construct(Plan $plan)
     {
-        $this->title = $title;
-        $this->subtitle = $subtitle;
+        $this->plan = $plan;
     }
 
     /**
@@ -27,6 +25,6 @@ class PageTitle extends Component
      */
     public function render()
     {
-        return view('components.page-title');
+        return view('components.plan-card');
     }
 }

@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class PageTitle extends Component
+class SectionTitle extends Component
 {
     public string $title;
     public string $subtitle;
@@ -27,6 +27,6 @@ class PageTitle extends Component
      */
     public function render()
     {
-        return view('components.page-title');
+        return view('components.section-title');
     }
 }
