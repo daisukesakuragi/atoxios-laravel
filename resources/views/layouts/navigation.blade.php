@@ -1,4 +1,4 @@
-<div class="tw-navbar tw-bg-base-100 tw-sticky tw-left-0 tw-top-0 tw-z-50">
+<header class="tw-navbar tw-bg-base-100 tw-sticky tw-left-0 tw-top-0 tw-z-50">
     <div class="tw-navbar-start">
       <div class="tw-dropdown">
         <label tabindex="0" class="tw-btn tw-btn-ghost tw-btn-circle">
@@ -28,8 +28,11 @@
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf    
-                        <a :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">{{ __('ログアウト') }}</a></li>
+                        <a :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                            {{ __('ログアウト') }}
+                        </a>
                     </form>
+                </li>
                 @else
                 <li><a href="{{ route('register') }}">{{ __('会員登録') }}</a></li>
                 <li><a href="{{ route('login') }}">{{ __('ログイン') }}</a></li>
@@ -37,4 +40,4 @@
             </ul>
         </div>
     </div>
-  </div>
+  </header>

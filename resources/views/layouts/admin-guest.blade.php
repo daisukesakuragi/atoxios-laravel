@@ -15,10 +15,11 @@
 </head>
 
 <body class="tw-font-sans tw-antialiased">
-    <div class="tw-h-screen tw-bg-gray-100">
-        <div class="tw-container tw-flex tw-items-center tw-justify-center tw-w-full tw-h-full">
+    <div class="tw-bg-base-100 tw-text-base-content">
+        @include('layouts.admin-notification')
+        <main>
             {{ $slot }}
-        </div>
+        </main>
     </div>
 </body>
 

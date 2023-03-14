@@ -15,10 +15,12 @@
 </head>
 
 <body class="tw-font-sans tw-antialiased">
-    <div class="tw-bg-base-100">
+    <div class="tw-bg-base-100 tw-text-base-content">
         @include('layouts.navigation')
         @include('layouts.notification')
-        {{ $slot }}
+        <main>
+            {{ $slot }}
+        </main>
         @include('layouts.footer')
     </div>
 </body>

@@ -14,18 +14,9 @@
 </head>
 
 <body class="tw-font-sans tw-antialiased">
-    <div class="tw-min-h-screen tw-bg-gray-100">
+    <div class="tw-bg-base-100 tw-text-base-content">
         @include('layouts.admin-navigation')
-        @auth
-        <!-- Page Heading -->
-        <header class="tw-bg-white tw-shadow">
-            <div class="tw-container tw-max-w-screen-xl tw-mx-auto tw-py-6 tw-px-4 sm:tw-px-6 lg:tw-px-8">
-                {{ $header }}
-            </div>
-        </header>
-        @endauth
         @include('layouts.admin-notification')
-        <!-- Page Content -->
         <main>
             {{ $slot }}
         </main>
