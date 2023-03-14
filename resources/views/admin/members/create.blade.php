@@ -52,7 +52,7 @@
                     <label class="tw-label">
                         <span class="tw-label-text">{{ __('プロフィール画像') }}</span>
                     </label>
-                    <input type="file" class="tw-file-input tw-text-sm tw-file-input-bordered tw-w-full" name="profile_img" />
+                    <input type="file" class="tw-file-input tw-text-sm tw-file-input-bordered tw-w-full @if($errors->has('profile_img')) tw-border-error @endif" name="profile_img" />
                     @if ($errors->has('profile_img'))
                     <label class="tw-label">
                         <span class="tw-label-text tw-text-error">{{ $errors->first('profile_img') }}</span>

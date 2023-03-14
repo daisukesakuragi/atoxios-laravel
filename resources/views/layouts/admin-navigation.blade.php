@@ -54,13 +54,13 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
                 </svg>                  
             </label>
-            <ul tabindex="0" class="tw-menu tw-menu-compact tw-dropdown-content tw-mt-3 tw-p-2 tw-shadow tw-bg-base-300 tw-rounded-none tw-w-52">
-                <li><a href="{{ route('admin.change-email') }}">{{ __('メールアドレス変更') }}</a></li>
-                <li><a href="{{ route('admin.change-password') }}">{{ __('パスワード変更') }}</a></li>
+            <ul tabindex="0" class="tw-menu tw-dropdown-content tw-mt-3 tw-p-2 tw-shadow tw-bg-base-300 tw-rounded-none tw-w-52">
+                <li><a href="{{ route('admin.change-email') }}" class="tw-text-sm">{{ __('メールアドレス変更') }}</a></li>
+                <li><a href="{{ route('admin.change-password') }}" class="tw-text-sm">{{ __('パスワード変更') }}</a></li>
                 <li>
                     <form method="POST" action="{{ route('admin.logout') }}">
                         @csrf    
-                        <a :href="route('admin.logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <a :href="route('admin.logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="tw-text-sm">
                             {{ __('ログアウト') }}
                         </a>
                     </form>

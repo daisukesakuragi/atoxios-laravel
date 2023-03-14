@@ -23,34 +23,35 @@
                     <tbody>
                         @foreach ($members as $member)
                         <tr>
-                        <td>
-                            <div class="tw-flex tw-items-center tw-space-x-3">
-                            <div class="tw-avatar">
-                                <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
-                                    <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" />
+                            <td>
+                                <div class="tw-flex tw-items-center tw-space-x-3">
+                                    <div class="tw-avatar">
+                                        <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
+                                            <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="tw-font-bold">
+                                            {{ mb_strlen($member->name) > 15 ? mb_substr($member->name, 0, 15) . '...' : $member->name }}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <div class="tw-font-bold">{{ $member->name }}</div>
-                                <div class="tw-text-sm tw-opacity-50">{{ '企画数：' . count($member->plans) }}</div>
-                            </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="tw-text-sm">
-                                {{ $member->career }}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="tw-text-sm">
-                                {{ $member->introduction }}
-                            </div>
-                        </td>
-                        <th>
-                            <a href="{{ route('admin.members.show', $member->id) }}" class="tw-btn tw-btn-primary tw-btn-sm">
-                                {{ __('詳細ページ') }}
-                            </a>
-                        </th>
+                            </td>
+                            <td>
+                                <div class="tw-text-sm">
+                                    {{ mb_strlen($member->career) > 30 ? mb_substr($member->career, 0, 30) . '...' : $member->career }}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tw-text-sm">
+                                    {{ mb_strlen($member->introduction) > 30 ? mb_substr($member->introduction, 0, 30) . '...' : $member->introduction }}
+                                </div>
+                            </td>
+                            <th>
+                                <a href="{{ route('admin.members.show', $member->id) }}" class="tw-btn tw-btn-primary tw-btn-sm">
+                                    {{ __('詳細ページ') }}
+                                </a>
+                            </th>
                         </tr>
                         @endforeach
                     </tbody>

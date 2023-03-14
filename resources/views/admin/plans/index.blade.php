@@ -24,39 +24,40 @@
                     <tbody>
                         @foreach ($plans as $plan)
                         <tr>
-                        <td>
-                            <div class="tw-flex tw-items-center tw-space-x-3">
-                            <div class="tw-avatar">
-                                <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
-                                    <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" />
+                            <td>
+                                <div class="tw-flex tw-items-center tw-space-x-3">
+                                <div class="tw-avatar">
+                                    <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
+                                        <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <div class="tw-font-bold">{{ $plan->title }}</div>
-                                <div class="tw-text-sm tw-opacity-50">{{ __('by') }}<a href="{{ route('admin.members.show', $plan->member->id) }}" class="tw-ml-1 tw-underline">{{ $plan->member->name }}</a></div>
-                            </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="tw-text-sm">
-                                {{ $plan->description }}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="tw-text-sm">
-                                {{ $plan->started_at }}
-                            </div>
-                        </td>
-                        <td>
-                            <div class="tw-text-sm">
-                                {{ $plan->finished_at }}
-                            </div>
-                        </td>
-                        <th>
-                            <a href="{{ route('admin.plans.show', $plan->id) }}" class="tw-btn tw-btn-primary tw-btn-sm">
-                                {{ __('詳細ページ') }}
-                            </a>
-                        </th>
+                                <div>
+                                    <div class="tw-font-bold">
+                                        {{ mb_strlen($plan->title) > 15 ? mb_substr($plan->title, 0, 15) . '...' : $plan->title }}
+                                    </div>
+                                </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tw-text-sm">
+                                    {{ mb_strlen($plan->description) > 30 ? mb_substr($plan->description, 0, 30) . '...' : $plan->description }}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tw-text-sm">
+                                    {{ $plan->started_at }}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tw-text-sm">
+                                    {{ $plan->finished_at }}
+                                </div>
+                            </td>
+                            <th>
+                                <a href="{{ route('admin.plans.show', $plan->id) }}" class="tw-btn tw-btn-primary tw-btn-sm">
+                                    {{ __('詳細ページ') }}
+                                </a>
+                            </th>
                         </tr>
                         @endforeach
                     </tbody>

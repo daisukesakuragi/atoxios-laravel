@@ -27,13 +27,19 @@
                 </div>         
             </form>
             @else
-            <p>
-                退会できません
-            </p>
-            <p>
-                現在開催中のオークションに、{{ auth()->user()->name }}様が入札されている記録を検知しました。
-            </p>
-            <p>大変申し訳ございませんが、該当するオークションが終了するまで、ATOXIOSを退会することができません。</p>
+            <div class="tw-alert tw-alert-error tw-shadow-lg tw-flex-row">
+                <div class="tw-flex tw-flex-col tw-items-start">
+                    <div class="tw-flex tw-items-center tw-gap-2 tw-mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="tw-stroke-current tw-flex-shrink-0 tw-h-6 tw-w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <div class="tw-font-bold tw-text-lg">退会できません</div>
+                    </div>
+                    <p class="tw-text-sm">現在開催中のオークションに{{ auth()->user()->name }}様が入札されている記録を検知しました。</p>
+                    <p class="tw-text-sm tw-mb-2">大変申し訳ございませんが、該当するオークションが終了するまで、ATOXIOSを退会することができません。</p>
+                    <div class="tw-flex tw-justify-end tw-w-full">
+                        <a href="{{ route('terms-of-use') }}" class="tw-btn tw-btn-sm">利用規約はこちら</a>
+                    </div>
+                </div>
+            </div>
             @endif
         </div>
     </section>
