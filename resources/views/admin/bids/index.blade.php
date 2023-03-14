@@ -1,36 +1,39 @@
 <x-admin-layout>
-    <x-slot name="header">
-        <h1 class="tw-text-xl tw-text-gray-800 tw-leading-tight">
-            {{ __('入札履歴') }}
-        </h1>
-    </x-slot>
-    <div class="tw-py-24 tw-container tw-max-w-screen-xl">
-        @if(count($bids) === 0)
-        <p class="tw-text-center">
-            {{ __('入札履歴のデータがありません。') }}
-        </p>
-        @else
-        <table class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-w-full tw-mb-16 tw-table-auto">
-            <thead class="tw-border tw-border-b-2">
-                <tr>
-                    <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('ID') }}</th>
-                    <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('入札者名') }}</th>
-                    <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('入札金額') }}</th>
-                    <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('入札日時') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($bids as $bid)
-                <tr>
-                    <td class="tw-px-4 tw-py-2 tw-text-left">{{ $bid->id }}</td>
-                    <td class="tw-px-4 tw-py-2 tw-text-left">{{ $bid->user->name }}</td>
-                    <td class="tw-px-4 tw-py-2 tw-text-left">{{ number_format($bid->price) . '円' }}</td>
-                    <td class="tw-px-4 tw-py-2 tw-text-left">{{ $bid->created_at }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        {{ $bids->links() }}
-        @endif
-    </div>
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-xl">
+            <x-admin-page-title title="全ての入札履歴"></x-admin-page-title>
+            @if(count($bids) === 0)
+            <div class="tw-alert tw-shadow-lg tw-max-w-2xl tw-mx-auto">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="tw-stroke-info tw-flex-shrink-0 tw-w-6 tw-h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span class="tw-font-bold tw-text-sm">{{ __('入札履歴のデータが見つかりませんでした。') }}</span>
+                </div>
+            </div>
+            @else
+            <div class="tw-overflow-x-auto tw-w-full">
+                <table class="tw-table tw-w-full">
+                    <thead>
+                        <tr>
+                            <th>{{ __('ID') }}</th>
+                            <th>{{ __('入札者名') }}</th>
+                            <th>{{ __('入札金額') }}</th>
+                            <th>{{ __('入札日時') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($bids as $bid)
+                        <tr>
+                            <td>{{ $bid->id }}</td>
+                            <td>{{ $bid->user->name }}</td>
+                            <td>{{ number_format($bid->price) . '円' }}</td>
+                            <td>{{ $bid->created_at }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            {{ $bids->links() }}
+            @endif
+        </div>
+    </section>
 </x-admin-layout>

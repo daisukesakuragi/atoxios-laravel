@@ -1,160 +1,267 @@
 <x-admin-layout>
-    <x-slot name="header">
-        <h1 class="tw-text-xl tw-text-gray-800 tw-leading-tight">
-            {{ __('ダッシュボード') }}
-        </h1>
-    </x-slot>
-    <section class="tw-py-24">
+    <section class="tw-pt-24 tw-pb-16">
         <div class="tw-container tw-max-w-screen-xl">
-            <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-16">{{ __('入札履歴') }}</h2>
+            <x-admin-page-title title="ダッシュボード"></x-admin-page-title>
+            <!-- 入札履歴 -->
+            <x-admin-section-title title="入札履歴"></x-admin-section-title>
             @if(count($bids) === 0)
-            <p class="tw-text-center">
-                {{ __('入札履歴のデータがありません。') }}
-            </p>
+            <div class="tw-alert tw-shadow-lg tw-max-w-2xl tw-mx-auto tw-mb-16">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="tw-stroke-info tw-flex-shrink-0 tw-w-6 tw-h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span class="tw-font-bold tw-text-sm">{{ __('入札履歴のデータが見つかりませんでした。') }}</span>
+                </div>
+            </div>
             @else
-            <table class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-w-full tw-mb-16 tw-table-auto">
-                <thead class="tw-border tw-border-b-2">
-                    <tr>
-                        <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('ID') }}</th>
-                        <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('入札者名') }}</th>
-                        <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('入札金額') }}</th>
-                        <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('入札日時') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($bids as $bid)
-                    <tr>
-                        <td class="tw-px-4 tw-py-2 tw-text-left">{{ $bid->id }}</td>
-                        <td class="tw-px-4 tw-py-2 tw-text-left">{{ $bid->user->name }}</td>
-                        <td class="tw-px-4 tw-py-2 tw-text-left">{{ number_format($bid->price) . '円' }}</td>
-                        <td class="tw-px-4 tw-py-2 tw-text-left">{{ $bid->created_at }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <a href="{{ route('admin.bids.index') }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full tw-max-w-lg tw-mx-auto">
-                {{ __('全ての入札履歴をみる') }}
-            </a>
+            <div class="tw-overflow-x-auto tw-w-full tw-mb-8">
+                <table class="tw-table tw-w-full">
+                    <thead>
+                        <tr>
+                            <th>{{ __('ID') }}</th>
+                            <th>{{ __('入札者名') }}</th>
+                            <th>{{ __('入札金額') }}</th>
+                            <th>{{ __('入札日時') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($bids as $bid)
+                        <tr>
+                            <td>{{ $bid->id }}</td>
+                            <td>{{ $bid->user->name }}</td>
+                            <td>{{ number_format($bid->price) . '円' }}</td>
+                            <td>{{ $bid->created_at }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="tw-text-center tw-mb-16">
+                <a href="{{ route('admin.bids.index') }}" class="tw-btn tw-btn-primary tw-btn-wide">
+                    {{ __('全ての入札履歴をみる') }}
+                </a>
+            </div>
             @endif
-        </div>
-    </section>
-    <section class="tw-py-24">
-        <div class="tw-container tw-max-w-screen-xl">
-            <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-16">{{ __('入札者') }}</h2>
+            <!-- ユーザー -->
+            <x-admin-section-title title="ユーザー"></x-admin-section-title>
             @if(count($users) === 0)
-            <p class="tw-text-center">
-                {{ __('入札者のデータがありません。') }}
-            </p>
+            <div class="tw-alert tw-shadow-lg tw-max-w-2xl tw-mx-auto tw-mb-16">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="tw-stroke-info tw-flex-shrink-0 tw-w-6 tw-h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span class="tw-font-bold tw-text-sm">{{ __('ユーザーのデータが見つかりませんでした。') }}</span>
+                </div>
+            </div>
             @else
-            <table class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-w-full tw-mb-16 tw-table-auto">
-                <thead class="tw-border tw-border-b-2">
-                    <tr>
-                        <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('ID') }}</th>
-                        <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('名前') }}</th>
-                        <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('メールアドレス') }}</th>
-                        <th class="tw-px-4 tw-py-2 tw-text-left">{{ __('メールアドレス認証状況') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($users as $user)
-                    <tr>
-                        <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->id }}</td>
-                        <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->name }}</td>
-                        <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->email }}</td>
-                        <td class="tw-px-4 tw-py-2 tw-text-left">{{ $user->hasVerifiedEmail() ? '認証済み' : '未認証' }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <a href="{{ route('admin.users.index') }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full tw-max-w-lg tw-mx-auto">
-                {{ __('全ての入札者をみる') }}
-            </a>
+            <div class="tw-overflow-x-auto tw-w-full tw-mb-8">
+                <table class="tw-table tw-w-full">
+                    <thead>
+                        <tr>
+                            <th>{{ __('ID') }}</th>
+                            <th>{{ __('名前') }}</th>
+                            <th>{{ __('メールアドレス') }}</th>
+                            <th>{{ __('メールアドレス認証') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                        <tr>
+                            <td>{{ $user->id }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->hasVerifiedEmail() ? '認証済み' : '未認証' }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="tw-text-center tw-mb-16">
+                <a href="{{ route('admin.users.index') }}" class="tw-btn tw-btn-primary tw-btn-wide">
+                    {{ __('全てのユーザーをみる') }}
+                </a>
+            </div>
             @endif
-        </div>
-    </section>
-    <section class="tw-py-24">
-        <div class="tw-container tw-max-w-screen-xl">
-            <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-16">{{ __('出品者') }}</h2>
+            <!-- 出品者 -->
+            <x-admin-section-title title="出品者"></x-admin-section-title>
             @if (count($members) === 0)
-            <p class="tw-text-center">
-                {{ __('出品者のデータがありません。') }}
-            </p>
-            @else
-            <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-16">
-                @foreach ($members as $member)
-                <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-                    <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover tw-rounded-t-lg">
-                    <div class="tw-p-6">
-                        <h3 class="tw-text-lg tw-font-semibold">
-                            {{ $member->name }}
-                        </h3>
-                        <p class="tw-mb-4">
-                            {{ mb_substr($member->introduction, 0, 65) . '...' }}
-                        </p>
-                        <a href="{{ route('admin.members.show', $member->id) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
-                    </div>
+            <div class="tw-alert tw-shadow-lg tw-max-w-2xl tw-mx-auto tw-mb-16">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="tw-stroke-info tw-flex-shrink-0 tw-w-6 tw-h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span class="tw-font-bold tw-text-sm">{{ __('出品者のデータが見つかりませんでした。') }}</span>
                 </div>
-                @endforeach
             </div>
-            <a href="{{ route('admin.members.index') }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full tw-max-w-lg tw-mx-auto">
-                {{ __('全ての出品者をみる') }}
-            </a>
+            @else
+            <div class="tw-overflow-x-auto tw-w-full tw-mb-8">
+                <table class="tw-table tw-w-full">
+                    <thead>
+                        <tr>
+                            <th>名前</th>
+                            <th>経歴</th>
+                            <th>自己PR</th>
+                            <th>詳細ページ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($members as $member)
+                        <tr>
+                        <td>
+                            <div class="tw-flex tw-items-center tw-space-x-3">
+                            <div class="tw-avatar">
+                                <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
+                                    <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="tw-font-bold">{{ $member->name }}</div>
+                                <div class="tw-text-sm tw-opacity-50">{{ '企画数：' . count($member->plans) }}</div>
+                            </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tw-text-sm">
+                                {{ $member->career }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tw-text-sm">
+                                {{ $member->introduction }}
+                            </div>
+                        </td>
+                        <th>
+                            <a href="{{ route('admin.members.show', $member->id) }}" class="tw-btn tw-btn-primary tw-btn-sm">
+                                {{ __('詳細ページ') }}
+                            </a>
+                        </th>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="tw-text-center tw-mb-16">
+                <a href="{{ route('admin.members.index') }}" class="tw-btn tw-btn-primary tw-btn-wide">
+                    {{ __('全ての出品者をみる') }}
+                </a>
+            </div>
             @endif
-        </div>
-    </section>
-    <section class="tw-py-24">
-        <div class="tw-container tw-max-w-screen-xl">
-            <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-16">{{ __('企画') }}</h2>
+            <!-- 企画 -->
+            <x-admin-section-title title="企画"></x-admin-section-title>
             @if (count($plans) === 0)
-            <p class="tw-text-center">
-                {{ __('企画のデータがありません。') }}
-            </p>
-            @else
-            <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-16">
-                @foreach ($plans as $plan)
-                <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-                    <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover tw-rounded-t-lg">
-                    <div class="tw-p-6">
-                        <h3 class="tw-text-lg tw-font-semibold">
-                            {{ $plan->title }}
-                        </h3>
-                        <p class="tw-mb-4">{{ mb_substr($plan->description, 0, 65) . '...' }}</p>
-                        <a href="{{ route('admin.plans.show', $plan->id) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
-                    </div>
+            <div class="tw-alert tw-shadow-lg tw-max-w-2xl tw-mx-auto tw-mb-16">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="tw-stroke-info tw-flex-shrink-0 tw-w-6 tw-h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span class="tw-font-bold tw-text-sm">{{ __('企画のデータが見つかりませんでした。') }}</span>
                 </div>
-                @endforeach
             </div>
-            <a href="{{ route('admin.plans.index') }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full tw-max-w-lg tw-mx-auto">
-                {{ __('全ての企画をみる') }}
-            </a>
+            @else
+            <div class="tw-overflow-x-auto tw-w-full tw-mb-8">
+                <table class="tw-table tw-w-full">
+                    <thead>
+                        <tr>
+                            <th>タイトル</th>
+                            <th>説明文</th>
+                            <th>オークション開催日時</th>
+                            <th>オークション終了日時</th>
+                            <th>詳細ページ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($plans as $plan)
+                        <tr>
+                        <td>
+                            <div class="tw-flex tw-items-center tw-space-x-3">
+                            <div class="tw-avatar">
+                                <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
+                                    <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="tw-font-bold">{{ $plan->title }}</div>
+                                <div class="tw-text-sm tw-opacity-50">{{ __('by') }}<a href="{{ route('admin.members.show', $plan->member->id) }}" class="tw-ml-1 tw-underline">{{ $plan->member->name }}</a></div>
+                            </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tw-text-sm">
+                                {{ $plan->description }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tw-text-sm">
+                                {{ $plan->started_at }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tw-text-sm">
+                                {{ $plan->finished_at }}
+                            </div>
+                        </td>
+                        <th>
+                            <a href="{{ route('admin.plans.show', $plan->id) }}" class="tw-btn tw-btn-primary tw-btn-sm">
+                                {{ __('詳細ページ') }}
+                            </a>
+                        </th>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="tw-text-center tw-mb-16">
+                <a href="{{ route('admin.plans.index') }}" class="tw-btn tw-btn-primary tw-btn-wide">
+                    {{ __('全ての企画をみる') }}
+                </a>
+            </div>
             @endif
-        </div>
-    </section>
-    <section class="tw-py-24">
-        <div class="tw-container tw-max-w-screen-xl">
-            <h2 class="tw-text-4xl tw-font-bold tw-text-center tw-mb-16">{{ __('記事') }}</h2>
+            <!-- 記事 -->
+            <x-admin-section-title title="記事"></x-admin-section-title>
             @if (count($articles) === 0)
-            <p class="tw-text-center">
-                {{ __('記事のデータがありません。') }}
-            </p>
-            @else
-            <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-16">
-                @foreach ($articles as $article)
-                <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-                    <img src="{{ $article->thumbnail_url }}" alt="{{ $article->title }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover tw-rounded-t-lg">
-                    <div class="tw-p-6">
-                        <h3 class="tw-text-lg tw-font-semibold">
-                            {{ $article->title }}
-                        </h3>
-                        <p class="tw-mb-4">{{ mb_substr($article->description, 0, 65) . '...' }}</p>
-                        <a href="{{ route('admin.articles.show', $article->id) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
-                    </div>
+            <div class="tw-alert tw-shadow-lg tw-max-w-2xl tw-mx-auto tw-mb-16">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="tw-stroke-info tw-flex-shrink-0 tw-w-6 tw-h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span class="tw-font-bold tw-text-sm">{{ __('記事のデータが見つかりませんでした。') }}</span>
                 </div>
-                @endforeach
             </div>
-            <a href="{{ route('admin.articles.index') }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full tw-max-w-lg tw-mx-auto">
-                {{ __('全ての記事をみる') }}
-            </a>
+            @else
+            <div class="tw-overflow-x-auto tw-w-full tw-mb-8">
+                <table class="tw-table tw-w-full">
+                    <thead>
+                        <tr>
+                            <th>タイトル</th>
+                            <th>説明文</th>
+                            <th>詳細ページ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($articles as $article)
+                        <tr>
+                        <td>
+                            <div class="tw-flex tw-items-center tw-space-x-3">
+                            <div class="tw-avatar">
+                                <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
+                                    <img src="{{ $article->thumbnail_url }}" alt="{{ $article->title }}" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="tw-font-bold">{{ $article->title }}</div>
+                            </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tw-text-sm">
+                                {{ $article->description }}
+                            </div>
+                        </td>
+                        <th>
+                            <a href="{{ route('admin.articles.show', $article->id) }}" class="tw-btn tw-btn-primary tw-btn-sm">
+                                {{ __('詳細ページ') }}
+                            </a>
+                        </th>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="tw-text-center tw-mb-16">
+                <a href="{{ route('admin.articles.index') }}" class="tw-btn tw-btn-primary tw-btn-wide">
+                    {{ __('全ての記事をみる') }}
+                </a>
+            </div>
             @endif
         </div>
     </section>

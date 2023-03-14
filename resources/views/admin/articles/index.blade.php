@@ -1,30 +1,56 @@
 <x-admin-layout>
-    <x-slot name="header">
-        <h1 class="tw-text-xl tw-text-gray-800 tw-leading-tight">
-            {{ __('記事一覧') }}
-        </h1>
-    </x-slot>
-    <div class="tw-py-24 tw-container tw-max-w-screen-xl">
-        @if(count($articles) === 0)
-        <p class="tw-text-center">
-            {{ __('記事のデータがありません。') }}
-        </p>
-        @else
-        <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
-            @foreach ($articles as $article)
-            <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-                <img src="{{ $article->thumbnail_url }}" alt="{{ $article->title }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover tw-rounded-t-lg">
-                <div class="tw-p-6">
-                    <h3 class="tw-text-lg tw-font-semibold">
-                        {{ $article->title }}
-                    </h3>
-                    <p class="tw-mb-4">{{ mb_substr($article->description, 0, 65) . '...' }}</p>
-                    <a href="{{ route('admin.articles.show', $article->id) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-xl">
+            <x-admin-page-title title="全ての記事"></x-admin-page-title>
+            @if(count($articles) === 0)
+            <div class="tw-alert tw-shadow-lg tw-max-w-2xl tw-mx-auto">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="tw-stroke-info tw-flex-shrink-0 tw-w-6 tw-h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span class="tw-font-bold tw-text-sm">{{ __('記事のデータが見つかりませんでした。') }}</span>
                 </div>
             </div>
-            @endforeach
+            @else
+            <div class="tw-overflow-x-auto tw-w-full">
+                <table class="tw-table tw-w-full">
+                    <thead>
+                        <tr>
+                            <th>タイトル</th>
+                            <th>説明文</th>
+                            <th>詳細ページ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($articles as $article)
+                        <tr>
+                        <td>
+                            <div class="tw-flex tw-items-center tw-space-x-3">
+                            <div class="tw-avatar">
+                                <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
+                                    <img src="{{ $article->thumbnail_url }}" alt="{{ $article->title }}" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="tw-font-bold">{{ $article->title }}</div>
+                            </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tw-text-sm">
+                                {{ $article->description }}
+                            </div>
+                        </td>
+                        <th>
+                            <a href="{{ route('admin.articles.show', $article->id) }}" class="tw-btn tw-btn-primary tw-btn-sm">
+                                {{ __('詳細ページ') }}
+                            </a>
+                        </th>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            {{ $articles->links() }}
+            @endif
         </div>
-        {{ $articles->links() }}
-        @endif
-    </div>
+    </section>
 </x-admin-layout>

@@ -1,30 +1,69 @@
 <x-admin-layout>
-    <x-slot name="header">
-        <h1 class="tw-text-xl tw-text-gray-800 tw-leading-tight">
-            {{ __('企画一覧') }}
-        </h1>
-    </x-slot>
-    <div class="tw-py-24 tw-container tw-max-w-screen-xl">
-        @if(count($plans) === 0)
-        <p class="tw-text-center">
-            {{ __('企画のデータがありません。') }}
-        </p>
-        @else
-        <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
-            @foreach ($plans as $plan)
-            <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-                <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover tw-rounded-t-lg">
-                <div class="tw-p-6">
-                    <h3 class="tw-text-lg tw-font-semibold">
-                        {{ $plan->title }}
-                    </h3>
-                    <p class="tw-text-sm tw-text-gray-700 tw-mb-4">by <a href="{{ route('admin.members.show', $plan->member->id) }}" class="tw-underline">{{ $plan->member->name }}</a></p>
-                    <a href="{{ route('admin.plans.show', $plan->id) }}" class="tw-bg-indigo-700 tw-block tw-text-center tw-text-white tw-rounded tw-p-2 tw-w-full">詳細をみる</a>
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-xl">
+            <x-admin-page-title title="全ての企画"></x-admin-page-title>
+            @if(count($plans) === 0)
+            <div class="tw-alert tw-shadow-lg tw-max-w-2xl tw-mx-auto">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="tw-stroke-info tw-flex-shrink-0 tw-w-6 tw-h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span class="tw-font-bold tw-text-sm">{{ __('企画のデータが見つかりませんでした。') }}</span>
                 </div>
             </div>
-            @endforeach
+            @else
+            <div class="tw-overflow-x-auto tw-w-full">
+                <table class="tw-table tw-w-full">
+                    <thead>
+                        <tr>
+                            <th>タイトル</th>
+                            <th>説明文</th>
+                            <th>オークション開催日時</th>
+                            <th>オークション終了日時</th>
+                            <th>詳細ページ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($plans as $plan)
+                        <tr>
+                        <td>
+                            <div class="tw-flex tw-items-center tw-space-x-3">
+                            <div class="tw-avatar">
+                                <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
+                                    <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="tw-font-bold">{{ $plan->title }}</div>
+                                <div class="tw-text-sm tw-opacity-50">{{ __('by') }}<a href="{{ route('admin.members.show', $plan->member->id) }}" class="tw-ml-1 tw-underline">{{ $plan->member->name }}</a></div>
+                            </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tw-text-sm">
+                                {{ $plan->description }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tw-text-sm">
+                                {{ $plan->started_at }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tw-text-sm">
+                                {{ $plan->finished_at }}
+                            </div>
+                        </td>
+                        <th>
+                            <a href="{{ route('admin.plans.show', $plan->id) }}" class="tw-btn tw-btn-primary tw-btn-sm">
+                                {{ __('詳細ページ') }}
+                            </a>
+                        </th>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            {{ $plans->links() }}
+            @endif
         </div>
-        {{ $plans->links() }}
-        @endif
-    </div>
+    </section>
 </x-admin-layout>
