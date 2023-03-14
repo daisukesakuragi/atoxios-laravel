@@ -38,6 +38,6 @@ class ChangeEmailController extends Controller
 
         session()->flash('success', 'メールアドレスを変更しました。');
 
-        return back()->withInput();
+        return back();
     }
 }

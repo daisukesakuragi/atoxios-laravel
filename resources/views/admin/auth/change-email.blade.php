@@ -1,27 +1,25 @@
 <x-admin-layout>
-    <x-slot name="header">
-        <h1 class="tw-text-xl tw-text-gray-800 tw-leading-tight">
-            {{ __('メールアドレス変更') }}
-        </h1>
-    </x-slot>
-    <section class="tw-py-24">
+    <section class="tw-pt-24 tw-pb-16">
         <div class="tw-container tw-max-w-screen-sm">
-            <x-auth-card>
-                <form action="{{ route('admin.update-email') }}" method="POST">
-                    @csrf
-                    <div class="tw-mt-4">
-                        <x-label for="new_email" :value="__('新しいメールアドレス')" />
-                        <x-input id="new_email" value="{{ old('new_email') }}" class="tw-block tw-mt-1 tw-w-full" type="email" name="new_email" required />
-                    </div>
-                    <div class="tw-mt-4">
-                        <x-label for="new_email_confirmation" :value="__('新しいメールアドレス（確認用）')" />
-                        <x-input id="new_email_confirmation" value="{{ old('new_email_confirmation') }}" class="tw-block tw-mt-1 tw-w-full" type="email" name="new_email_confirmation" required />
-                    </div>
-                    <div class="tw-flex tw-items-center tw-justify-end tw-mt-4">
-                        <x-button>{{ __('メールアドレスを変更する') }}</x-button>
-                    </div>
-                </form>
-            </x-auth-card>
+            <x-admin-page-title title="メールアドレス変更"></x-admin-page-title>
+            <form action="{{ route('admin.update-email') }}" method="POST">
+                @csrf
+                <div class="tw-form-control tw-mb-4">
+                    <label class="tw-label">
+                        <span class="tw-label-text">{{ __('新しいメールアドレス') }}</span>
+                    </label>
+                    <input class="tw-input tw-input-bordered tw-w-full" value="{{ old('new_email') }}" type="email" name="new_email" placeholder="新しいメールアドレスを入力してください" required />
+                </div>
+                <div class="tw-form-control tw-mb-8">
+                    <label class="tw-label">
+                        <span class="tw-label-text">{{ __('新しいメールアドレス（確認用）') }}</span>
+                    </label>
+                    <input class="tw-input tw-input-bordered tw-w-full" value="{{ old('new_email_confirmation') }}" type="email" name="new_email_confirmation" placeholder="新しいメールアドレス（確認用）を入力してください" required />
+                </div>
+                <div class="tw-text-center">
+                    <button type="submit" class="tw-btn tw-btn-block tw-btn-primary tw-mb-4">{{ __('メールアドレスを変更する') }}</button>
+                </div>
+            </form>
         </div>
     </section>
 </x-admin-layout>

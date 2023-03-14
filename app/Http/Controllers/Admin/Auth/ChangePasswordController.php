@@ -28,7 +28,7 @@ class ChangePasswordController extends Controller
         }
 
         if ($request->new_password === $request->old_password) {
-            session()->flash("error", "新しいパスワードは既存のパスワードと異なるパスワードを入力してください。");
+            session()->flash("error", "新しいパスワードは既存のパスワードと異なるものを入力してください。");
 
             return back();
         }
