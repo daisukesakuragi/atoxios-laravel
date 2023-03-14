@@ -1,38 +1,54 @@
 <x-admin-layout>
-    <x-slot name="header">
-        <h1 class="tw-text-xl tw-text-gray-800 tw-leading-tight">
-            {{ __('出品者詳細') }}
-        </h1>
-    </x-slot>
-    <div class="tw-py-12 tw-container tw-max-w-screen-md">
-        <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-            <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-                <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" class="tw-w-full tw-h-52 lg:tw-h-96 tw-object-cover tw-rounded-t-lg">
-                <div class="tw-p-6">
-                    <h2 class="tw-text-lg tw-font-semibold">
-                        {{ $member->name }}
-                    </h2>
-                    <div class="tw-mb-3">
-                        <a href="{{ config('app.url') . '/members/' . $member->slug }}" class="tw-font-thin tw-text-indigo-700 tw-text-sm" target="_blank" rel="noopener">
-                            {{ config('app.url') . '/members/' . $member->slug }}
-                        </a>
-                    </div>
-                    <p class="tw-text-sm tw-text-gray-600 tw-mb-3">
-                        {{ $member->career }}
-                    </p>
-                    <p class="tw-text-sm tw-text-gray-600 tw-mb-3">
-                        {{ $member->introduction }}
-                    </p>
-                    <hr class="tw-my-6">
-                    <a href="{{ route('admin.members.edit', $member->id) }}" class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full tw-mb-3">{{ __('編集する') }}</a>
-                    <form method="POST" action="{{ route('admin.members.destroy', $member->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="tw-bg-red-600 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full">
-                            削除する</button>
-                    </form>
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-sm tw-text-center">
+            <div class="tw-avatar tw-max-w-xs tw-mb-8">
+                <div class="tw-w-full tw-rounded-full tw-ring tw-ring-primary tw-ring-offset-base-100 tw-ring-offset-2">
+                    <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" />
                 </div>
             </div>
+            <x-admin-page-title :title="$member->name"></x-admin-page-title>
+            <h2 class="tw-text-left tw-font-bold tw-text-xl tw-mb-4">経歴</h2>
+            <p class="tw-text-sm tw-text-left tw-mb-8">
+                {{ $member->career }}
+            </p>
+            <h2 class="tw-text-left tw-font-bold tw-text-xl tw-mb-4">自己PR</h2>
+            <p class="tw-text-sm tw-text-left tw-mb-8">
+                {{ $member->introduction }}
+            </p>
+            <h2 class="tw-text-left tw-font-bold tw-text-xl tw-mb-4">Facebook</h2>
+            @if($member->facebook_url)
+            <a href="{{ $member->facebook_url }}" class="tw-text-sm tw-block tw-underline tw-text-left tw-mb-8" target="_blank" rel="noopener">{{ $member->facebook_url }}</a>
+            @else
+            <p class="tw-text-sm tw-text-left tw-mb-8">{{ __('なし') }}</p>
+            @endif
+            <h2 class="tw-text-left tw-font-bold tw-text-xl tw-mb-4">Instagram</h2>
+            @if($member->instagram_url)
+            <a href="{{ $member->instagram_url }}" class="tw-text-sm tw-block tw-underline tw-text-left tw-mb-8" target="_blank" rel="noopener">{{ $member->instagram_url }}</a>
+            @else
+            <p class="tw-text-sm tw-text-left tw-mb-8">{{ __('なし') }}</p>
+            @endif
+            <h2 class="tw-text-left tw-font-bold tw-text-xl tw-mb-4">Tiktok</h2>
+            @if($member->tiktok_url)
+            <a href="{{ $member->tiktok_url }}" class="tw-text-sm tw-block tw-underline tw-text-left tw-mb-8" target="_blank" rel="noopener">{{ $member->tiktok_url }}</a>
+            @else
+            <p class="tw-text-sm tw-text-left tw-mb-8">{{ __('なし') }}</p>
+            @endif
+            <h2 class="tw-text-left tw-font-bold tw-text-xl tw-mb-4">Twitter</h2>
+            @if($member->twitter_url)
+            <a href="{{ $member->twitter_url }}" class="tw-text-sm tw-block tw-underline tw-text-left tw-mb-8" target="_blank" rel="noopener">{{ $member->twitter_url }}</a>
+            @else
+            <p class="tw-text-sm tw-text-left tw-mb-8">{{ __('なし') }}</p>
+            @endif
+            <a href="{{ config('app.url') . '/members/' . $member->slug }}" class="tw-btn tw-btn-accent tw-btn-block tw-mb-4" target="_blank" rel="noopener">
+                {{ __('出品者のページを確認する') }}
+            </a>
+            <a href="{{ route('admin.members.edit', $member->id) }}" class="tw-btn tw-btn-info tw-btn-block tw-mb-4">{{ __('編集する') }}</a>
+            <form method="POST" action="{{ route('admin.members.destroy', $member->id) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="tw-btn tw-btn-error tw-btn-block">
+                    {{ __('削除する') }}</button>
+            </form>
         </div>
-    </div>
+    </section>
 </x-admin-layout>

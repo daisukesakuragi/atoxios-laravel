@@ -1,7 +1,7 @@
 <x-guest-layout>
     <section class="tw-pt-24 tw-pb-16">
         <div class="tw-container tw-max-w-screen-sm">
-            <x-page-title title="REGISTER" subtitle="新規登録"></x-page-title>
+            <x-page-title title="新規登録" subtitle="REGISTER"></x-page-title>
             <form method="POST" action="{{ route('register') }}" class="tw-w-full">
                 @csrf
                 <div class="tw-form-control tw-mb-4">

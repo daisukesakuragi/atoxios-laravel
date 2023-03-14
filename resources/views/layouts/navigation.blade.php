@@ -34,7 +34,7 @@
                     </form>
                 </li>
                 @else
-                <li><a href="{{ route('register') }}">{{ __('会員登録') }}</a></li>
+                <li><a href="{{ route('register') }}">{{ __('新規登録') }}</a></li>
                 <li><a href="{{ route('login') }}">{{ __('ログイン') }}</a></li>
                 @endif
             </ul>

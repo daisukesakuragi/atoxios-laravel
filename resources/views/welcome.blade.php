@@ -8,7 +8,7 @@
                 <p class="tw-mb-8">ATOXIOSは人の存在意義に価値を付ける<br>次世代型オークションサービスです。</p>
                 <div class="tw-flex tw-items-center tw-flex-col lg:tw-flex-row tw-justify-center tw-gap-4">
                     <a href="{{ route('register') }}" class="tw-btn tw-btn-primary tw-btn-block lg:tw-btn-wide">新規登録</a>
-                    <a href="{{ route('login') }}" class="tw-btn tw-btn-primary tw-btn-outline tw-btn-block lg:tw-btn-wide">ログイン</a>    
+                    <a href="{{ route('login') }}" class="tw-btn tw-btn-accent tw-btn-block lg:tw-btn-wide">ログイン</a>    
                 </div>
             </div>
         </div>
