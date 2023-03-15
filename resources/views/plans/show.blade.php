@@ -1,68 +1,65 @@
 <x-app-layout>
-    <section class="tw-pt-24 tw-pb-16">
-        <div class="tw-container tw-max-w-screen-sm">
-            <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-mb-20">
-                <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
-                    <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" class="tw-w-full tw-h-52 lg:tw-h-96 tw-object-cover tw-rounded-t-lg">
-                    <div class="tw-p-6">
-                        <h1 class="tw-text-lg tw-font-semibold">
-                            {{ $plan->title }}
-                        </h1>
-                        <p class="tw-text-sm tw-text-gray-700 tw-mb-4">by <a href="{{ route('members.show', $plan->member->slug) }}" class="tw-underline">{{ $plan->member->name }}</a></p>
-                        <p class="tw-text-sm tw-text-gray-600 tw-mb-3">
-                            {{ $plan->description }}
-                        </p>
-                        <p class="tw-text-sm tw-text-gray-600 tw-mb-3">
-                            開催期間: {{ $plan->started_at }} ~ {{ $plan->finished_at }}
-                        </p>
-                        @auth
-                        @if(auth()->user()->email_verified_at)
-                        @if($plan->checkIfPlanIsBiddableByDateTime())
-                        <button x-data="{}" x-on:click="window.livewire.emitTo('bid-confirm-modal', 'show')" class="tw-btn tw-btn-primary tw-btn-block">{{ __('入札する') }}</button>
-                        @else
-                        <p class="tw-bg-indigo-700 tw-text-white tw-block tw-text-center tw-rounded tw-p-2 tw-w-full tw-opacity-50 tw-cursor-not-allowed">入札できません</p>
-                        @endif
-                        @elseif(!auth()->user()->email_verified_at)
-                        <hr class="tw-my-6">
-                        <div class="tw-p-4 tw-text-red-900 tw-bg-red-100 tw-border tw-border-red-200 tw-rounded">
-                            <div class="tw-flex tw-justify-between tw-flex-wrap">
-                                <div class="tw-w-0 tw-flex-1 tw-flex">
-                                    <div class="tw-w-full">
-                                        <p class="tw-font-semibold tw-text-md tw-mb-4">
-                                            {{ __('メールアドレスが認証されていません。') }}
-                                        </p>
-                                        <p class="tw-text-sm tw-mb-2">
-                                            {{__('ご登録いただいたメールアドレスの認証が完了していないため、こちらの企画に入札していただくことができません。')}}
-                                        </p>
-                                        <p class="tw-text-sm tw-mb-2">
-                                            {{ __('お手数ですが、ご登録いただいたメールアドレスに送信されている認証用のメールをご確認いただき、ご登録いただいたメールアドレスの認証を完了してください。') }}
-                                        </p>
-                                        <p class="tw-text-sm tw-mb-6">
-                                            {{ __('もし認証用のメールが届いていない場合は、下記の「メールアドレスを認証する」ボタンをクリックしていただき、認証用のメールを再送させていただくことが可能です。')}}
-                                        </p>
-                                        <form method="POST" action="{{ route('verification.send') }}">
-                                            @csrf
-                                            <a :href="route('verification.send')" onclick="event.preventDefault();
-                                                            this.closest('form').submit();" class="tw-w-full tw-cursor-pointer tw-font-bold tw-inline-flex tw-justify-center tw-rounded tw-border tw-border-transparent tw-shadow-sm tw-px-4 tw-py-2 tw-bg-red-600 tw-text-base tw-text-white">
-                                                {{ __('メールアドレスを認証する') }}
-                                            </a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
-                        @else
-                        <a href="{{ route('login') }}" class="tw-btn tw-btn-primary tw-btn-block">ログインして入札する</a>
-                        @endauth
-                    </div>
+    <section class="tw-hero" style="background-image: url('{{ $plan->eyecatch_img_url }}');">
+        <div class="tw-hero-overlay tw-bg-opacity-60 tw-pt-32 tw-pb-24"></div>
+        <div class="tw-hero-content tw-text-center tw-text-neutral-content tw-pt-32 tw-pb-24">
+            <div>
+                <h1 class="tw-mb-2 tw-text-5xl lg:tw-text-7xl tw-font-bold tw-italic">
+                    {{ $plan->title }}
+                </h1>
+                <div class="tw-flex tw-items-center tw-justify-end tw-gap-2 tw-mb-8">
+                    <span>{{ __('by') }}</span>
+                    <a href="{{ route('members.show', $plan->member->slug)}}" class="tw-underline tw-font-bold">
+                        {{ $plan->member->name }}
+                    </a>
                 </div>
+                <x-bid-button :plan="$plan"></x-bid-button>
             </div>
+        </div>
+    </section>
+    <section class="tw-pt-24 tw-pb-12">
+        <div class="tw-container tw-max-w-screen-sm">
+            <x-section-title title="企画の説明" subtitle="DESCRIPTION"></x-section-title>
+            <p class="tw-text-lg tw-mb-8">
+                {{ $plan->description }}
+            </p>
+            <x-bid-button :plan="$plan"></x-bid-button>
+        </div>
+    </section>
+    <section class="tw-py-12">
+        <div class="tw-container tw-max-w-screen-sm">
+            <x-section-title title="オークション開催期間" subtitle="SCHEDULE"></x-section-title>
+            <div class="tw-overflow-x-auto tw-mb-8">
+                <table class="tw-table tw-w-full">
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{ __('開始日時') }}
+                            </td>
+                            <td>
+                                {{ date('Y/m/d H:i', strtotime($plan->started_at)) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ __('終了日時') }}
+                            </td>
+                            <td>
+                                {{ date('Y/m/d H:i', strtotime($plan->finished_at)) }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <x-bid-button :plan="$plan"></x-bid-button>
+        </div>
+    </section>
+    <section class="tw-py-12">
+        <div class="tw-container tw-max-w-screen-sm">
             <x-section-title title="入札履歴" subtitle="BID HISTORY"></x-section-title>
-            <div class="tw-flex tw-flex-col tw-gap-y-6">
+            <div class="tw-flex tw-flex-col tw-gap-y-6 tw-mb-8">
                 @forelse ($bids as $bid)
                 @if(auth()->check() && $bid->user->id === auth()->user()->id)
-                <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-border-2 tw-border-indigo-700">
+                <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-border-2 tw-border-primary">
                     <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">
                         <div class="tw-p-6">
                             <h3 class="tw-text-lg tw-font-semibold">
@@ -93,9 +90,10 @@
                 </div>
                 @endforelse
             </div>
+            <x-bid-button :plan="$plan"></x-bid-button>
         </div>
-        @auth
-        <livewire:bid-confirm-modal :user="auth()->user()" :plan="$plan" :price="$price" />
-        @endauth
     </section>
+    @auth
+        <livewire:bid-confirm-modal :user="auth()->user()" :plan="$plan" :price="$price" />
+    @endauth
 </x-app-layout>

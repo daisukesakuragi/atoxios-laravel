@@ -23,7 +23,7 @@
                     </label>
                 </div>
                 <div class="tw-text-center">
-                    <button type="submit" class="tw-btn tw-btn-block tw-btn-primary tw-mb-4">{{ __('ログインする') }}</button>
+                    <button type="submit" class="tw-btn tw-btn-block tw-btn-primary tw-mb-6">{{ __('ログインする') }}</button>
                     @if (Route::has('password.request'))
                     <a class="tw-underline tw-text-sm" href="{{ route('password.request') }}">
                         {{ __('パスワードをお忘れですか？') }}

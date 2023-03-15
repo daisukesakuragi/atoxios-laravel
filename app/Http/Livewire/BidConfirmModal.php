@@ -48,9 +48,9 @@ class BidConfirmModal extends Modal
 
                 // Slack::send('ユーザーID: ' . $this->user->id . ' が「' . $this->plan->title . '」に' . $bid->price . '円で入札しました。');
 
-                session()->flash('success', $bid->price . '円での入札に成功しました。');
+                session()->flash('success', number_format($bid->price) . '円での入札に成功しました。');
             } else if (!$is_biddable_by_price) {
-                session()->flash('error', $this->price . '円で入札することができませんでした。最低入札金額が更新された可能性があります。');
+                session()->flash('error', number_format($this->price) . '円で入札することができませんでした。最低入札金額が更新された可能性があります。');
             } else if (!$is_biddable_by_date_time) {
                 session()->flash('error', '現在は入札可能期間外です。');
             } else {

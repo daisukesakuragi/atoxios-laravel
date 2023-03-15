@@ -24,7 +24,7 @@
             <ul tabindex="0" class="tw-menu tw-menu-compact tw-dropdown-content tw-mt-3 tw-p-2 tw-shadow tw-bg-base-100 tw-rounded-box tw-w-52">                
                 @if(Auth::check())
                 <li><a href="{{ route('account.index') }}">{{ __('アカウント') }}</a></li>
-                <li><a href="{{ route('account.showBidHistory') }}">{{ __('入札履歴') }}</a></li>
+                <li><a href="{{ route('account.showBidHistory') }}">{{ __('あなたの入札履歴') }}</a></li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf    

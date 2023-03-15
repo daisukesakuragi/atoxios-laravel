@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="tw-pt-24 tw-pb-16">
         <div class="tw-container tw-max-w-screen-sm">
-            <x-page-title title="入札履歴" subtitle="BID HISTORY"></x-page-title>
+            <x-page-title title="あなたの入札履歴" subtitle="YOUR BID HISTORY"></x-page-title>
             <div class="tw-flex tw-flex-col tw-gap-y-6 tw-mb-12">
                 @forelse ($bids as $bid)
                 <div class="tw-bg-white tw-rounded-lg tw-shadow-lg">

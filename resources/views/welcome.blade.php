@@ -4,11 +4,19 @@
         <div class="tw-hero-overlay tw-bg-opacity-60 tw-pt-32 tw-pb-24"></div>
         <div class="tw-hero-content tw-text-center tw-text-neutral-content tw-pt-32 tw-pb-24">
             <div class="tw-max-w-2xl">
-                <h1 class="tw-mb-6 tw-text-5xl lg:tw-text-7xl tw-font-bold tw-italic">"人に価値を"</h1>
-                <p class="tw-mb-8">ATOXIOSは人の存在意義に価値を付ける<br>次世代型オークションサービスです。</p>
+                <h1 class="tw-mb-6 tw-text-5xl lg:tw-text-7xl tw-font-bold tw-italic">
+                    {{ __('"人に価値を"') }}
+                </h1>
+                <p class="tw-mb-8">
+                    {{ __('ATOXIOSは人の存在意義に価値を付ける') }}<br>{{ __('次世代型オークションサービスです。') }}
+                </p>
                 <div class="tw-flex tw-items-center tw-flex-col lg:tw-flex-row tw-justify-center tw-gap-4">
-                    <a href="{{ route('register') }}" class="tw-btn tw-btn-primary tw-btn-block lg:tw-btn-wide">新規登録</a>
-                    <a href="{{ route('login') }}" class="tw-btn tw-btn-accent tw-btn-block lg:tw-btn-wide">ログイン</a>    
+                    <a href="{{ route('register') }}" class="tw-btn tw-btn-primary tw-btn-block lg:tw-btn-wide">
+                        {{ __('新規登録') }}
+                    </a>
+                    <a href="{{ route('login') }}" class="tw-btn tw-btn-accent tw-btn-block lg:tw-btn-wide">
+                        {{ __('ログイン') }}
+                    </a>
                 </div>
             </div>
         </div>
