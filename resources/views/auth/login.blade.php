@@ -30,6 +30,13 @@
                     </a>
                     @endif
                 </div>
+                @if(count($errors) > 0)
+                <ul class="tw-mt-2">
+                    @foreach ($errors->all() as $error)
+                    <li class="tw-text-error tw-text-sm">{{ $error }}</li>
+                    @endforeach
+                </ul>
+                @endif
             </form>
         </div>
     </section>

@@ -30,13 +30,15 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="tw-font-bold">{{ $article->title }}</div>
+                                <div class="tw-font-bold">
+                                    {{ mb_strlen($article->title) > 15 ? mb_substr($article->title, 0, 15) . '...' : $article->title }}
+                                </div>
                             </div>
                             </div>
                         </td>
                         <td>
                             <div class="tw-text-sm">
-                                {{ $article->description }}
+                                {{ mb_strlen($article->description) > 30 ? mb_substr($article->description, 0, 30) . '...' : $article->description }}
                             </div>
                         </td>
                         <th>

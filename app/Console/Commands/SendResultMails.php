@@ -24,7 +24,7 @@ class SendResultMails extends Command
      *
      * @var string
      */
-    protected $description = '入札期間終了後に、入札金額が高い上位3ユーザーに対して、入札結果を通知するメールを送ります。';
+    protected $description = '入札期間終了後に、入札金額が最も高いユーザーに対して、結果を通知するメールを送ります。';
 
     /**
      * Execute the console command.
@@ -37,6 +37,7 @@ class SendResultMails extends Command
 
         $plans = Plan::with('bids.user')->where('is_sent_result_mail', '=', false)->where('finished_at', '<', $now)->get()->map(function ($query) {
             $query->setRelation('bids', $query->bids->take(1));
+
             return $query;
         });
 

@@ -1,77 +1,70 @@
 <x-admin-layout>
-    <x-slot name="header">
-        <h1 class="tw-text-xl tw-text-gray-800 tw-leading-tight">
-            {{ __('記事編集') }}
-        </h1>
-    </x-slot>
-    <div class="tw-py-12 tw-container">
-        <div class=" tw-bg-white tw-rounded-lg tw-shadow-lg tw-py-6 tw-px-4 lg:tw-px-6 tw-max-w-2xl tw-mx-auto">
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-sm">
+            <x-admin-page-title title="記事の編集"></x-admin-page-title>
             <form action="{{ route('admin.articles.update', $article->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="tw-mb-6">
-                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="slug">
-                        URLスラッグ
+                <div class="tw-form-control tw-mb-4">
+                    <label class="tw-label">
+                        <span class="tw-label-text">{{ __('URLスラッグ') }}</span>
                     </label>
-                    <input
-                        class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline"
-                        id="slug" name="slug" type="text" placeholder="sample-article-1"
-                        value="{{ $article->slug }}">
+                    <input class="tw-input tw-text-sm tw-input-bordered tw-w-full @if($errors->has('slug')) tw-border-error @endif" id="slug" name="slug" type="text" placeholder="sample-plan-1" value="{{ old('slug', $article->slug) }}" />
                     @if ($errors->has('slug'))
-                        <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('slug') }}</p>
+                    <label class="tw-label">
+                        <span class="tw-label-text tw-text-error">{{ $errors->first('slug') }}</span>
+                    </label>
                     @endif
                 </div>
-                <div class="tw-mb-6">
-                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="title">
-                        タイトル
+                <div class="tw-form-control tw-mb-4">
+                    <label class="tw-label">
+                        <span class="tw-label-text">{{ __('タイトル') }}</span>
                     </label>
-                    <input
-                        class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline"
-                        id="title" name="title" type="text" placeholder="Sample Article 1"
-                        value="{{ $article->title }}">
+                    <input class="tw-input tw-text-sm tw-input-bordered tw-w-full @if($errors->has('title')) tw-border-error @endif" id="title" name="title" type="text" placeholder="サンプル記事1" value="{{ old('title', $article->title) }}" />
                     @if ($errors->has('title'))
-                        <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('title') }}</p>
+                    <label class="tw-label">
+                        <span class="tw-label-text tw-text-error">{{ $errors->first('title') }}</span>
+                    </label>
                     @endif
                 </div>
-                <div class="tw-mb-4">
-                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="description">
-                        説明文
+                <div class="tw-form-control tw-mb-4">
+                    <label class="tw-label">
+                        <span class="tw-label-text">{{ __('説明文') }}</span>
                     </label>
-                    <textarea rows="4"
-                        class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline"
-                        id="description" name="description" placeholder="This is a meta description of Sample Article 1.">{{ $article->description }}</textarea>
+                    <textarea class="tw-textarea tw-text-sm tw-textarea-bordered tw-w-full @if($errors->has('description')) tw-border-error @endif" id="description" name="description" placeholder="これがサンプル記事1の説明文です。" value="{{ old('description') }}" rows="4">{{ $article->description }}</textarea>
                     @if ($errors->has('description'))
-                        <p class="tw-text-red-500">*{{ $errors->first('description') }}</p>
-                    @endif
-                </div>
-                <div class="tw-mb-6">
-                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="thumbnail">
-                        サムネイル画像</label>
-                    <img src="{{ $article->thumbnail_url }}" alt="{{ $article->title }}"
-                        class="tw-w-full tw-h-52 lg:tw-h-96 tw-object-cover tw-mb-2">
-                    <input
-                        class="tw-shadow tw-appearance-none tw-border tw-border-gray-700 tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline"
-                        type="file" name="thumbnail" id="thumbnail">
-                    @if ($errors->has('thumbnail'))
-                        <p class="tw-text-red-500 tw-mt-1">*{{ $errors->first('thumbnail') }}</p>
-                    @endif
-                </div>
-                <div class="tw-mb-6">
-                    <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-bold tw-mb-2" for="body">
-                        本文
+                    <label class="tw-label">
+                        <span class="tw-label-text tw-text-error">{{ $errors->first('description') }}</span>
                     </label>
-                    <textarea rows="20"
-                        class="tw-shadow tw-appearance-none tw-border tw-rounded tw-w-full tw-py-2 tw-px-3 tw-text-gray-700 tw-leading-tight focus:tw-outline-none focus:tw-shadow-outline"
-                        id="body" name="body" placeholder="This is a body text of Sample Article 1.">{{ $article->body }}</textarea>
-                    @if ($errors->has('body'))
-                        <p class="tw-text-red-500">*{{ $errors->first('body') }}</p>
                     @endif
                 </div>
-                <button class="tw-bg-indigo-700 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded tw-w-full"
-                    type="submit">
-                    更新する
+                <div class="tw-form-control tw-mb-4">
+                    <label class="tw-label">
+                        <span class="tw-label-text">{{ __('サムネイル画像') }}</span>
+                    </label>
+                    <img src="{{ $article->thumbnail_url }}" alt="{{ $article->title }}" class="tw-w-full tw-h-52 lg:tw-h-64 tw-object-cover tw-mb-4">
+                    <input type="file" class="tw-file-input tw-text-sm tw-file-input-bordered tw-w-full @if($errors->has('thumbnail')) tw-border-error @endif" name="thumbnail" />
+                    @if ($errors->has('thumbnail'))
+                    <label class="tw-label">
+                        <span class="tw-label-text tw-text-error">{{ $errors->first('thumbnail') }}</span>
+                    </label>
+                    @endif
+                </div>
+                <div class="tw-form-control tw-mb-8">
+                    <label class="tw-label">
+                        <span class="tw-label-text">{{ __('本文') }}</span>
+                    </label>
+                    <textarea class="tw-textarea tw-text-sm tw-textarea-bordered tw-w-full @if($errors->has('body')) tw-border-error @endif" id="body" name="body" placeholder="This is a body text of Sample Article 1." value="{{ old('body') }}" rows="16">{{ $article->body }}</textarea>
+                    @if ($errors->has('body'))
+                    <label class="tw-label">
+                        <span class="tw-label-text tw-text-error">{{ $errors->first('body') }}</span>
+                    </label>
+                    @endif
+                </div>
+                <button class="tw-btn tw-btn-info tw-btn-block" type="submit">
+                    {{ __('更新する') }}
                 </button>
             </form>
         </div>
-    </div>
+    </section>
 </x-admin-layout>
