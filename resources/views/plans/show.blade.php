@@ -1,8 +1,11 @@
 <x-app-layout>
+    @auth
+    <livewire:bid-confirm-modal :user="auth()->user()" :plan="$plan" :price="$price" />
+    @endauth
     <section class="tw-hero" style="background-image: url('{{ $plan->eyecatch_img_url }}');">
         <div class="tw-hero-overlay tw-bg-opacity-60 tw-pt-32 tw-pb-24"></div>
         <div class="tw-hero-content tw-text-center tw-text-neutral-content tw-pt-32 tw-pb-24">
-            <div>
+            <div class="tw-max-w-screen-sm tw-mx-auto">
                 <h1 class="tw-mb-2 tw-text-5xl lg:tw-text-7xl tw-font-bold tw-italic">
                     {{ $plan->title }}
                 </h1>
@@ -93,7 +96,4 @@
             <x-bid-button :plan="$plan"></x-bid-button>
         </div>
     </section>
-    @auth
-        <livewire:bid-confirm-modal :user="auth()->user()" :plan="$plan" :price="$price" />
-    @endauth
 </x-app-layout>
