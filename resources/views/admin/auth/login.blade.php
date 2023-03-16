@@ -31,7 +31,7 @@
                     <button type="submit" class="tw-btn tw-btn-block tw-btn-primary tw-mb-4">{{ __('ログインする') }}</button>
                 </div>
                 @if(count($errors) > 0)
-                <ul class="tw-mt-2">
+                <ul class="tw-mt-4 tw-gap-4">
                     @foreach ($errors->all() as $error)
                     <li class="tw-text-error tw-text-sm">{{ $error }}</li>
                     @endforeach
