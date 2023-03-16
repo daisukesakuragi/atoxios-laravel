@@ -1,6 +1,6 @@
 <x-app-layout>
-    <section>
-        <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-sm">
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-sm">
             <x-page-title title="会社概要" subtitle="ABOUT US"></x-page-title>
             <div class="tw-prose-sm lg:tw-prose">
                 <table class="tw-table-auto">
@@ -26,8 +26,12 @@
                             <td>1,000,000円</td>
                         </tr>
                         <tr>
-                            <td>連絡先</td>
-                            <td>電話番号: <a href="tel:03-6823-2457">03-6823-2457</a><br>メールアドレス: <a href="mailto:info@atoxios.com">info@atoxios.com</a></td>
+                            <td>電話番号</td>
+                            <td><a href="tel:03-6823-2457">03-6823-2457</a></td>
+                        </tr>
+                        <tr>
+                            <td>メールアドレス</td>
+                            <td><a href="mailto:info@atoxios.com">info@atoxios.com</a></td>
                         </tr>
                     </tbody>
                 </table>

@@ -1,6 +1,6 @@
 <x-app-layout>
-    <section>
-        <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-sm">
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-sm">
             <x-page-title title="特定商取引法に基づく表示" subtitle="ACT ON SPECIFIED COMMERCIAL TRANSACTIONS"></x-page-title>
             <div class="tw-prose-sm lg:tw-prose">
                 <table class="tw-table-auto">

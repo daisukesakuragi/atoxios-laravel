@@ -1,6 +1,6 @@
 <x-app-layout>
-    <section>
-        <div class="tw-py-16 lg:tw-py-32 tw-container tw-max-w-screen-sm">
+    <section class="tw-pt-24 tw-pb-16">
+        <div class="tw-container tw-max-w-screen-sm">
             <x-page-title title="利用規約" subtitle="TERMS OF USE"></x-page-title>
             <div class="tw-prose-sm lg:tw-prose">
                 <h2>第一章 総則</h2>
