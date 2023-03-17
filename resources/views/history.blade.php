@@ -15,6 +15,22 @@
                     </thead>
                     <tbody>
                         @foreach ($bids as $bid)
+                        @if($bid->plan->trashed())
+                        <tr class="tw-opacity-50">
+                            <td>
+                                {{ mb_strlen($bid->plan->title) > 15 ? mb_substr($bid->plan->title, 0, 15) . '...' : $bid->plan->title }}<br><small class="tw-text-error">{{ __('*こちらの企画は公開が終了しています。') }}</small>
+                            </td>
+                            <td>
+                                {{ number_format($bid->price) . '円' }}
+                            </td>
+                            <td>
+                                {{ date('Y/m/d H:i:s', strtotime($bid->created_at)) }}
+                            </td>
+                            <th>
+                                <a href="{{ route('plans.show', $bid->plan->slug) }}" class="tw-btn tw-btn-primary tw-btn-sm tw-btn-disabled">詳細はこちら</button>
+                            </th>
+                        </tr>
+                        @else
                         <tr>
                             <td>
                                 {{ mb_strlen($bid->plan->title) > 15 ? mb_substr($bid->plan->title, 0, 15) . '...' : $bid->plan->title }}
@@ -29,6 +45,7 @@
                                 <a href="{{ route('plans.show', $bid->plan->slug) }}" class="tw-btn tw-btn-primary tw-btn-sm">詳細はこちら</button>
                             </th>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>                  
                 </table>

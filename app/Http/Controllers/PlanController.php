@@ -46,10 +46,6 @@ class PlanController extends Controller
             $price = intval($bids[0]->price) + $price;
         }
 
-        $plan_status = $plan->generatePlanStatusLabel();
-        $plan_status_label = $plan_status['status_label'];
-        $plan_status_color = $plan_status['status_color'];
-
-        return view('plans.show', compact('plan', 'bids', 'price', 'plan_status_label', 'plan_status_color'));
+        return view('plans.show', compact('plan', 'bids', 'price'));
     }
 }

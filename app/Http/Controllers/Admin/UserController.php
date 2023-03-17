@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::with('bids')->orderBy('created_at', 'desc')->paginate(20);
+        $users = User::withTrashed()->with('bids')->orderBy('created_at', 'desc')->paginate(20);
 
         return view('admin.users.index', compact('users'));
     }

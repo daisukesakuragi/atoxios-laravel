@@ -6,21 +6,20 @@
         <div class="tw-hero-overlay tw-bg-opacity-60 tw-pt-32 tw-pb-24"></div>
         <div class="tw-hero-content tw-text-center tw-text-neutral-content tw-pt-32 tw-pb-24">
             <div class="tw-max-w-screen-sm tw-text-left">
-                <div class="tw-badge {{ $plan_status_color }} tw-badge-lg tw-text-left tw-mb-4">{{ $plan_status_label }}</div>
-                <h1 class="tw-mb-8 tw-text-4xl lg:tw-text-5xl tw-font-bold tw-italic">{{ $plan->title }}</h1>
+                <x-plan-status-badge :plan="$plan"></x-plan-status-badge>
+                <h1 class="tw-mb-8 tw-mt-4 tw-text-4xl lg:tw-text-5xl tw-font-bold">{{ $plan->title }}</h1>
                 <div class="tw-stats tw-shadow tw-w-full tw-text-center tw-mb-8">
                     <div class="tw-stat">
                       <div class="tw-stat-title tw-pt-4">現在の最低入札価格</div>
                       <div class="tw-stat-value">{{ number_format($price) . '円' }}</div>
-                      <div class="tw-stat-desc tw-mb-6 tw-text-error">*最低入札価格以下では入札してただくことはできません。</div>
+                      <div class="tw-stat-desc tw-mb-6 tw-text-error">*最低入札価格以下では入札できません。</div>
                       <x-bid-button :plan="$plan" :price="$price"></x-bid-button>
-                      <a href="#introduction" class="tw-btn tw-btn-primary tw-btn-link">{{ __('企画の詳細はこちら') }}</a>
                     </div>    
                 </div>
             </div>
         </div>
     </section>
-    <section id="introduction" class="tw-pt-24 tw-pb-12">
+    <section class="tw-pt-24 tw-pb-12">
         <div class="tw-container tw-max-w-screen-sm">
             <x-section-title title="この企画について" subtitle="ABOUT THIS PLAN"></x-section-title>
             <p class="tw-text-lg tw-mb-8">

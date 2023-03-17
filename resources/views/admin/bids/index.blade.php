@@ -10,24 +10,44 @@
                 </div>
             </div>
             @else
-            <div class="tw-overflow-x-auto tw-w-full">
+            <div class="tw-overflow-x-auto tw-w-full tw-mb-8">
                 <table class="tw-table tw-w-full">
                     <thead>
                         <tr>
                             <th>{{ __('ID') }}</th>
                             <th>{{ __('入札者名') }}</th>
+                            <th>{{ __('入札企画名') }}</th>
                             <th>{{ __('入札金額') }}</th>
                             <th>{{ __('入札日時') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($bids as $bid)
-                        <tr>
+                        @if($bid->plan->trashed())
+                        <tr class="tw-opacity-50">
                             <td>{{ $bid->id }}</td>
                             <td>{{ $bid->user->name }}</td>
+                            <td>{{ $bid->plan->title }}<br><small class="tw-text-error">{{ __('*こちらの企画は論理削除されています。') }}</small></td>
                             <td>{{ number_format($bid->price) . '円' }}</td>
                             <td>{{ $bid->created_at }}</td>
                         </tr>
+                        @elseif($bid->user->trashed())
+                        <tr class="tw-opacity-50">
+                            <td>{{ $bid->id }}</td>
+                            <td>{{ $bid->user->name }}<br><small class="tw-text-error">{{ __('*こちらのユーザーは退会しています。') }}</small></td>
+                            <td>{{ $bid->plan->title }}</td>
+                            <td>{{ number_format($bid->price) . '円' }}</td>
+                            <td>{{ $bid->created_at }}</td>
+                        </tr>
+                        @else
+                        <tr>
+                            <td>{{ $bid->id }}</td>
+                            <td>{{ $bid->user->name }}</td>
+                            <td>{{ $bid->plan->title }}</td>
+                            <td>{{ number_format($bid->price) . '円' }}</td>
+                            <td>{{ $bid->created_at }}</td>
+                        </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

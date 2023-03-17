@@ -14,10 +14,10 @@ class DashboardController extends Controller
     public function index()
     {
         $articles = Article::limit(3)->orderBy('created_at', 'desc')->get();
-        $members = Member::limit(3)->orderBy('created_at', 'desc')->get();
-        $plans = Plan::limit(3)->orderBy('created_at', 'desc')->get();
-        $users = User::limit(10)->orderBy('created_at', 'desc')->get();
-        $bids = Bid::limit(10)->orderBy('created_at', 'desc')->get();
+        $members = Member::withTrashed()->limit(3)->orderBy('created_at', 'desc')->get();
+        $plans = Plan::withTrashed()->limit(3)->orderBy('created_at', 'desc')->get();
+        $users = User::withTrashed()->limit(10)->orderBy('created_at', 'desc')->get();
+        $bids = Bid::withTrashed()->with('plan')->limit(10)->orderBy('created_at', 'desc')->get();
 
         return view('admin.dashboard', compact('articles', 'members', 'plans', 'users', 'bids'));
     }

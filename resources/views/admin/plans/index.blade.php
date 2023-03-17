@@ -23,7 +23,8 @@
                     </thead>
                     <tbody>
                         @foreach ($plans as $plan)
-                        <tr>
+                        @if($plan->trashed())
+                        <tr class="tw-opacity-50">
                             <td>
                                 <div class="tw-flex tw-items-center tw-space-x-3">
                                 <div class="tw-avatar">
@@ -32,10 +33,43 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="tw-font-bold">
+                                    {{ mb_strlen($plan->title) > 15 ? mb_substr($plan->title, 0, 15) . '...' : $plan->title }}<br><small class="tw-text-error">{{ __('*こちらの企画は論理削除されています。') }}</small>
+                                </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tw-text-sm">
+                                    {{ mb_strlen($plan->description) > 30 ? mb_substr($plan->description, 0, 30) . '...' : $plan->description }}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tw-text-sm">
+                                    {{ $plan->started_at }}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tw-text-sm">
+                                    {{ $plan->finished_at }}
+                                </div>
+                            </td>
+                            <th>
+                                <a href="{{ route('admin.plans.show', $plan->id) }}" class="tw-btn tw-btn-primary tw-btn-disabled tw-btn-sm">
+                                    {{ __('詳細ページ') }}
+                                </a>
+                            </th>
+                        </tr>
+                        @else
+                        <tr>
+                            <td>
+                                <div class="tw-flex tw-items-center tw-space-x-3">
+                                    <div class="tw-avatar">
+                                        <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
+                                            <img src="{{ $plan->eyecatch_img_url }}" alt="{{ $plan->title }}" />
+                                        </div>
+                                    </div>
+                                    <div>
                                         {{ mb_strlen($plan->title) > 15 ? mb_substr($plan->title, 0, 15) . '...' : $plan->title }}
                                     </div>
-                                </div>
                                 </div>
                             </td>
                             <td>
@@ -59,6 +93,7 @@
                                 </a>
                             </th>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

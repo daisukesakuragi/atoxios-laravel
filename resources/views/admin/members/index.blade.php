@@ -22,19 +22,48 @@
                     </thead>
                     <tbody>
                         @foreach ($members as $member)
+                        @if($member->trashed())
+                        <tr class="tw-opacity-50">
+                            <td>
+                                <div class="tw-flex tw-items-center tw-space-x-3">
+                                <div class="tw-avatar">
+                                    <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
+                                        <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" />
+                                    </div>
+                                </div>
+                                <div>
+                                    {{ $member->name }}<br><small class="tw-text-error">{{ __('*こちらの出品者は論理削除されています。') }}</small>
+                                </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tw-text-sm">
+                                    {{ mb_strlen($member->career) > 30 ? mb_substr($member->career, 0, 30) . '...' : $member->career }}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="tw-text-sm">
+                                    {{ mb_strlen($member->introduction) > 30 ? mb_substr($member->introduction, 0, 30) . '...' : $member->introduction }}
+                                </div>
+                            </td>
+                            <th>
+                                <a href="{{ route('admin.members.show', $member->id) }}" class="tw-btn tw-btn-primary tw-btn-disabled tw-btn-sm">
+                                    {{ __('詳細ページ') }}
+                                </a>
+                            </th>
+                        </tr>
+                        @else
                         <tr>
                             <td>
                                 <div class="tw-flex tw-items-center tw-space-x-3">
-                                    <div class="tw-avatar">
-                                        <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
-                                            <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" />
-                                        </div>
+                                <div class="tw-avatar">
+                                    <div class="tw-mask tw-mask-squircle tw-w-12 tw-h-12">
+                                        <img src="{{ $member->profile_img_url }}" alt="{{ $member->name }}" />
                                     </div>
-                                    <div>
-                                        <div class="tw-font-bold">
-                                            {{ mb_strlen($member->name) > 15 ? mb_substr($member->name, 0, 15) . '...' : $member->name }}
-                                        </div>
-                                    </div>
+                                </div>
+                                <div>
+                                    {{ $member->name }}
+                                </div>
                                 </div>
                             </td>
                             <td>
@@ -53,6 +82,7 @@
                                 </a>
                             </th>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

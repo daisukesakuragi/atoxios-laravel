@@ -7,6 +7,7 @@ use App\Http\Requests\StorePlanRequest;
 use App\Http\Requests\UpdatePlanRequest;
 use App\Models\Member;
 use App\Models\Plan;
+use Carbon\Carbon;
 use Cloudinary;
 use Exception;
 use Illuminate\Support\Facades\Log;
@@ -15,7 +16,7 @@ class PlanController extends Controller
 {
     public function index()
     {
-        $plans = Plan::paginate(9);
+        $plans = Plan::withTrashed()->paginate(9);
 
         return view('admin.plans.index', compact('plans'));
     }
@@ -117,6 +118,16 @@ class PlanController extends Controller
     {
         try {
             $plan = Plan::findOrFail($id);
+            $started_at = new Carbon($plan->started_at);
+            $finished_at = new Carbon($plan->finished_at);
+            $now = new Carbon();
+
+            if ($now->between($started_at, $finished_at)) {
+                session()->flash('error', 'こちらの企画は現在開催中のため削除できません。');
+
+                return back();
+            }
+
             $plan->delete();
 
             session()->flash('success', '企画を削除しました。');

@@ -22,12 +22,21 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
+                        @if($user->trashed())
+                        <tr class="tw-opacity-50">
+                            <td>{{ $user->id }}<br><small class="tw-text-error">{{ __('*こちらのユーザーは退会しています。') }}</small></td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->hasVerifiedEmail() ? '認証済み' : '未認証' }}</td>
+                        </tr>
+                        @else
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->hasVerifiedEmail() ? '認証済み' : '未認証' }}</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>
