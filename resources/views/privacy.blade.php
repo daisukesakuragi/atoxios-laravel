@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="tw-pt-24 tw-pb-16">
         <div class="tw-container tw-max-w-screen-sm">
-            <x-page-title title="プライバシーポリシー" subtitle="Privacy Policy"></x-page-title>
+            <x-page-title title="プライバシーポリシー" subtitle="PRIVACY POLICY"></x-page-title>
             <div class="tw-prose-sm lg:tw-prose">
                 <p>ATOXIOS株式会社は、お客様及び取引先の皆さま（以下本章で「お客様等」といいます）のプライバシーに関連する情報を取り扱う際は、下記の基本方針（プライバシーポリシー）に基づきます。</p>
                 <p>弊社が運営する当該サービス（以下あわせて「本サービス」といいます）のご利用のため、下記の「プライバシーポリシー」をご参照くださいませ。</p>
