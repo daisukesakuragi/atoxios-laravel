@@ -8,15 +8,17 @@ use Illuminate\View\Component;
 class BidButton extends Component
 {
     public Plan $plan;
+    public int $price;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(Plan $plan)
+    public function __construct(Plan $plan, int $price)
     {
         $this->plan = $plan;
+        $this->price = $price;
     }
 
     /**

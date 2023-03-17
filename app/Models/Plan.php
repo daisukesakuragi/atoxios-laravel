@@ -64,4 +64,28 @@ class Plan extends Model
 
         return true;
     }
+
+    public function generatePlanStatusLabel(): array
+    {
+        $started_at = new Carbon($this->started_at);
+        $finished_at = new Carbon($this->finished_at);
+        $now = new Carbon();
+
+        if ($now->lt($started_at)) {
+            return [
+                'status_label' => '近日開催！',
+                'status_color' => 'tw-badge-info'
+            ];
+        } else if ($now->between($started_at, $finished_at)) {
+            return [
+                'status_label' => '開催中です',
+                'status_color' => 'tw-badge-error'
+            ];
+        } else if ($now->gt($finished_at)) {
+            return [
+                'status_label' => '終了しました',
+                'status_color' => 'tw-badge-accent'
+            ];
+        }
+    }
 }

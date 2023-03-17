@@ -16,7 +16,7 @@
     @endguest
     <section class="tw-pt-24 tw-pb-16 tw-bg-base-100 tw-text-base-content">
         <div class="tw-container tw-max-w-screen-xl">
-            <x-section-title title="MEMBERS" subtitle="出品者"></x-section-title>
+            <x-section-title title="出品者" subtitle="MEMBERS"></x-section-title>
             <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-4 tw-gap-8 lg:tw-gap-16 tw-mb-12">
                 @foreach ($members as $member)
                 <x-member-card :member="$member"></x-member-card>
@@ -27,7 +27,7 @@
     </section>
     <section class="tw-py-8 tw-bg-base-100 tw-text-base-content">
         <div class="tw-container tw-max-w-screen-xl">
-            <x-section-title title="PLANS" subtitle="企画"></x-section-title>
+            <x-section-title title="企画" subtitle="PLANS"></x-section-title>
             <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
                 @foreach ($plans as $plan)
                 <x-plan-card :plan="$plan"></x-plan-card>
@@ -38,7 +38,7 @@
     </section>
     <section class="tw-py-8 tw-bg-base-100 tw-text-base-content">
         <div class="tw-container tw-max-w-screen-xl">
-            <x-section-title title="ARTICLES" subtitle="記事"></x-section-title>
+            <x-section-title title="記事" subtitle="ARTICLES"></x-section-title>
             <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-6 tw-mb-12">
                 @foreach ($articles as $article)
                 <x-article-card :article="$article"></x-article-card>

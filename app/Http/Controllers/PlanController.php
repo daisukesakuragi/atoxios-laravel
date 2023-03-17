@@ -25,8 +25,10 @@ class PlanController extends Controller
 
     public function show($slug)
     {
-        // TODO: ここで落札者のみに表示するカラムのデータを取得対象から外すようにする
-        $plan = Plan::with('bids')->where('slug', $slug)->firstOrFail();
+        $plan = Plan::with('bids')
+            ->select('id', 'member_id', 'slug', 'title', 'eyecatch_img_id', 'eyecatch_img_url', 'description', 'started_at', 'finished_at')
+            ->where('slug', $slug)
+            ->firstOrFail();
 
         SEOTools::setTitle($plan->title);
         SEOTools::setDescription($plan->description);
@@ -38,12 +40,16 @@ class PlanController extends Controller
 
         $bids = $plan->bids()->withTrashed()->limit(10)->get();
 
+        $price = intval(config('app.price_diff'));
+
         if ($bids && count($bids) > 0) {
-            $price = intval($bids[0]->price) + config('app.price_diff');
-        } else {
-            $price = config('app.price_diff');
+            $price = intval($bids[0]->price) + $price;
         }
 
-        return view('plans.show', compact('plan', 'bids', 'price'));
+        $plan_status = $plan->generatePlanStatusLabel();
+        $plan_status_label = $plan_status['status_label'];
+        $plan_status_color = $plan_status['status_color'];
+
+        return view('plans.show', compact('plan', 'bids', 'price', 'plan_status_label', 'plan_status_color'));
     }
 }

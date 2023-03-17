@@ -26,7 +26,7 @@
                                 {{ date('Y/m/d H:i:s', strtotime($bid->created_at)) }}
                             </td>
                             <th>
-                                <button class="tw-btn tw-btn-primary tw-btn-sm">詳細はこちら</button>
+                                <a href="{{ route('plans.show', $bid->plan->slug) }}" class="tw-btn tw-btn-primary tw-btn-sm">詳細はこちら</button>
                             </th>
                         </tr>
                         @endforeach
