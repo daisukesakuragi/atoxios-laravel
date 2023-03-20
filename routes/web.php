@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\MemberController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\TermsOfUseController;
@@ -20,6 +21,8 @@ Route::get('/terms-of-use', [TermsOfUseController::class, 'index'])->name('terms
 Route::get('/privacy', [PrivacyController::class, 'index'])->name('privacy');
 
 Route::get('/tokushoho', [TokushohoController::class, 'index'])->name('tokushoho');
+
+Route::get('/maintenance', [MaintenanceController::class, 'index'])->name('maintenance');
 
 Route::group(['prefix' => 'articles', 'as' => 'articles.'], function () {
     Route::get('/', [ArticleController::class, 'index'])->name('index');
