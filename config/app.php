@@ -18,6 +18,7 @@ return [
         'driver' => 'file',
         // 'store'  => 'redis',
     ],
+    'maintenance_mode'   => env('MAINTENANCE_MODE', false),
     'slack_webhook_url' => env('SLACK_WEBHOOK_URL'),
     'slack_channel' => env('SLACK_CHANNEL'),
     'slack_sender_name' => env('SLACK_SENDER_NAME'),

@@ -6,7 +6,7 @@
                 <p class="tw-mb-2">
                     <time>{{ date('Y/m/d', strtotime($article->created_at)) }}</time>
                 </p>
-                <h1 class="tw-mb-4 tw-text-4xl lg:tw-text-5xl tw-font-bold tw-italic">{{ $article->title }}</h1>
+                <h1 class="tw-mb-4 tw-text-4xl lg:tw-text-5xl tw-font-bold">{{ $article->title }}</h1>
                 <p class="tw-mb-12">{{ $article->description }}</p>
                 <a href="#body" class="tw-btn tw-btn-primary tw-btn-block">{{ __('詳しくはこちら') }}</a>
             </div>
