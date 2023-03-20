@@ -15,7 +15,6 @@
 
 <body class="tw-font-sans tw-antialiased tw-bg-base-100 tw-relative">
     @include('layouts.navigation')
-    @include('layouts.notification')
     <main class="tw-relative">
         <section class="tw-hero tw-bg-base-200">
             <div class="tw-hero-content tw-text-center tw-pt-32 tw-pb-24">
