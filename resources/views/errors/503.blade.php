@@ -14,21 +14,21 @@
 </head>
 
 <body class="tw-font-sans tw-antialiased tw-bg-base-100 tw-relative">
+    @include('layouts.navigation')
+    @include('layouts.notification')
     <main class="tw-relative">
-        <section class="tw-pt-24 tw-pb-16">
-            <div class="tw-container tw-max-w-screen-sm">
-                <x-page-title title="メンテナンス中" subtitle="UNDERGOING MEINTENANCE"></x-page-title>
-                <div class="tw-prose-sm lg:tw-prose">
-                    <p>
-                        {{ __('ただいまメンテナンスのため一時サービスを停止しております。') }}
-                    </p>
-                    <p>
-                        {{ __('大変ご不便をおかけいたしますが、今しばらくお待ちください。') }}    
-                    </p>
+        <section class="tw-hero tw-bg-base-200">
+            <div class="tw-hero-content tw-text-center tw-pt-32 tw-pb-24">
+                <div class="tw-max-w-screen-sm">
+                    <h1 class="tw-text-4xl lg:tw-text-5xl tw-font-bold tw-mb-8">{{ __('503 Service Unavailable') }}</h1>
+                    <p class="tw-mb-4 tw-text-left">{{ __('ただいまメンテナンスのため一時サービスを停止しております。') }}</p>
+                    <p class="tw-text-left">{{ __('大変ご不便をおかけいたしますが、今しばらくお待ちください。') }}</p>
                 </div>
             </div>
-        </section>    
+        </section>
     </main>
+    @include('layouts.footer')
+    @livewireScripts
 </body>
 
 </html>
