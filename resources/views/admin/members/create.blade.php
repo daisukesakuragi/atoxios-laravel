@@ -30,7 +30,7 @@
                     <label class="tw-label">
                         <span class="tw-label-text">{{ __('経歴') }}</span>
                     </label>
-                    <textarea class="tw-textarea tw-text-sm tw-textarea-bordered tw-w-full @if($errors->has('career')) tw-border-error @endif" id="career" name="career" placeholder="これが私の経歴です。" value="{{ old('career') }}" rows="8"></textarea>
+                    <textarea class="tw-textarea tw-text-sm tw-textarea-bordered tw-w-full @if($errors->has('career')) tw-border-error @endif" id="career" name="career" placeholder="これが私の経歴です。" rows="8">{{ old('career') }}</textarea>
                     @if ($errors->has('career'))
                     <label class="tw-label">
                         <span class="tw-label-text tw-text-error">{{ $errors->first('career') }}</span>
@@ -41,7 +41,7 @@
                     <label class="tw-label">
                         <span class="tw-label-text">{{ __('自己PR') }}</span>
                     </label>
-                    <textarea class="tw-textarea tw-text-sm tw-textarea-bordered tw-w-full @if($errors->has('introduction')) tw-border-error @endif" id="introduction" name="introduction" placeholder="これが私の自己PRです。" value="{{ old('introduction') }}" rows="8"></textarea>
+                    <textarea class="tw-textarea tw-text-sm tw-textarea-bordered tw-w-full @if($errors->has('introduction')) tw-border-error @endif" id="introduction" name="introduction" placeholder="これが私の自己PRです。" rows="8">{{ old('introduction') }}</textarea>
                     @if ($errors->has('introduction'))
                     <label class="tw-label">
                         <span class="tw-label-text tw-text-error">{{ $errors->first('introduction') }}</span>

@@ -61,7 +61,7 @@
                     <label class="tw-label">
                         <span class="tw-label-text">{{ __('説明文') }}</span>
                     </label>
-                    <textarea class="tw-textarea tw-text-sm tw-textarea-bordered tw-w-full @if($errors->has('description')) tw-border-error @endif" id="description" name="description" placeholder="これがサンプル企画1の説明文です。" value="{{ old('description') }}" rows="8"></textarea>
+                    <textarea class="tw-textarea tw-text-sm tw-textarea-bordered tw-w-full @if($errors->has('description')) tw-border-error @endif" id="description" name="description" placeholder="これがサンプル企画1の説明文です。" rows="8">{{ old('description') }}</textarea>
                     @if ($errors->has('description'))
                     <label class="tw-label">
                         <span class="tw-label-text tw-text-error">{{ $errors->first('description') }}</span>

@@ -57,6 +57,8 @@ class BidConfirmModal extends Modal
                 session()->flash('error', '入札に失敗しました。申し訳ございませんが、少し時間を置いてから再度入札してください。');
             }
 
+            request()->session()->regenerateToken();
+
             return redirect()->route('plans.show', $this->plan->slug);
         } catch (Exception $e) {
             Log::error($e);
