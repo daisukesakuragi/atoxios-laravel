@@ -1,12 +1,10 @@
 <x-app-layout>
-    <section class="tw-hero" style="background-image: url('https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
-        <div class="tw-hero-overlay tw-bg-opacity-60 tw-pt-32 tw-pb-24"></div>
-        <div class="tw-hero-content tw-text-center tw-text-neutral-content tw-pt-32 tw-pb-24">
-            <div class="tw-max-w-2xl">
-                <h1 class="tw-mb-6 tw-text-5xl lg:tw-text-7xl tw-font-bold tw-italic">{{ __('"人に価値を"') }}</h1>
-                <p>{{ __('ATOXIOSは人の存在意義に価値を付ける') }}<br>{{ __('次世代型オークションサービスです。') }}</p>
+    <section class="tw-hero">
+        <div class="tw-hero-content tw-text-center tw-pt-32 tw-pb-24">
+            <div class="tw-text-center">
+                <h1 class="tw-text-6xl lg:tw-text-9xl tw-font-bold tw-text-base-content">{{ __('ATOXIOS') }}</h1>
                 @guest
-                <div class="tw-flex tw-items-center tw-flex-col lg:tw-flex-row tw-justify-center tw-gap-4 tw-mt-8">
+                <div class="tw-flex tw-items-center tw-flex-col lg:tw-flex-row tw-justify-center tw-gap-4 tw-mt-16">
                     <a href="{{ route('register') }}" class="tw-btn tw-btn-primary tw-btn-block lg:tw-btn-wide">{{ __('新規登録') }}</a>
                     <a href="{{ route('login') }}" class="tw-btn tw-btn-accent tw-btn-block lg:tw-btn-wide">{{ __('ログイン') }}</a>
                 </div>
