@@ -63,6 +63,17 @@
                 </div>
                 <div class="tw-form-control tw-mb-4">
                     <label class="tw-label">
+                        <span class="tw-label-text">{{ __('Facebook') }}</span>
+                    </label>
+                    <input class="tw-input tw-text-sm tw-input-bordered tw-w-full @if($errors->has('facebook_url')) tw-border-error @endif" id="facebook_url" name="facebook_url" type="text" placeholder="https://facebook.com/sample-member-1" value="{{ old('facebook_url', $member->facebook_url) }}" />
+                    @if ($errors->has('facebook_url'))
+                    <label class="tw-label">
+                        <span class="tw-label-text tw-text-error">{{ $errors->first('facebook_url') }}</span>
+                    </label>
+                    @endif
+                </div>
+                <div class="tw-form-control tw-mb-4">
+                    <label class="tw-label">
                         <span class="tw-label-text">{{ __('Instagram') }}</span>
                     </label>
                     <input class="tw-input tw-text-sm tw-input-bordered tw-w-full @if($errors->has('instagram_url')) tw-border-error @endif" id="instagram_url" name="instagram_url" type="text" placeholder="https://instagram.com/sample-member-1" value="{{ old('instagram_url', $member->instagram_url) }}" />

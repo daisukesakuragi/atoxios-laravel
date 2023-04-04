@@ -11,9 +11,9 @@
                     </label>
                     <select class="tw-select tw-select-bordered" name="reason">
                         <option value="">選択してください</option>
-                        <option value="0">理由1</option>
-                        <option value="1">理由2</option>
-                        <option value="2">理由3</option>
+                        <option value="0">対談してみたい人がいなかった</option>
+                        <option value="1">使う前のイメージと違った</option>
+                        <option value="2">その他</option>
                     </select>
                 </div>
                 <div class="tw-form-control tw-mb-8">

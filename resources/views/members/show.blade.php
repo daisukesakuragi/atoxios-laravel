@@ -23,19 +23,6 @@
                         </svg>
                     </span>
                     @endif
-                    @if($member->twitter_url)
-                    <a class="tw-cursor-pointer" href="{{ $member->twitter_url }}" target="_blank" rel="noopener">
-                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="tw-w-8 tw-h-8" viewBox="0 0 24 24">
-                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                        </svg>
-                    </a>
-                    @else
-                    <span class="tw-cursor-not-allowed tw-opacity-50">
-                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="tw-w-8 tw-h-8" viewBox="0 0 24 24">
-                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                        </svg>
-                    </span>
-                    @endif
                     @if($member->instagram_url)
                     <a class="tw-cursor-pointer" href="{{ $member->instagram_url }}" target="_blank" rel="noopener">
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="tw-w-8 tw-h-8" viewBox="0 0 24 24">
@@ -51,6 +38,19 @@
                         </svg>
                     </span>
                     @endif
+                    @if($member->twitter_url)
+                    <a class="tw-cursor-pointer" href="{{ $member->twitter_url }}" target="_blank" rel="noopener">
+                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="tw-w-8 tw-h-8" viewBox="0 0 24 24">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                        </svg>
+                    </a>
+                    @else
+                    <span class="tw-cursor-not-allowed tw-opacity-50">
+                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="tw-w-8 tw-h-8" viewBox="0 0 24 24">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                        </svg>
+                    </span>
+                    @endif
                     @if($member->tiktok_url)
                     <a class="tw-cursor-pointer" href="{{ $member->tiktok_url }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="tw-w-8 tw-h-8" viewBox="0 0 16 16"> <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" fill="white"></path></svg>
@@ -58,6 +58,33 @@
                     @else
                     <span class="tw-cursor-not-allowed tw-opacity-50">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="tw-w-8 tw-h-8" viewBox="0 0 16 16"> <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" fill="white"></path></svg>
+                    </span>
+                    @endif
+                    @if($member->youtube_url)
+                    <a class="tw-cursor-pointer" href="{{ $member->youtube_url }}">
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="tw-h-8 tw-w-8 tw-ml-2"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+                        ></path>
+                      </svg>
+                    </a>
+                    @else
+                    <span class="tw-cursor-not-allowed tw-opacity-50">
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="tw-h-8 tw-w-8 tw-ml-2"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        >
+                            <path
+                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+                            ></path>
+                        </svg>                    
                     </span>
                     @endif
                 </div>

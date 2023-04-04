@@ -46,6 +46,7 @@ class MemberController extends Controller
                 'introduction' => $request->introduction,
                 'profile_img_id' => $profile_img_id,
                 'profile_img_url' => $profile_img_url,
+                'facebook_url' => $request->facebook_url,
                 'instagram_url' => $request->instagram_url,
                 'tiktok_url' => $request->tiktok_url,
                 'twitter_url' => $request->twitter_url,
@@ -91,6 +92,7 @@ class MemberController extends Controller
                 $member->profile_img_url = $profile_img_url;
             }
 
+            $member->facebook_url = $request->facebook_url;
             $member->instagram_url = $request->instagram_url;
             $member->tiktok_url = $request->tiktok_url;
             $member->twitter_url = $request->twitter_url;

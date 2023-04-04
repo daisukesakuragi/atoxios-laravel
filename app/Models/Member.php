@@ -21,6 +21,7 @@ class Member extends Model
         'tiktok_url',
         'twitter_url',
         'youtube_url',
+        'facebook_url',
     ];
 
     public function plans()

@@ -27,15 +27,20 @@
             @else
             <p class="tw-text-sm tw-text-left tw-mb-8">{{ __('なし') }}</p>
             @endif
+            <h2 class="tw-text-left tw-font-bold tw-text-xl tw-mb-4">Twitter</h2>
+            @if($member->twitter_url)
+            <a href="{{ $member->twitter_url }}" class="tw-text-sm tw-block tw-underline tw-text-left tw-mb-8" target="_blank" rel="noopener">{{ $member->twitter_url }}</a>
+            @else
+            <p class="tw-text-sm tw-text-left tw-mb-8">{{ __('なし') }}</p>
+            @endif
             <h2 class="tw-text-left tw-font-bold tw-text-xl tw-mb-4">Tiktok</h2>
             @if($member->tiktok_url)
             <a href="{{ $member->tiktok_url }}" class="tw-text-sm tw-block tw-underline tw-text-left tw-mb-8" target="_blank" rel="noopener">{{ $member->tiktok_url }}</a>
             @else
             <p class="tw-text-sm tw-text-left tw-mb-8">{{ __('なし') }}</p>
             @endif
-            <h2 class="tw-text-left tw-font-bold tw-text-xl tw-mb-4">Twitter</h2>
-            @if($member->twitter_url)
-            <a href="{{ $member->twitter_url }}" class="tw-text-sm tw-block tw-underline tw-text-left tw-mb-8" target="_blank" rel="noopener">{{ $member->twitter_url }}</a>
+            @if($member->youtube_url)
+            <a href="{{ $member->youtube_url }}" class="tw-text-sm tw-block tw-underline tw-text-left tw-mb-8" target="_blank" rel="noopener">{{ $member->youtube_url }}</a>
             @else
             <p class="tw-text-sm tw-text-left tw-mb-8">{{ __('なし') }}</p>
             @endif
