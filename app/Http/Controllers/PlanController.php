@@ -18,7 +18,7 @@ class PlanController extends Controller
         SEOTools::setCanonical(url()->current());
         SEOTools::jsonLd()->addImage(url('/images/ogp.jpg'));
 
-        $plans = Plan::paginate(9);
+        $plans = Plan::latest('created_at')->paginate(9);
 
         return view('plans.index', compact('plans'));
     }

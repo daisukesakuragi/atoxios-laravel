@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Mail\BidResult;
 use App\Models\Plan;
+use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -33,32 +34,43 @@ class SendResultMails extends Command
      */
     public function handle()
     {
-        $now = new Carbon();
+        try {
+            $now = new Carbon();
 
-        $plans = Plan::with('bids.user')->where('is_sent_result_mail', '=', false)->where('finished_at', '<', $now)->get()->map(function ($query) {
-            $query->setRelation('bids', $query->bids->take(1));
+            $plans = Plan::with('bids.user')->where('is_sent_result_mail', '=', false)->where('finished_at', '<', $now)->get()->map(function ($query) {
+                $query->setRelation('bids', $query->bids->take(1));
 
-            return $query;
-        });
+                return $query;
+            });
 
-        if (count($plans) === 0) {
-            Slack::send('入札結果通知メールの送信対象となる企画は見つかりませんでした。');
+            if (count($plans) === 0) {
+                Slack::send('入札結果通知メールの送信対象となる企画は見つかりませんでした。');
+
+                return 0;
+            }
+
+            foreach ($plans as $plan) {
+                $bids = $plan->bids;
+
+                if (count($bids) > 0) {
+                    $bid = $bids[0];
+
+                    Slack::send($plan->finished_at . '時点で、「' . $plan->title .  '」の入札期間が終了しました。ID: ' . $bid->user->id . 'のユーザーが、' . $bid->price . '円で落札しましたので、落札結果メールを送信します。');
+
+                    Mail::to($bid->user->email)->send(new BidResult($bid, $plan));
+                } else {
+                    Slack::send($plan->finished_at . '時点で、「' . $plan->title .  '」の入札期間が終了しました。落札者が見つからなかったため、メール送信処理は実行されません。');
+                }
+
+                $plan->is_sent_result_mail = true;
+                $plan->save();
+            }
+
+            return 0;
+        } catch (Exception $e) {
+            Log::error($e);
 
             return 0;
         }
-
-        foreach ($plans as $plan) {
-            $bids = $plan->bids;
-            $bid = $bids[0];
-
-            Slack::send($plan->finished_at . '時点で、「' . $plan->title .  '」の入札期間が終了しました。ID: ' . $bid->user->id . 'のユーザーが、' . $bid->price . '円で落札しましたので、落札結果メールを送信します。');
-
-            Mail::to($bid->user->email)->send(new BidResult($bid, $plan));
-
-            $plan->is_sent_result_mail = true;
-            $plan->save();
-        }
-
-        return 0;
     }
 }

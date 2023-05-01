@@ -18,7 +18,7 @@ class MemberController extends Controller
         SEOTools::setCanonical(url()->current());
         SEOTools::jsonLd()->addImage(url('/images/ogp.jpg'));
 
-        $members = Member::paginate(9);
+        $members = Member::latest('created_at')->paginate(9);
 
         return view('members.index', compact('members'));
     }

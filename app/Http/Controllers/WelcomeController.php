@@ -14,9 +14,9 @@ class WelcomeController extends Controller
         SEOTools::opengraph()->addProperty('image', url('/images/ogp.jpg'));
         SEOTools::jsonLd()->addImage(url('/images/ogp.jpg'));
 
-        $articles = Article::limit(6)->paginate();
-        $members = Member::limit(6)->paginate();
-        $plans = Plan::limit(6)->paginate();
+        $articles = Article::latest('created_at')->limit(6)->paginate();
+        $members = Member::latest('created_at')->limit(6)->paginate();
+        $plans = Plan::latest('created_at')->limit(6)->paginate();
 
         return view('welcome', compact('articles', 'members', 'plans'));
     }

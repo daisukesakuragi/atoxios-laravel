@@ -18,7 +18,7 @@ class ArticleController extends Controller
         SEOTools::setCanonical(url()->current());
         SEOTools::jsonLd()->addImage(url('/images/ogp.jpg'));
 
-        $articles = Article::paginate(9);
+        $articles = Article::latest('created_at')->paginate(9);
 
         return view('articles.index', compact('articles'));
     }
