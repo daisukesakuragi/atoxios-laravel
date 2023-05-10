@@ -2,7 +2,8 @@
 @if(auth()->user()->email_verified_at)
 @if($plan->checkIfPlanIsBiddableByDateTime())
 <button x-data="{}" x-on:click="window.livewire.emitTo('bid-confirm-modal', 'show')" class="tw-btn tw-btn-primary tw-btn-block">
-    {{ number_format($price) . '円で入札する' }}
+    <!-- {{ number_format($price) . '円で入札する' }} -->
+    {{ __('+5,000円で入札する') }}
 </button>
 @else
 <p class="tw-btn tw-btn-disabled tw-btn-block">

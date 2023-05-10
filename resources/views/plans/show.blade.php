@@ -11,8 +11,7 @@
                 <div class="tw-stats tw-shadow tw-w-full tw-text-center tw-mb-8">
                     <div class="tw-stat">
                       <div class="tw-stat-title tw-pt-4">{{ __('入札価格') }}</div>
-                      <!-- <div class="tw-stat-value">{{ number_format($price) . '円' }}</div> -->
-                      <div class="tw-stat-value">{{ __('+5,000円') }}</div>
+                      <div class="tw-stat-value">{{ number_format($price) . '円' }}</div>
                       <div class="tw-stat-desc tw-mb-6 tw-text-error">{{ __('*最低入札価格以下では入札できません。') }}</div>
                       <x-bid-button :plan="$plan" :price="$price"></x-bid-button>
                     </div>    
